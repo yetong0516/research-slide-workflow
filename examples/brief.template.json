@@ -1,0 +1,13 @@
+{
+  "researchQuestion": "填写一个可检验的问题",
+  "population": "填写实际或拟定人群，未知写待确认",
+  "comparator": "填写实际比较对象",
+  "measurementsAvailable": ["列出实际可以使用的检测/变量"],
+  "timing": "填写检测时点与预测/干预起点；未知写待确认",
+  "primaryEndpoint": "填写终点定义及时间范围",
+  "completedWork": [],
+  "publishedWork": [],
+  "plannedWork": ["填写拟开展内容"],
+  "unknowns": ["样本量、检测条件、外部资料可用性等"],
+  "privacy": "只提供脱敏后的研究条件，不填病例、联系方式或凭据"
+}

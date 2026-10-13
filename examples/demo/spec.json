@@ -1,0 +1,640 @@
+{
+  "schemaVersion": 1,
+  "title": "公开科研PPT流程示例",
+  "topic": "常规检验与免疫表型：拟议研究设计",
+  "language": "zh",
+  "subtitle": "公开证据＋可替换AI示意图＋原生可编辑文字与数据图",
+  "theme": {
+    "fontFace": "Arial"
+  },
+  "references": [
+    {
+      "id": "rudd2020",
+      "title": "Global, regional, and national sepsis incidence and mortality, 1990–2017: analysis for the Global Burden of Disease Study",
+      "authors": [
+        "Rudd KE",
+        "Johnson SC",
+        "Agesa KM"
+      ],
+      "year": 2020,
+      "journal": "Lancet",
+      "doi": "10.1016/S0140-6736(19)32989-7",
+      "pmid": "31954465",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6970225/",
+      "metadataVerified": true,
+      "verification": {
+        "status": "verified",
+        "scope": "bibliographic-metadata-only",
+        "sources": [
+          {
+            "provider": "PubMed",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/31954465/"
+          }
+        ]
+      },
+      "usage": {
+        "license": "CC BY 4.0",
+        "figureEvidence": "no-original-figure-reused",
+        "downloadAllowed": false
+      },
+      "claims": [
+        {
+          "id": "rudd-incidence",
+          "heading": "疾病负担",
+          "text": "全球新发：1990年6,020万→2017年4,890万",
+          "type": "numerical",
+          "status": "checked",
+          "reviewed": true,
+          "reviewer": "Codex source review",
+          "reviewNote": "Independent re-reading of the public full-text Results incidence paragraph confirmed the two all-age global model point estimates. Not a prospective cohort and not current-year counts.",
+          "locator": "Results: Global sepsis incidence, paragraph before Table 1",
+          "sourceIds": [
+            "rudd2020"
+          ],
+          "visual": {
+            "type": "bar",
+            "categories": [
+              "1990",
+              "2017"
+            ],
+            "series": [
+              {
+                "name": "全球新发病例",
+                "values": [
+                  60.2,
+                  48.9
+                ]
+              }
+            ],
+            "unit": "百万例",
+            "axis": {
+              "title": "全球新发（百万例）",
+              "min": 0,
+              "max": 70,
+              "majorUnit": 20,
+              "format": "0.0"
+            },
+            "sourceIds": [
+              "rudd2020"
+            ],
+            "locator": "Results: Global sepsis incidence, paragraph before Table 1",
+            "dataChecked": true
+          }
+        },
+        {
+          "id": "rudd-mortality",
+          "heading": "相关死亡",
+          "text": "相关死亡：1990年1,570万→2017年1,100万",
+          "type": "numerical",
+          "status": "checked",
+          "reviewed": true,
+          "reviewer": "Codex source review",
+          "reviewNote": "Independent re-reading of the public full-text mortality Results confirmed the two global point estimates. These are sepsis-related death counts, not an ICU case-fatality rate.",
+          "locator": "Results: Sepsis-related mortality, paragraph following Figure 4",
+          "sourceIds": [
+            "rudd2020"
+          ],
+          "visual": {
+            "type": "bar",
+            "categories": [
+              "1990",
+              "2017"
+            ],
+            "series": [
+              {
+                "name": "全球脓毒症相关死亡",
+                "values": [
+                  15.7,
+                  11.0
+                ]
+              }
+            ],
+            "unit": "百万例",
+            "axis": {
+              "title": "相关死亡（百万例）",
+              "min": 0,
+              "max": 20,
+              "majorUnit": 5,
+              "format": "0.0"
+            },
+            "sourceIds": [
+              "rudd2020"
+            ],
+            "locator": "Results: Sepsis-related mortality, paragraph following Figure 4",
+            "dataChecked": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "wacker2013",
+      "title": "Procalcitonin as a diagnostic marker for sepsis: a systematic review and meta-analysis",
+      "authors": [
+        "Wacker C",
+        "Prkno A",
+        "Brunkhorst FM",
+        "Schlattmann P"
+      ],
+      "year": 2013,
+      "journal": "Lancet Infect Dis",
+      "doi": "10.1016/S1473-3099(12)70323-7",
+      "pmid": "23375419",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/23375419/",
+      "metadataVerified": true,
+      "verification": {
+        "status": "verified",
+        "scope": "bibliographic-metadata-only",
+        "sources": [
+          {
+            "provider": "PubMed",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/23375419/"
+          }
+        ]
+      },
+      "usage": {
+        "license": "Copyright Elsevier; numeric facts redrawn, no source figure reused",
+        "figureEvidence": "no-original-figure-reused",
+        "downloadAllowed": false
+      },
+      "claims": [
+        {
+          "id": "wacker-performance",
+          "heading": "识别局限",
+          "text": "PCT合并敏感度77%、特异度79%",
+          "type": "numerical",
+          "status": "checked",
+          "reviewed": true,
+          "reviewer": "Codex source review",
+          "reviewNote": "Independent inspection of PubMed abstract Findings confirms sensitivity 0.77 and specificity 0.79 in 30 studies/3244 patients; comparator was noninfectious SIRS and definitions predate Sepsis-3. Numeric facts are redrawn; no copyrighted article figure is reused.",
+          "locator": "PubMed abstract, Findings; PMID 23375419",
+          "sourceIds": [
+            "wacker2013"
+          ],
+          "visual": {
+            "type": "bar",
+            "categories": [
+              "敏感度",
+              "特异度"
+            ],
+            "series": [
+              {
+                "name": "PCT合并性能",
+                "values": [
+                  0.77,
+                  0.79
+                ]
+              }
+            ],
+            "unit": "比例",
+            "axis": {
+              "title": "PCT合并诊断性能",
+              "min": 0,
+              "max": 1,
+              "majorUnit": 0.25,
+              "format": "0%"
+            },
+            "sourceIds": [
+              "wacker2013"
+            ],
+            "locator": "PubMed abstract, Findings; PMID 23375419",
+            "dataChecked": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "singer2016",
+      "title": "The Third International Consensus Definitions for Sepsis and Septic Shock (Sepsis-3)",
+      "authors": [
+        "Singer M",
+        "Deutschman CS",
+        "Seymour CW"
+      ],
+      "year": 2016,
+      "journal": "JAMA",
+      "doi": "10.1001/jama.2016.0287",
+      "pmid": "26903338",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/26903338/",
+      "metadataVerified": true,
+      "verification": {
+        "status": "verified",
+        "scope": "bibliographic-metadata-only",
+        "sources": [
+          {
+            "provider": "PubMed",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/26903338/"
+          }
+        ]
+      },
+      "usage": {
+        "license": "Copyright American Medical Association; no source figure reused",
+        "figureEvidence": "no-original-figure-reused",
+        "downloadAllowed": false
+      },
+      "claims": []
+    }
+  ],
+  "slides": [
+    {
+      "id": "background",
+      "kind": "background",
+      "title": "研究背景：疾病负担与候选信息",
+      "subtitle": "文献数据与拟议研究问题分别标示",
+      "notice": "GBD为历史全年龄模型估计；PCT结果主要来自旧定义危重队列，不代表本项目表现。",
+      "cards": [
+        {
+          "id": "bg-incidence",
+          "heading": "疾病负担",
+          "caption": "全球新发：1990年6,020万→2017年4,890万",
+          "statementType": "evidence",
+          "evidence": {
+            "status": "checked",
+            "sourceIds": [
+              "rudd2020"
+            ],
+            "claimIds": [
+              "rudd-incidence"
+            ],
+            "locator": "Results: Global sepsis incidence, paragraph before Table 1"
+          },
+          "visual": {
+            "type": "bar",
+            "categories": [
+              "1990",
+              "2017"
+            ],
+            "series": [
+              {
+                "name": "全球新发病例",
+                "values": [
+                  60.2,
+                  48.9
+                ]
+              }
+            ],
+            "unit": "百万例",
+            "axis": {
+              "title": "全球新发（百万例）",
+              "min": 0,
+              "max": 70,
+              "majorUnit": 20,
+              "format": "0.0"
+            },
+            "sourceIds": [
+              "rudd2020"
+            ],
+            "locator": "Results: Global sepsis incidence, paragraph before Table 1",
+            "dataChecked": true
+          }
+        },
+        {
+          "id": "bg-mortality",
+          "heading": "相关死亡",
+          "caption": "相关死亡：1990年1,570万→2017年1,100万",
+          "statementType": "evidence",
+          "evidence": {
+            "status": "checked",
+            "sourceIds": [
+              "rudd2020"
+            ],
+            "claimIds": [
+              "rudd-mortality"
+            ],
+            "locator": "Results: Sepsis-related mortality, paragraph following Figure 4"
+          },
+          "visual": {
+            "type": "bar",
+            "categories": [
+              "1990",
+              "2017"
+            ],
+            "series": [
+              {
+                "name": "全球脓毒症相关死亡",
+                "values": [
+                  15.7,
+                  11.0
+                ]
+              }
+            ],
+            "unit": "百万例",
+            "axis": {
+              "title": "相关死亡（百万例）",
+              "min": 0,
+              "max": 20,
+              "majorUnit": 5,
+              "format": "0.0"
+            },
+            "sourceIds": [
+              "rudd2020"
+            ],
+            "locator": "Results: Sepsis-related mortality, paragraph following Figure 4",
+            "dataChecked": true
+          }
+        },
+        {
+          "id": "bg-pct",
+          "heading": "识别局限",
+          "caption": "PCT合并敏感度77%、特异度79%",
+          "statementType": "evidence",
+          "evidence": {
+            "status": "checked",
+            "sourceIds": [
+              "wacker2013"
+            ],
+            "claimIds": [
+              "wacker-performance"
+            ],
+            "locator": "PubMed abstract, Findings; PMID 23375419"
+          },
+          "visual": {
+            "type": "bar",
+            "categories": [
+              "敏感度",
+              "特异度"
+            ],
+            "series": [
+              {
+                "name": "PCT合并性能",
+                "values": [
+                  0.77,
+                  0.79
+                ]
+              }
+            ],
+            "unit": "比例",
+            "axis": {
+              "title": "PCT合并诊断性能",
+              "min": 0,
+              "max": 1,
+              "majorUnit": 0.25,
+              "format": "0%"
+            },
+            "sourceIds": [
+              "wacker2013"
+            ],
+            "locator": "PubMed abstract, Findings; PMID 23375419",
+            "dataChecked": true
+          }
+        },
+        {
+          "id": "bg-question",
+          "heading": "候选信息",
+          "caption": "拟议：检验免疫能否增加临床基准信息",
+          "statementType": "proposed",
+          "visual": {
+            "type": "image",
+            "path": "assets/paired-models.png",
+            "role": "design",
+            "alt": "拟议：检验免疫能否增加临床基准信息",
+            "provenance": {
+              "kind": "ai-generated",
+              "source": "AI-generated generic scientific design; repository-authorized redistribution",
+              "license": "MIT"
+            }
+          }
+        }
+      ],
+      "notes": "Rudd图为全年龄全球总量点估计，1990与2017分别是历史年份。1990新发60.2百万（95%UI47.2–79.7），2017新发48.9百万（38.9–62.9）；1990相关死亡15.7百万（14.7–16.7），2017相关死亡11.0百万（10.1–12.0）。本示例柱图仅展示点估计。Wacker：30项研究、3244例；脓毒症与非感染性SIRS，敏感度0.77（95%CI0.72–0.81），特异度0.79（0.74–0.84），异质性I²96%。无原始文献图转载。"
+    },
+    {
+      "id": "research-one",
+      "kind": "research",
+      "title": "研究内容一：拟议人群与测量框架",
+      "notice": "本示例为公开通用的拟议研究设计，不包含项目样本量、未公开结果或已完成验证。",
+      "cards": [
+        {
+          "id": "r1-database",
+          "heading": "统一资料",
+          "caption": "拟议：建立可追溯索引并去重",
+          "statementType": "proposed",
+          "visual": {
+            "type": "image",
+            "path": "assets/mother-database.png",
+            "role": "design",
+            "alt": "拟议：建立可追溯索引并去重",
+            "provenance": {
+              "kind": "ai-generated",
+              "source": "AI-generated generic scientific design; repository-authorized redistribution",
+              "license": "MIT"
+            }
+          }
+        },
+        {
+          "id": "r1-cohort",
+          "heading": "临床人群",
+          "caption": "拟议：区分识别与预后研究线",
+          "statementType": "proposed",
+          "visual": {
+            "type": "image",
+            "path": "assets/clinical-cohort.png",
+            "role": "design",
+            "alt": "拟议：区分识别与预后研究线",
+            "provenance": {
+              "kind": "ai-generated",
+              "source": "AI-generated generic scientific design; repository-authorized redistribution",
+              "license": "MIT"
+            }
+          }
+        },
+        {
+          "id": "r1-inputs",
+          "heading": "测量模块",
+          "caption": "拟议：按实际检测形成分析子集",
+          "statementType": "proposed",
+          "visual": {
+            "type": "image",
+            "path": "assets/measured-inputs.png",
+            "role": "design",
+            "alt": "拟议：按实际检测形成分析子集",
+            "provenance": {
+              "kind": "ai-generated",
+              "source": "AI-generated generic scientific design; repository-authorized redistribution",
+              "license": "MIT"
+            }
+          }
+        },
+        {
+          "id": "r1-time",
+          "heading": "时间与结局",
+          "caption": "拟议：分别预设采样窗与预测起点",
+          "statementType": "proposed",
+          "visual": {
+            "type": "image",
+            "path": "assets/sampling-window.png",
+            "role": "design",
+            "alt": "Generic patient record screening, specimen time window, follow-up and outcome verification; no fixed sampling date or quantitative result",
+            "provenance": {
+              "kind": "ai-generated",
+              "source": "AI-generated generic scientific design; repository-authorized redistribution",
+              "license": "MIT"
+            }
+          }
+        }
+      ],
+      "notes": "这些是通用方案候选内容，不是任何实际项目已确定的人群、样本量或已完成工作。采样窗、预测起点、终点起算规则需要各研究自行制定，不能由题目自动产生。图内分支仅表示设计，不代表真实患者数、检测比例或机制。Sepsis-3参考资料只用于提醒临床定义需独立确认。"
+    },
+    {
+      "id": "research-two",
+      "kind": "research",
+      "title": "研究内容二：拟议增量评价与验证",
+      "notice": "本示例为公开通用的拟议研究设计，不包含项目样本量、未公开结果或已完成验证。",
+      "cards": [
+        {
+          "id": "r2-baseline",
+          "heading": "临床基准",
+          "caption": "拟议：预设临床基准模型M1",
+          "statementType": "proposed",
+          "visual": {
+            "type": "image",
+            "path": "assets/paired-models.png",
+            "role": "design",
+            "alt": "拟议：预设临床基准模型M1",
+            "provenance": {
+              "kind": "ai-generated",
+              "source": "AI-generated generic scientific design; repository-authorized redistribution",
+              "license": "MIT"
+            }
+          }
+        },
+        {
+          "id": "r2-increment",
+          "heading": "加入免疫",
+          "caption": "拟议：M2仅增加实际免疫项目",
+          "statementType": "proposed",
+          "visual": {
+            "type": "image",
+            "path": "assets/nested-subsets.png",
+            "role": "design",
+            "alt": "Generic separate measured immune subsets preserved in one frozen analysis folder; no imputed all-panel dataset",
+            "provenance": {
+              "kind": "ai-generated",
+              "source": "AI-generated generic scientific design; repository-authorized redistribution",
+              "license": "MIT"
+            }
+          }
+        },
+        {
+          "id": "r2-internal",
+          "heading": "内部验证",
+          "caption": "拟议：同患者重采样与评价",
+          "statementType": "proposed",
+          "visual": {
+            "type": "image",
+            "path": "assets/patient-validation.png",
+            "role": "design",
+            "alt": "拟议：同患者重采样与评价",
+            "provenance": {
+              "kind": "ai-generated",
+              "source": "AI-generated generic scientific design; repository-authorized redistribution",
+              "license": "MIT"
+            }
+          }
+        },
+        {
+          "id": "r2-external",
+          "heading": "独立验证",
+          "caption": "拟议：冻结后在外部人群直接应用",
+          "statementType": "proposed",
+          "visual": {
+            "type": "image",
+            "path": "assets/external-validation.png",
+            "role": "design",
+            "alt": "拟议：冻结后在外部人群直接应用",
+            "provenance": {
+              "kind": "ai-generated",
+              "source": "AI-generated generic scientific design; repository-authorized redistribution",
+              "license": "MIT"
+            }
+          }
+        }
+      ],
+      "notes": "拟议比较必须在同一面板、同患者、同预测时点及同划分中进行，预处理与变量选择置于训练流程内。算法和参数预算由有效数据决定。图示没有ROC、AUC结果或固定训练比例。外院资料、共通检测面板和真实结局是否可得须独立落实。本公开示例没有已完成模型或外院验证。"
+    },
+    {
+      "id": "plan",
+      "kind": "plan",
+      "title": "后续计划：拟议四阶段推进",
+      "notice": "本示例为公开通用的拟议研究设计，不包含项目样本量、未公开结果或已完成验证。",
+      "cards": [
+        {
+          "id": "p-rules",
+          "heading": "规则与补查",
+          "caption": "拟议：先定人群、时间和结局规则",
+          "statementType": "proposed",
+          "visual": {
+            "type": "image",
+            "path": "assets/clinical-cohort.png",
+            "role": "design",
+            "alt": "拟议：先定人群、时间和结局规则",
+            "provenance": {
+              "kind": "ai-generated",
+              "source": "AI-generated generic scientific design; repository-authorized redistribution",
+              "license": "MIT"
+            }
+          }
+        },
+        {
+          "id": "p-data",
+          "heading": "分析集与方案",
+          "caption": "拟议：确认有效数据并预设统计方案",
+          "statementType": "proposed",
+          "visual": {
+            "type": "image",
+            "path": "assets/mother-database.png",
+            "role": "design",
+            "alt": "拟议：确认有效数据并预设统计方案",
+            "provenance": {
+              "kind": "ai-generated",
+              "source": "AI-generated generic scientific design; repository-authorized redistribution",
+              "license": "MIT"
+            }
+          }
+        },
+        {
+          "id": "p-model",
+          "heading": "开发与内部验证",
+          "caption": "拟议：评价增量并冻结模型",
+          "statementType": "proposed",
+          "visual": {
+            "type": "image",
+            "path": "assets/patient-validation.png",
+            "role": "design",
+            "alt": "拟议：评价增量并冻结模型",
+            "provenance": {
+              "kind": "ai-generated",
+              "source": "AI-generated generic scientific design; repository-authorized redistribution",
+              "license": "MIT"
+            }
+          }
+        },
+        {
+          "id": "p-external",
+          "heading": "外部与补充",
+          "caption": "拟议：外部验证，按需补充证据",
+          "statementType": "proposed",
+          "visual": {
+            "type": "image",
+            "path": "assets/external-validation.png",
+            "role": "design",
+            "alt": "拟议：外部验证，按需补充证据",
+            "provenance": {
+              "kind": "ai-generated",
+              "source": "AI-generated generic scientific design; repository-authorized redistribution",
+              "license": "MIT"
+            }
+          }
+        }
+      ],
+      "notes": "不预设日历截止，不宣称样本已锁定或模型已验证。正式外部验证需在预处理、模型和阈值冻结后开展，必要补充为可选支路，不能借示意图宣称机制因果结论。"
+    },
+    {
+      "id": "references",
+      "kind": "references",
+      "title": "真实参考文献与图示来源",
+      "subtitle": "公开数字可追溯；设计图不代表观察结果",
+      "notice": "图示为已授权公开的AI通用设计；原文图未转载。数值图由公开文献事实重绘。",
+      "notes": "参考文献题名/年份/DOI/PMID的元数据核查与数字/图证据独立核查分开。示例claims保留Codex source review记录，未伪称真人审核，也不将自动excerpt匹配等同证据已核查。六幅PNG无个人信息或未公开数据，按本仓库MIT许可提供为可替换AI设计资产。"
+    }
+  ]
+}

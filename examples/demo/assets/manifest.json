@@ -1,0 +1,58 @@
+{
+  "mother-database.png": {
+    "kind": "ai-generated-design",
+    "license": "MIT",
+    "source": "AI-generated generic scientific design, redistribution authorized for this repository",
+    "scientific_status": "Illustrative proposed design; no real people, private data, numerical results or performance claims",
+    "editable": "Independent PNG can be replaced; internal pixels are not editable text"
+  },
+  "clinical-cohort.png": {
+    "kind": "ai-generated-design",
+    "license": "MIT",
+    "source": "AI-generated generic scientific design, redistribution authorized for this repository",
+    "scientific_status": "Illustrative proposed design; no real people, private data, numerical results or performance claims",
+    "editable": "Independent PNG can be replaced; internal pixels are not editable text"
+  },
+  "measured-inputs.png": {
+    "kind": "ai-generated-design",
+    "license": "MIT",
+    "source": "AI-generated generic scientific design, redistribution authorized for this repository",
+    "scientific_status": "Illustrative proposed design; no real people, private data, numerical results or performance claims",
+    "editable": "Independent PNG can be replaced; internal pixels are not editable text"
+  },
+  "patient-validation.png": {
+    "kind": "ai-generated-design",
+    "license": "MIT",
+    "source": "AI-generated generic scientific design, redistribution authorized for this repository",
+    "scientific_status": "Illustrative proposed design; no real people, private data, numerical results or performance claims",
+    "editable": "Independent PNG can be replaced; internal pixels are not editable text"
+  },
+  "paired-models.png": {
+    "kind": "ai-generated-design",
+    "license": "MIT",
+    "source": "AI-generated generic scientific design, redistribution authorized for this repository",
+    "scientific_status": "Illustrative proposed design; no real people, private data, numerical results or performance claims",
+    "editable": "Independent PNG can be replaced; internal pixels are not editable text"
+  },
+  "external-validation.png": {
+    "kind": "ai-generated-design",
+    "license": "MIT",
+    "source": "AI-generated generic scientific design, redistribution authorized for this repository",
+    "scientific_status": "Illustrative proposed design; no real people, private data, numerical results or performance claims",
+    "editable": "Independent PNG can be replaced; internal pixels are not editable text"
+  },
+  "sampling-window.png": {
+    "kind": "ai-generated-design",
+    "license": "MIT",
+    "source": "AI-generated generic scientific design, redistribution authorized for this repository",
+    "scientific_status": "Illustrative proposed design; no real people, private data, numerical results or performance claims",
+    "editable": "Independent PNG can be replaced; internal pixels are not editable text"
+  },
+  "nested-subsets.png": {
+    "kind": "ai-generated-design",
+    "license": "MIT",
+    "source": "AI-generated generic scientific design, redistribution authorized for this repository",
+    "scientific_status": "Illustrative proposed design; no real people, private data, numerical results or performance claims",
+    "editable": "Independent PNG can be replaced; internal pixels are not editable text"
+  }
+}
