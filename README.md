@@ -19,6 +19,8 @@ node cli.mjs create "植物来源天然产物的抗流感候选价值与活性�
 
 默认范例为**植物来源天然产物抗流感课题**，包含真实文献数据与授权论文原图：
 
+[直接下载已生成的八页可编辑PPT](examples/natural-antiviral/example.pptx)
+
 ```bash
 npm run demo
 ```
