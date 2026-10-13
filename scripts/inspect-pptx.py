@@ -16,6 +16,12 @@ def inspect_pptx(filename):
         if z.testzip():
             raise ValueError('Broken ZIP member')
         names = z.namelist()
+        types = ET.fromstring(z.read('[Content_Types].xml'))
+        for entry in types:
+            if entry.tag.endswith('Override'):
+                target = entry.attrib.get('PartName', '').lstrip('/')
+                if target not in names:
+                    raise ValueError(f'Content type names a missing package part: {target}')
         pages = sorted((n for n in names if re.fullmatch(r'ppt/slides/slide\d+\.xml', n)),
                        key=lambda n: int(re.search(r'(\d+)\.xml', n).group(1)))
         result = []

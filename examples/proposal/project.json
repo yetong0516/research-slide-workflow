@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "topic": "常规检验与免疫指标在脓毒症识别及预后评估中的价值",
+  "language": "zh-CN",
+  "brief": {
+    "studyType": "临床观察研究的拟议开题示例",
+    "researchQuestion": "免疫指标能否补充常规检验的脓毒症识别及28天预后信息？",
+    "population": "临床感染评估人群；纳入资格待项目确认",
+    "comparator": "识别比较与预后比较分别定义，保留可比人群",
+    "measurementsAvailable": [
+      "常规检验",
+      "项目实际可用的免疫指标"
+    ],
+    "timing": "检测、报告可得时点及评价起点需分别确认",
+    "primaryEndpoint": "识别结局与28天生命状态分别评价",
+    "completedWork": [],
+    "unknowns": [
+      "实际样本量",
+      "免疫检测覆盖",
+      "独立验证资料可用性"
+    ]
+  },
+  "outputDir": "output",
+  "literature": {
+    "query": "sepsis AND (immune phenotype OR biomarker)",
+    "limit": 8,
+    "email": null
+  },
+  "design": {
+    "figureCount": 8,
+    "fontFace": "Arial Unicode MS",
+    "imageMode": "native",
+    "template": "proposal"
+  },
+  "provider": {
+    "mode": "responses",
+    "baseUrl": "https://api.openai.com/v1",
+    "apiKeyEnv": "OPENAI_API_KEY",
+    "textModel": "gpt-4.1-mini",
+    "imageModel": "gpt-image-1",
+    "timeoutMs": 120000,
+    "imageSize": "1536x1024",
+    "imageQuality": "medium",
+    "imageBackground": "opaque",
+    "planner": "rules"
+  },
+  "policy": {
+    "allowDraft": true,
+    "requireIndependentClaimReview": true
+  }
+}

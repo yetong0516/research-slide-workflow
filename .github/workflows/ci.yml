@@ -16,8 +16,12 @@ jobs:
       - run: npm ci
       - run: npm test
       - run: npm run demo
+      - run: npm run demo:proposal
       - run: python3 scripts/inspect-pptx.py build/demo/research-slides.pptx --expected-slides 5 --out build/demo/inspection.json
+      - run: python3 scripts/inspect-pptx.py build/proposal/research-slides.pptx --expected-slides 7 --out build/proposal/inspection.json
       - uses: actions/upload-artifact@v4
         with:
           name: research-slide-demo
-          path: build/demo/
+          path: |
+            build/demo/
+            build/proposal/

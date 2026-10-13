@@ -22,6 +22,7 @@ const chartDataSignature = visual => JSON.stringify({
   type: visual?.type, categories: visual?.categories,
   series: list(visual?.series).map(s => ({ name: s.name, values: s.values })),
   unit: visual?.unit, sourceIds: visual?.sourceIds, locator: visual?.locator,
+  statistic: visual?.statistic, footnote: visual?.footnote,
 });
 const imageSignature = visual => JSON.stringify({
   type: visual?.type, role: visual?.role, path: visual?.path,
@@ -94,6 +95,9 @@ export function validateSpec(input) {
   check(nonempty(spec.title), 'title is required');
   check(Array.isArray(spec.references), 'references must be an array');
   check(Array.isArray(spec.slides), 'slides must be an array');
+  const proposal = spec.template === 'proposal';
+  check(spec.template === undefined || ['compact', 'proposal'].includes(spec.template),
+    'template must be compact or proposal');
   const refs = list(spec.references);
   const sources = new Map();
   refs.forEach((ref, i) => {
@@ -115,9 +119,12 @@ export function validateSpec(input) {
     list(ids).forEach(id => check(sources.has(id), `${where} has unknown sourceId: ${id}`));
   };
   const slides = list(spec.slides);
-  check(slides.length >= 4 && slides.length <= 5,
-    'workflow requires background 1, research 1–2, plan 1, references 1 (4–5 slides)');
-  const counts = { background: 0, research: 0, plan: 0, references: 0 };
+  check(proposal ? slides.length >= 7 && slides.length <= 9 : slides.length >= 4 && slides.length <= 5,
+    proposal ? 'proposal requires 7 slides plus up to 2 reviewed preliminary slides'
+      : 'workflow requires background 1, research 1–2, plan 1, references 1 (4–5 slides)');
+  const counts = proposal
+    ? { background: 0, question: 0, research: 0, preliminary: 0, plan: 0, references: 0 }
+    : { background: 0, research: 0, plan: 0, references: 0 };
   const cardIds = new Set();
   const slideIds = new Set();
   slides.forEach((slide, si) => {
@@ -128,8 +135,16 @@ export function validateSpec(input) {
     check(!slideIds.has(slide.id), `duplicate slide id: ${slide.id}`);
     slideIds.add(slide.id);
     if (slide.kind === 'references') return;
-    check(Array.isArray(slide.cards) && slide.cards.length === 4,
-      `${where} must contain exactly four cards`);
+    const count = list(slide.cards).length;
+    const expected = proposal && slide.kind === 'question' ? 3
+      : proposal && slide.kind === 'research' ? 2 : 4;
+    check(Array.isArray(slide.cards) && (proposal && slide.kind === 'preliminary'
+      ? count >= 1 && count <= 2 : count === expected),
+    `${where} must contain ${proposal && slide.kind === 'preliminary' ? 'one or two' : expected} cards`);
+    if (proposal && slide.kind === 'question') {
+      check(nonempty(slide.mainQuestion) && [...slide.mainQuestion].length <= 100,
+        `${where}.mainQuestion must contain 1–100 characters`);
+    }
     list(slide.cards).forEach((card, ci) => {
       const at = `${where}.cards[${ci}]`;
       check(nonempty(card.id), `${at}.id is required`);
@@ -142,6 +157,10 @@ export function validateSpec(input) {
         `${at}.caption must be a short string (≤120 characters)`);
       check(['evidence', 'proposed', 'design', 'pending'].includes(card.statementType),
         `${at}.statementType must be evidence, proposed, design, or pending`);
+      if (proposal && slide.kind === 'preliminary') {
+        check(card.statementType === 'evidence' && ['bar', 'image'].includes(card.visual?.type),
+          `${at} preliminary work requires reviewed evidence and a real figure or dataset`);
+      }
       if (card.statementType === 'evidence') {
         const evidence = card.evidence;
         check(evidence?.status === 'checked', `${at} evidence must have status checked`);
@@ -169,9 +188,25 @@ export function validateSpec(input) {
         card._reviewedClaims = claims;
       }
       const visual = card.visual;
-      check(visual && ['placeholder', 'image', 'bar'].includes(visual.type),
-        `${at}.visual.type must be placeholder, image, or bar`);
+      check(visual && ['placeholder', 'image', 'bar', 'diagram'].includes(visual.type),
+        `${at}.visual.type must be placeholder, image, bar, or diagram`);
       if (!visual) return;
+      if (visual.type === 'diagram') {
+        check(visual.role === 'design' && ['proposed', 'design'].includes(card.statementType),
+          `${at} native diagrams describe proposed concepts, not empirical evidence`);
+        check(['horizontal', 'vertical'].includes(visual.direction),
+          `${at}.diagram.direction must be horizontal or vertical`);
+        const nodes = list(visual.nodes), ids = new Set(nodes.map(node => node.id));
+        check(Array.isArray(visual.nodes) && nodes.length >= 2 && nodes.length <= 5,
+          `${at}.diagram needs 2–5 labelled nodes`);
+        check(ids.size === nodes.length && nodes.every(node => nonempty(node.id)
+          && nonempty(node.label) && [...node.label].length <= 40),
+        `${at}.diagram node IDs must be unique and labels 1–40 characters`);
+        check(Array.isArray(visual.edges) && visual.edges.length >= 1 && visual.edges.length <= 8,
+          `${at}.diagram needs 1–8 edges`);
+        check(list(visual.edges).every(edge => ids.has(edge.from) && ids.has(edge.to)
+          && edge.from !== edge.to), `${at}.diagram edges must join distinct known nodes`);
+      }
       if (visual.type === 'image') {
         check(nonempty(visual.path), `${at}.visual.path is required`);
         check(!visual.path || (!path.isAbsolute(visual.path)
@@ -230,7 +265,18 @@ export function validateSpec(input) {
     });
   });
   check(counts.background === 1, 'exactly one background slide is required');
-  check(counts.research >= 1 && counts.research <= 2, 'one or two research slides are required');
+  check(proposal ? counts.research === 3 : counts.research >= 1 && counts.research <= 2,
+    proposal ? 'proposal requires three research slides' : 'one or two research slides are required');
+  if (proposal) {
+    check(counts.question === 1, 'proposal requires one scientific question slide');
+    check(counts.preliminary <= 2, 'proposal allows at most two preliminary slides');
+    check(slides.filter(slide => slide.kind !== 'preliminary').map(slide => slide.kind).join(',')
+      === 'background,question,research,research,research,plan,references',
+    'proposal order must be background, question, research ×3, plan, references');
+    check(slides.every((slide, index) => slide.kind !== 'preliminary'
+      || (index >= 2 && index < slides.length - 2)),
+    'preliminary evidence belongs between the question and the plan');
+  }
   check(counts.plan === 1, 'exactly one plan slide is required');
   check(counts.references === 1, 'exactly one references slide is required');
   check(refs.length <= 12, 'use ≤12 references for the single references slide');

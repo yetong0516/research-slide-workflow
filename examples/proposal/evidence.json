@@ -1,0 +1,252 @@
+{
+  "sources": [
+    {
+      "id": "rudd2020",
+      "title": "Global, regional, and national sepsis incidence and mortality, 1990–2017: analysis for the Global Burden of Disease Study",
+      "authors": [
+        "Rudd KE",
+        "Johnson SC",
+        "Agesa KM"
+      ],
+      "year": 2020,
+      "journal": "Lancet",
+      "doi": "10.1016/S0140-6736(19)32989-7",
+      "pmid": "31954465",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6970225/",
+      "metadataVerified": true,
+      "verification": {
+        "status": "verified",
+        "scope": "bibliographic-metadata-only",
+        "sources": [
+          {
+            "provider": "PubMed",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/31954465/"
+          }
+        ]
+      },
+      "usage": {
+        "license": "CC BY 4.0",
+        "figureEvidence": "no-original-figure-reused",
+        "downloadAllowed": false
+      },
+      "claims": [
+        {
+          "id": "rudd-incidence",
+          "heading": "疾病负担",
+          "text": "全球新发：1990年6,020万→2017年4,890万",
+          "type": "numerical",
+          "status": "checked",
+          "reviewed": true,
+          "reviewer": "Codex source review",
+          "reviewNote": "Independent re-reading of the public full-text Results incidence paragraph confirmed the two all-age global model point estimates. Not a prospective cohort and not current-year counts. Caption and historical-period footnote independently rechecked against the Results and publication abstract on 2026-10-13.",
+          "locator": "Results: Global sepsis incidence, paragraph before Table 1",
+          "sourceIds": [
+            "rudd2020"
+          ],
+          "visual": {
+            "type": "bar",
+            "categories": [
+              "1990",
+              "2017"
+            ],
+            "series": [
+              {
+                "name": "全球新发病例",
+                "values": [
+                  60.2,
+                  48.9
+                ]
+              }
+            ],
+            "unit": "百万例",
+            "axis": {
+              "title": "全球新发（百万例）",
+              "min": 0,
+              "max": 70,
+              "majorUnit": 20,
+              "format": "0.0"
+            },
+            "sourceIds": [
+              "rudd2020"
+            ],
+            "locator": "Results: Global sepsis incidence, paragraph before Table 1",
+            "dataChecked": true,
+            "footnote": "1990与2017年全球模型点估计；非当前年度病例数。"
+          },
+          "backgroundRole": "problem",
+          "approvedCaption": "全球新发4,890万例\n（2017年模型估计）"
+        }
+      ]
+    },
+    {
+      "id": "wacker2013",
+      "title": "Procalcitonin as a diagnostic marker for sepsis: a systematic review and meta-analysis",
+      "authors": [
+        "Wacker C",
+        "Prkno A",
+        "Brunkhorst FM",
+        "Schlattmann P"
+      ],
+      "year": 2013,
+      "journal": "Lancet Infect Dis",
+      "doi": "10.1016/S1473-3099(12)70323-7",
+      "pmid": "23375419",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/23375419/",
+      "metadataVerified": true,
+      "verification": {
+        "status": "verified",
+        "scope": "bibliographic-metadata-only",
+        "sources": [
+          {
+            "provider": "PubMed",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/23375419/"
+          }
+        ]
+      },
+      "usage": {
+        "license": "Copyright Elsevier; numeric facts redrawn, no source figure reused",
+        "figureEvidence": "no-original-figure-reused",
+        "downloadAllowed": false
+      },
+      "claims": [
+        {
+          "id": "wacker-performance",
+          "heading": "识别局限",
+          "text": "PCT合并敏感度77%、特异度79%",
+          "type": "numerical",
+          "status": "checked",
+          "reviewed": true,
+          "reviewer": "Codex source review",
+          "reviewNote": "Independent inspection of PubMed abstract Findings confirms sensitivity 0.77 and specificity 0.79 in 30 studies/3244 patients; comparator was noninfectious SIRS and definitions predate Sepsis-3. Numeric facts are redrawn; no copyrighted article figure is reused. Rechecked PubMed Findings and Methods on 2026-10-13: diagnostic comparator was non-infectious SIRS; this is not an infection-without-sepsis performance estimate.",
+          "locator": "PubMed abstract, Findings; PMID 23375419",
+          "sourceIds": [
+            "wacker2013"
+          ],
+          "visual": {
+            "type": "bar",
+            "categories": [
+              "敏感度",
+              "特异度"
+            ],
+            "series": [
+              {
+                "name": "PCT合并性能",
+                "values": [
+                  0.77,
+                  0.79
+                ]
+              }
+            ],
+            "unit": "比例",
+            "axis": {
+              "title": "PCT合并诊断性能",
+              "min": 0,
+              "max": 1,
+              "majorUnit": 0.25,
+              "format": "0%"
+            },
+            "sourceIds": [
+              "wacker2013"
+            ],
+            "locator": "PubMed abstract, Findings; PMID 23375419",
+            "dataChecked": true,
+            "footnote": "30项研究、3,244例；诊断定义早于Sepsis-3，研究异质性较大。"
+          },
+          "backgroundRole": "status",
+          "approvedCaption": "PCT：敏感度77%\n特异度79%\n参照为非感染性SIRS"
+        }
+      ]
+    },
+    {
+      "id": "liu2022pd1",
+      "title": "Expression of PD-1 on Memory T Lymphocytes Predicts 28-Day Mortality of Patients with Sepsis: A Prospective Observational Study",
+      "authors": [
+        "Qingxiang Liu",
+        "Ming Xue",
+        "Qianwen Song",
+        "Jianfeng Xie",
+        "Yi Yang",
+        "Songqiao Liu"
+      ],
+      "year": 2022,
+      "journal": "Journal of Inflammation Research",
+      "volume": "15",
+      "pages": "5043–5052",
+      "doi": "10.2147/JIR.S376897",
+      "pmid": "36072779",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9444038/",
+      "metadataVerified": true,
+      "verification": {
+        "status": "verified",
+        "checkedOn": "2026-10-13",
+        "metadataUrls": [
+          "https://pubmed.ncbi.nlm.nih.gov/36072779/",
+          "https://www.dovepress.com/expression-of-pd-1-on-memory-t-lymphocytes-predicts-28-day-mortality-o-peer-reviewed-fulltext-article-JIR"
+        ],
+        "note": "题名、6名作者、期刊、年份、卷页、DOI和PMID已与PubMed及原文记录核对。"
+      },
+      "claims": [
+        {
+          "id": "pd1-memory-28day-groups",
+          "heading": "预后候选信息",
+          "text": "一项30例脓毒症前瞻性队列中，28天死亡者的记忆CD4+与CD8+ T细胞PD-1阳性比例均高于存活者；提示可研究其预后信息，增量预测价值仍需验证。",
+          "type": "numerical",
+          "status": "checked",
+          "reviewed": true,
+          "reviewer": "Codex source review",
+          "reviewNote": "核对原文Results中的直接数字和Table 1结局分组：28天存活21例、死亡9例；记忆CD4+ T细胞为19.10%与33.20%（P=0.030），记忆CD8+ T细胞为26.71%与44.77%（P=0.006），均按存活者、死亡者顺序排列。原文为单中心观察研究，不能据此证明因果关系、外部适用性或在常规指标基础上的增量预测价值。这里只使用免疫表型组间比较，不使用诊断效能、治疗效果或ROC阈值；数字从正文提取，未从图形估算。 The concise heading and caption preserve the observational prognostic comparison and do not establish incremental prediction.",
+          "locator": "Results → Patient Characteristics / Table 1；Results → PD-1 Expression on Memory T Cells in Surviving and Nonsurviving Patients with Sepsis（对应Figure 1B、1C）。",
+          "sourceIds": [
+            "liu2022pd1"
+          ],
+          "visual": {
+            "type": "bar",
+            "categories": [
+              "记忆CD4+ T细胞",
+              "记忆CD8+ T细胞"
+            ],
+            "series": [
+              {
+                "name": "28天存活（n=21）",
+                "values": [
+                  19.1,
+                  26.71
+                ]
+              },
+              {
+                "name": "28天死亡（n=9）",
+                "values": [
+                  33.2,
+                  44.77
+                ]
+              }
+            ],
+            "unit": "%",
+            "sourceIds": [
+              "liu2022pd1"
+            ],
+            "locator": "Results → PD-1 Expression on Memory T Cells in Surviving and Nonsurviving Patients with Sepsis，第1–2段；Figure 1B、1C为对应图。",
+            "dataChecked": true,
+            "axis": {
+              "min": 0,
+              "max": 60,
+              "majorUnit": 20,
+              "title": "PD-1阳性细胞比例（%）",
+              "format": "0.0"
+            },
+            "statistic": "原文所报组均值",
+            "footnote": "原文组均值；未显示个体分布与误差线。",
+            "dataExtraction": "直接从原文Results提取数字，未由Figure 1图片估值。",
+            "pValues": [
+              0.03,
+              0.006
+            ]
+          },
+          "backgroundRole": "approach",
+          "approvedCaption": "死亡组PD-1均值较高\n尚需检验预后增量价值"
+        }
+      ]
+    }
+  ],
+  "warnings": []
+}
