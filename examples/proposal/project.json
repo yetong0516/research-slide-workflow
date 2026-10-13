@@ -30,7 +30,11 @@
     "figureCount": 8,
     "fontFace": "Arial Unicode MS",
     "imageMode": "native",
-    "template": "proposal"
+    "template": "proposal",
+    "fonts": {
+      "eastAsian": "微软雅黑",
+      "latin": "Arial"
+    }
   },
   "provider": {
     "mode": "responses",

@@ -27,6 +27,10 @@ npm run demo
 
 打开 `build/proposal/research-slides.pptx`。这份八页示例包含背景、科学问题、独立文献依据、三页研究内容、后续计划和参考文献。文字、重绘的数据图、区间端点、流程节点和箭头为 PowerPoint 原生对象；论文原图和设计插图是可独立替换的图片。植物 X、粗提物 X 和 NP 保留原课题标记；黄芩素/黄芩苷只作为外部已发表依据，不冒充项目结果。详见[天然产物示例说明](examples/natural-antiviral/README.md)。
 
+每个主题使用独立原生边框，按标题、主图和正文形成清楚的层级。重复的图像身份标签、交付提示和通用页脚移入备注；文献身份、原图许可与数据解释仍保留在备注及参考文献中。研究内容和计划的标题保留“拟开展”。
+
+原生文字、图表、备注及主题默认使用中文 **微软雅黑**、英文 **Arial**。论文原图和设计位图保持原貌。可在 `project.design.fonts` 或 `spec.theme.fonts` 设置 `{ "eastAsian": "微软雅黑", "latin": "Arial" }`。目标电脑需要安装相应字体；缺失时会被本机字体替代，应重新检查换行与字形。
+
 ![天然产物抗流感背景：真实人群数据、临床研究与前临床原图](docs/preview/natural-background.png)
 
 ![天然产物课题科学问题与设计示意](docs/preview/natural-question.png)
@@ -90,7 +94,7 @@ node cli.mjs build runs/my-study/output/spec.images.json --final
 | --- | --- | --- |
 | 背景事实/数字 | 已核查的真实文献 | 对应原句/图表位置、单位、比较与出处 |
 | 论文原图 | 明确原始来源 | 保留坐标与图例，核对再利用许可 |
-| 科研设计图 | AI 生成或原生示意 | 标「设计示意/拟议」，不承载实证数字 |
+| 科研设计图 | AI 生成或原生示意 | 所属研究页标「拟开展」，备注保留图像身份，不承载实证数字 |
 | 项目实际结果 | 项目提供且核实的材料 | 与已发表基础、未来计划分开 |
 
 程序记录 `discovered → metadata verified → excerpt matched → reviewed claim` 的不同状态。原句命中不能证明翻译、外推或终点解释正确。人工核查完成后，在来源 `claims[]` 内记录已核查版本的 `text`、`status: "checked"`、`reviewed: true`、`reviewer`、`reviewNote` 与 `locator`。展示 caption 必须对应该核查版本。`--final` 检查核查记录完整性，不能替代科学判断。
@@ -132,12 +136,12 @@ node cli.mjs build runs/my-study/output/spec.images.json --final
 ```bash
 npm test
 npm run demo
-python3 scripts/inspect-pptx.py build/demo/research-slides.pptx --expected-slides 5
+python3 scripts/inspect-pptx.py build/proposal/research-slides.pptx --expected-slides 8
 # 可选：先安装 LibreOffice 与 Poppler
-python3 scripts/render.py build/demo/research-slides.pptx --out build/preview
+python3 scripts/render.py build/proposal/research-slides.pptx --out build/preview
 ```
 
-逐页查看 PNG，检查中文字形、换行、图例、箭头、配图和文字是否匹配。字体在不同电脑可能替换，可在 `theme.fontFace` 选择本机中文字体。
+逐页查看 PNG，检查中文字形、换行、图例、箭头、配图和文字是否匹配。字体在不同电脑可能替换，可分别在 `theme.fonts.eastAsian` 和 `theme.fonts.latin` 选择本机中文、英文字体。
 
 第一版的付费文本/图像接口通过 mock 测试；离线 PPT 构建、结构检查与公开文献 API 已实际运行。生成新研究的完整付费 API 路径仍需读者用自己的账户验证，不能把 mock 通过说成真实模型请求成功。当前检索入口以 PubMed 生物医学文献为主；其他学科可增加检索适配器。
 

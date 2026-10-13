@@ -27,6 +27,17 @@ function zipEntries(buffer) {
   return result;
 }
 
+const visibleText = xml => [...xml.matchAll(/<a:t>([\s\S]*?)<\/a:t>/g)].map(match => match[1]).join('\n');
+const topicFrames = xml => [...xml.matchAll(/<p:sp>[\s\S]*?<\/p:sp>/g)]
+  .map(match => match[0]).filter(shape => /name="topic-frame-/.test(shape));
+const redundantLabels = ['AI设计示意', '拟议研究设计示意', '据文献数据重绘', '交付：',
+  'Research and plans are proposed', '研究与计划为拟议设计', 'Design schematic'];
+
+function assertCleanVisibleText(xml) {
+  const text = visibleText(xml);
+  for (const label of redundantLabels) assert.ok(!text.includes(label), `unnecessary label is absent: ${label}`);
+}
+
 function card(id, direction = 'horizontal', count = 3) {
   const nodes = Array.from({length: count}, (_, i) => ({id: `${id}-node-${i}`, label: `拟议节点${i+1}`}));
   return {id, heading: `任务${id}`, caption: '拟比较预先定义的信息与结局',
@@ -51,7 +62,7 @@ function proposal() {
     ]};
 }
 
-test('proposal deck saves native diagrams, chapter headers and complete notes', async () => {
+test('proposal deck saves separate native topic frames, readable diagrams and detailed notes without redundant labels', async () => {
   const dir = await fs.mkdtemp(path.join(os.tmpdir(), 'proposal-render-'));
   try {
     const spec = proposal();
@@ -73,6 +84,13 @@ test('proposal deck saves native diagrams, chapter headers and complete notes', 
     assert.ok(question.includes('科学问题'));
     for (let i = 1; i <= 6; i++) {
       const xml = entries.get(`ppt/slides/slide${i}.xml`);
+      const frames = topicFrames(xml);
+      assert.equal(frames.length, [4, 3, 2, 2, 2, 4][i-1], `slide ${i} has one frame per topic`);
+      for (const frame of frames) {
+        assert.match(frame, /prst="rect"/);
+        assert.match(frame, /<a:ln w="13970"/, 'frame has a 1.1 pt border');
+      }
+      assertCleanVisibleText(xml);
       assert.match(xml, /prst="roundRect"/, `slide ${i} contains editable node shapes`);
       assert.match(xml, /End type="triangle"/, `slide ${i} contains native arrowheads`);
       assert.match(xml, /<a:t>拟议节点1<\/a:t>/, `slide ${i} contains editable node text`);
@@ -82,15 +100,16 @@ test('proposal deck saves native diagrams, chapter headers and complete notes', 
       assert.ok(notes.includes(spec.slides[i-1].title));
     }
     const research = entries.get('ppt/slides/slide3.xml');
-    assert.ok(research.includes('交付：预先定义的分析方案'));
-    assert.ok(research.includes('拟议研究设计示意'));
+    assert.ok(visibleText(research).includes('拟开展'));
+    assert.ok(visibleText(entries.get('ppt/slides/slide6.xml')).includes('拟开展'));
+    assert.ok(entries.get('ppt/notesSlides/notesSlide3.xml').includes('Proposed deliverable: 预先定义的分析方案'));
     // Diagram labels are explicitly 12–16 pt rather than rasterized annotations.
     assert.match(research, /sz="(?:1200|1400|1600)"/);
     assert.match(research, /sz="1800"/);
   } finally { await fs.rm(dir, {recursive: true, force: true}); }
 });
 
-test('default compact demo still uses its original five-page renderer with real charts and separate images', async () => {
+test('compact demo keeps its five pages, charts and separate images while moving annotations to notes', async () => {
   const dir = await fs.mkdtemp(path.join(os.tmpdir(), 'compact-render-'));
   try {
     const baseDir = path.resolve('examples/demo');
@@ -101,9 +120,35 @@ test('default compact demo still uses its original five-page renderer with real 
     assert.equal(output.slideCount, 5);
     const entries = zipEntries(await fs.readFile(output.outputPath));
     assert.ok(entries.get('ppt/slides/slide1.xml').includes(spec.slides[0].title));
-    assert.ok(entries.get('ppt/slides/slide1.xml').includes('原始数据的解释条件'));
+    assert.ok(!visibleText(entries.get('ppt/slides/slide1.xml')).includes('原始数据的解释条件'));
+    assert.ok(entries.get('ppt/notesSlides/notesSlide1.xml').includes('原始数据的解释条件'));
     assert.ok([...entries.keys()].some(name => /^ppt\/charts\/chart\d+\.xml$/.test(name)));
     assert.ok([...entries.keys()].some(name => /^ppt\/media\/.+[^/]$/.test(name)));
     assert.match(entries.get('ppt/slides/slide2.xml'), /<p:pic>/);
+    for (let i = 1; i <= 5; i++) assertCleanVisibleText(entries.get(`ppt/slides/slide${i}.xml`));
+  } finally { await fs.rm(dir, {recursive: true, force: true}); }
+});
+
+test('reviewed literature basis uses one complete frame and retains chart data, source identity and references', async () => {
+  const dir = await fs.mkdtemp(path.join(os.tmpdir(), 'literature-basis-render-'));
+  try {
+    const baseDir = path.resolve('examples/demo');
+    const demo = JSON.parse(await fs.readFile(path.join(baseDir, 'spec.json'), 'utf8'));
+    const spec = proposal();
+    spec.references = demo.references;
+    spec.slides.splice(2, 0, {id: 'literature-basis', kind: 'preliminary', layout: 'split',
+      title: '外部已发表文献依据', displayTitle: '文献依据',
+      cards: [{...structuredClone(demo.slides[0].cards[0]), id: 'literature-basis-card'}]});
+    const output = await renderPresentation(spec, {baseDir, outputPath: path.join(dir, 'deck.pptx')});
+    const entries = zipEntries(await fs.readFile(output.outputPath));
+    const basis = entries.get('ppt/slides/slide3.xml');
+    assert.equal(topicFrames(basis).length, 1);
+    assert.ok(visibleText(basis).includes('文献依据'));
+    assert.ok(visibleText(basis).includes(demo.slides[0].cards[0].caption));
+    assertCleanVisibleText(basis);
+    assert.ok(entries.get('ppt/notesSlides/notesSlide3.xml').includes('rudd2020'));
+    assert.ok(visibleText(entries.get('ppt/slides/slide8.xml')).includes(demo.references[0].title));
+    const chart = [...entries].find(([name]) => /^ppt\/charts\/chart\d+\.xml$/.test(name))[1];
+    for (const value of demo.slides[0].cards[0].visual.series[0].values) assert.ok(chart.includes(`<c:v>${value}</c:v>`));
   } finally { await fs.rm(dir, {recursive: true, force: true}); }
 });

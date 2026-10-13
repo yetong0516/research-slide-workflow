@@ -5,7 +5,11 @@
   "language": "zh",
   "subtitle": "公开证据＋可替换AI示意图＋原生可编辑文字与数据图",
   "theme": {
-    "fontFace": "Arial"
+    "fontFace": "Arial",
+    "fonts": {
+      "eastAsian": "微软雅黑",
+      "latin": "Arial"
+    }
   },
   "references": [
     {

@@ -25,7 +25,7 @@ export function createProject(topic,options={}) {
   if (![7,8].includes(figureCount)) throw new WorkflowError('figureCount must be 7 or 8.');
   return {schemaVersion:1,topic:topic.trim(),language:options.language||'zh-CN',brief:options.brief??null,
     outputDir:options.outputDir||'output',literature:{query:options.query||null,limit:8,email:null},
-    design:{figureCount,fontFace:'Arial',imageMode:'native',template:options.template||'compact'},
+    design:{figureCount,fontFace:'Arial',fonts:{eastAsian:'微软雅黑',latin:'Arial'},imageMode:'native',template:options.template||'compact'},
     provider:{...DEFAULT_PROVIDER_CONFIG,planner:'rules'},
     policy:{allowDraft:true,requireIndependentClaimReview:true},
   };
@@ -181,7 +181,7 @@ export async function planProject(project,evidence,options={}) {
       ...slides.filter(slide=>slide.kind==='question').flatMap(slide=>slide.cards),
       ...slides.filter(slide=>slide.kind==='plan').flatMap(slide=>slide.cards)].slice(0,desired);
     const spec={schemaVersion:1,template:'proposal',title:project.topic,language:project.language,
-      subtitle:project.topic,theme:{fontFace:project.design?.fontFace||'Arial'},references:enriched.sources,slides,
+      subtitle:project.topic,theme:{fontFace:project.design?.fontFace||'Arial',fonts:project.design?.fonts||{eastAsian:'微软雅黑',latin:'Arial'}},references:enriched.sources,slides,
       workflow:{status:pending.length?'draft':'publishable',topic:project.topic,figureCount:desired,
         unresolvedClaims:pending,provider,imageTasks:imageCards.map(card=>({cardId:card.id,
           prompt:imagePrompt(project.topic,card.visualDescription||card.visual.nodes?.map(node=>node.label).join(' → '))}))}};
@@ -193,7 +193,7 @@ export async function planProject(project,evidence,options={}) {
   const desired=project.design?.figureCount||8;
   const imageCards=[...research.slice(0,4),...plan].slice(0,desired);
   const descriptions=new Map([...proposal.researchCards.map((card,i)=>[`research-${i+1}`,card.visualDescription]),...proposal.planCards.map((card,i)=>[`plan-${i+1}`,card.visualDescription])]);
-  const spec={schemaVersion:1,title:project.topic,subtitle:'真实文献证据与拟议研究设计',theme:{fontFace:project.design?.fontFace||'Arial'},references:enriched.sources,
+  const spec={schemaVersion:1,title:project.topic,subtitle:'真实文献证据与拟议研究设计',theme:{fontFace:project.design?.fontFace||'Arial',fonts:project.design?.fonts||{eastAsian:'微软雅黑',latin:'Arial'}},references:enriched.sources,
     slides:[
       {kind:'background',title:'研究背景｜证据链',notice:pending.length?'草稿：文献主张待核实':'文献主张已独立核对；结论仍需评估适用范围',cards:background},
       {kind:'research',title:proposal.researchTitles[0],notice:'拟议设计｜需项目方确认',cards:research.slice(0,4)},

@@ -66,4 +66,6 @@ npm run demo:proposal
 
 脓毒症示例保留在 `examples/proposal/`，需要明确运行 `npm run demo:sepsis`；它不是默认天然产物范例。
 
-示例研究内容与计划全部为拟议。没有病例记录、实际项目样本量、检测覆盖率或未公开结果。中文字体可通过 `project.design.fontFace` 或 `spec.theme.fontFace` 设置为本机已安装字体；示例使用 Arial Unicode MS，其他电脑可能替换字体，应重新查看版式。
+示例研究内容与计划全部为拟议，页面标题保留“拟开展”。没有病例记录、实际项目样本量、检测覆盖率或未公开结果。每个主题使用独立原生边框；重复的图像身份标签、交付提示及通用页脚移入备注，完整来源及原图许可仍可追溯。
+
+原生文字、图表、备注及主题默认使用中文微软雅黑、英文 Arial。通过 `project.design.fonts` 或 `spec.theme.fonts` 设置 `{ "eastAsian": "微软雅黑", "latin": "Arial" }`。位图内部字形不被改写。其他电脑缺少相应字体时会替换字体，应重新检查换行与版式。

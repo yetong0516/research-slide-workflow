@@ -73,7 +73,7 @@ test('reported intervals save as editable native endpoints with no invented poin
     assert.ok(!xml.includes('prst="ellipse"'), 'there is no synthetic midpoint glyph');
     const text = textIn(xml);
     for (const label of ['<65岁', '65–74岁', '≥75岁', '1–5.1', '13.3–27.8', '51.3–99.4',
-      '95%CrI (例/10万人/年)', '仅展示区间上下界', '据文献数据重绘 [1]']) {
+      '95%CrI (例/10万人/年)']) {
       assert.ok(text.includes(label), `editable label ${label} is present`);
     }
     assert.match(xml, /sz="1200"/, 'category labels are 12 pt');
@@ -96,6 +96,8 @@ test('reported intervals save as editable native endpoints with no invented poin
       assert.equal(lower.y, upper.y);
     }
     const noteText = textIn(notes);
+    assert.ok(!text.includes('仅展示区间上下界'));
+    assert.ok(noteText.includes('仅展示区间上下界'));
     for (const field of ['dataChecked', 'sourceIds', 'locator', 'statistic', 'footnote', 'intervalLabel',
       'lower', 'upper', '例/10万人/年', 'Synthetic Table 1, age-group rows']) {
       assert.ok(noteText.includes(field), `notes preserve ${field}`);

@@ -5,7 +5,11 @@
   "language": "zh-CN",
   "subtitle": "植物来源天然产物的抗流感候选价值与活性成分研究",
   "theme": {
-    "fontFace": "Arial Unicode MS"
+    "fontFace": "Arial Unicode MS",
+    "fonts": {
+      "eastAsian": "微软雅黑",
+      "latin": "Arial"
+    }
   },
   "references": [
     {
@@ -334,7 +338,7 @@
           "id": "geng-host-response-figure",
           "heading": "植物来源候选依据",
           "text": "已发表黄芩苷研究包含宿主反应结果，属于植物天然产物的前临床依据。",
-          "approvedCaption": "黄芩苷宿主反应\n原图纵轴从90%起",
+          "approvedCaption": "黄芩苷的宿主反应\n前临床，纵轴90%起",
           "type": "figure",
           "status": "checked",
           "reviewed": true,
@@ -602,7 +606,7 @@
         {
           "id": "background-3",
           "heading": "植物来源候选依据",
-          "caption": "黄芩苷宿主反应\n原图纵轴从90%起",
+          "caption": "黄芩苷的宿主反应\n前临床，纵轴90%起",
           "statementType": "evidence",
           "evidence": {
             "status": "checked",
@@ -680,7 +684,7 @@
         {
           "id": "question-1",
           "heading": "研究对象",
-          "caption": "植物 X 粗提物与候选天然产物 NP",
+          "caption": "植物 X 粗提物与候选 NP",
           "statementType": "proposed",
           "visual": {
             "type": "image",
@@ -698,7 +702,7 @@
         {
           "id": "question-2",
           "heading": "核心比较",
-          "caption": "抗流感效应与宿主安全性并行解释",
+          "caption": "并行解释效应与宿主安全性",
           "statementType": "proposed",
           "visual": {
             "type": "image",
@@ -716,7 +720,7 @@
         {
           "id": "question-3",
           "heading": "解释目标",
-          "caption": "建立成分、效应与作用路径的联系",
+          "caption": "连接成分、效应与作用路径",
           "statementType": "proposed",
           "visual": {
             "type": "image",

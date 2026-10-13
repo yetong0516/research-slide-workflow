@@ -5,7 +5,11 @@
   "language": "zh-CN",
   "subtitle": "常规检验与免疫指标在脓毒症识别及预后评估中的价值",
   "theme": {
-    "fontFace": "Arial Unicode MS"
+    "fontFace": "Arial Unicode MS",
+    "fonts": {
+      "eastAsian": "微软雅黑",
+      "latin": "Arial"
+    }
   },
   "references": [
     {

@@ -3,10 +3,11 @@ import path from 'node:path';
 import PptxGenJS from 'pptxgenjs';
 import { validateSpec } from './schema.mjs';
 import {repairMasterContentTypes,normaliseSingleLevelChartCategories} from './pptx-package.mjs';
+import {applyScriptFonts} from './typography.mjs';
 
 const DEFAULT_COLORS = {
   green: '075238', teal: '1A9C96', mint: '68B58B', blue: '467EAC',
-  gold: 'D9A13B', text: '234137', muted: '65776E', line: 'CBDBD2', bg: 'F7F9F6', white: 'FFFFFF',
+  gold: 'D9A13B', text: '234137', muted: '65776E', line: 'A8C3B4', bg: 'F7F9F6', white: 'FFFFFF',
 };
 const S = { width: 13.333333, height: 7.5, left: 0.4, gap: 0.14, cardWidth: 3.028333 };
 
@@ -34,17 +35,30 @@ function addText(slide, value, rect, context, size = 16, extras = {}) {
   });
 }
 
+function futureTitle(value, kind, context) {
+  const title = String(value).replace(/（拟议）|\(proposed\)/gi, '').trim();
+  if (!['research', 'plan'].includes(kind)) return title;
+  if (context.language === 'en') return /\b(proposed|planned)\b/i.test(title) ? title : `${title} (Proposed)`;
+  return title.includes('拟开展') ? title : `${title}（拟开展）`;
+}
+
+function topicFrame(slide, id, frame, context) {
+  slide.addShape(context.pptx.ShapeType.rect, {
+    ...frame, objectName: `topic-frame-${id}`,
+    line: { color: context.colors.line, width: 1.1 },
+    fill: { color: context.colors.white },
+  });
+}
+
 function header(slide, spec, slideSpec, context, page) {
   const C = context.colors;
   slide.background = { color: C.bg };
-  addText(slide, slideSpec.title, { x: 0.4, y: 0.23, w: 12.45, h: 0.52 }, context, 28,
+  addText(slide, futureTitle(slideSpec.title, slideSpec.kind, context), { x: 0.4, y: 0.23, w: 12.45, h: 0.62 }, context, 28,
     { bold: true, color: C.green });
-  addText(slide, slideSpec.subtitle ?? spec.subtitle ?? '',
-    { x: 0.42, y: 0.81, w: 12.38, h: 0.29 }, context, 15, { color: C.muted });
   slide.addShape(context.pptx.ShapeType.line, { x: 0.4, y: 1.16, w: 12.54, h: 0,
     line: { color: C.teal, width: 1.2 } });
   addText(slide, String(page), { x: 12.75, y: 7.12, w: 0.18, h: 0.16 }, context, 9,
-    { color: C.muted, align: 'right' });
+    { color: C.text, align: 'right' });
 }
 
 function proposalHeader(slide, slideSpec, context, page) {
@@ -56,14 +70,13 @@ function proposalHeader(slide, slideSpec, context, page) {
     preliminary: '前期基础', plan: '研究计划', references: '参考文献',
   };
   slide.background = { color: context.colors.white };
-  const title=slideSpec.displayTitle|| (slideSpec.kind==='research'
-    ? slideSpec.title.replace(/（拟议）|\(proposed\)/gi,'').trim()
-    : sections[slideSpec.kind] ?? slideSpec.title);
+  const title = futureTitle(slideSpec.displayTitle || (slideSpec.kind === 'research'
+    ? slideSpec.title : sections[slideSpec.kind] ?? slideSpec.title), slideSpec.kind, context);
   addText(slide, title,
     { x: 0.55, y: 0.30, w: 12.10, h: 0.62 }, context, 32,
     { bold: true, color: context.colors.green });
   addText(slide, String(page), { x: 12.54, y: 7.12, w: 0.25, h: 0.17 }, context, 10,
-    { color: context.colors.muted, align: 'right' });
+    { color: context.colors.text, align: 'right' });
 }
 
 function sourceNumbers(ids, context) {
@@ -83,18 +96,17 @@ async function localImage(baseDir, relativePath) {
 
 function addBar(slide, visual, frame, context) {
   const { pptx, colors: C, font } = context;
-  const footnoteHeight = visual.footnote ? 0.45 : 0;
   addText(slide, visual.axis?.title ?? visual.unit,
     { x: frame.x+0.04, y: frame.y+0.15, w: frame.w-0.08, h: 0.29 }, context, 13,
-    { color: C.muted, align: 'center' });
+    { color: C.text, align: 'center' });
   slide.addChart(pptx.ChartType.bar, visual.series.map(series => ({
     name: series.name, labels: visual.categories, values: series.values,
   })), {
-    x: frame.x+0.02, y: frame.y+0.49, w: frame.w-0.04, h: frame.h-0.52-footnoteHeight,
+    x: frame.x+0.02, y: frame.y+0.49, w: frame.w-0.04, h: frame.h-0.52,
     barDir: 'col', barGrouping: 'clustered', catAxisLabelFontFace: font,
     catAxisLabelFontSize: 12, catAxisLabelColor: C.text, catAxisLineColor: C.muted,
     catAxisLineShow: true, catAxisMajorTickMark: 'none', catAxisLineSize: 0.7,
-    valAxisLabelFontFace: font, valAxisLabelFontSize: 10, valAxisLabelColor: C.muted,
+    valAxisLabelFontFace: font, valAxisLabelFontSize: 10, valAxisLabelColor: C.text,
     valAxisLineShow: true, valAxisLineColor: C.muted, valAxisLineSize: 0.7,
     valAxisMajorTickMark: 'outside', valAxisMinVal: 0,
     valAxisMaxVal: visual.axis?.max, valAxisMajorUnit: visual.axis?.majorUnit,
@@ -111,9 +123,6 @@ function addBar(slide, visual, frame, context) {
     plotArea: { fill: { color: C.white } },
     showCatName: false, showSerName: false, showCatNameInLegend: false,
   });
-  if (visual.footnote) addText(slide, visual.footnote,
-    { x: frame.x+0.04, y: frame.y+frame.h-footnoteHeight+0.02, w: frame.w-0.08, h: 0.41 },
-    context, 12, { color: C.muted, align: 'center', valign: 'top' });
 }
 
 /** Draw only reported interval endpoints; an optional point must be supplied in values. */
@@ -124,22 +133,21 @@ function addInterval(slide, visual, frame, context) {
   const minimum = visual.axis?.min ?? Math.min(0, ...allLower);
   const maximum = visual.axis?.max ?? Math.max(minimum+1, Math.max(...allUpper)*1.05);
   const majorUnit = visual.axis?.majorUnit ?? (maximum-minimum)/2;
-  const footnoteHeight = visual.footnote ? 0.44 : 0;
   const labelWidth = Math.min(0.84, frame.w*0.29);
   const plotX = frame.x+labelWidth+0.10;
   const plotWidth = frame.w-labelWidth-0.22;
   const plotTop = frame.y+0.65;
-  const axisY = frame.y+frame.h-footnoteHeight-0.34;
+  const axisY = frame.y+frame.h-0.34;
   const rowCount = visual.categories.length*visual.series.length;
   const rowHeight = (axisY-plotTop)/rowCount;
   const scale = value => plotX+(value-minimum)/(maximum-minimum)*plotWidth;
   const seriesColors = [C.green, C.blue, C.teal];
   addText(slide, visual.axis?.title ?? visual.unit,
     { x: frame.x+0.04, y: frame.y+0.10, w: frame.w-0.08, h: 0.28 }, context, 13,
-    { color: C.muted, align: 'center' });
+    { color: C.text, align: 'center' });
   addText(slide, `${visual.intervalLabel} (${visual.unit})`,
     { x: frame.x+0.04, y: frame.y+0.41, w: frame.w-0.08, h: 0.19 }, context, 11,
-    { color: C.muted, align: 'center' });
+    { color: C.text, align: 'center' });
   for (const [categoryIndex, category] of visual.categories.entries()) {
     for (const [seriesIndex, series] of visual.series.entries()) {
       const rowIndex = categoryIndex*visual.series.length+seriesIndex;
@@ -182,11 +190,8 @@ function addInterval(slide, visual, frame, context) {
     });
     addText(slide, String(value),
       { x: scale(value)-0.16, y: axisY+0.075, w: 0.32, h: 0.18 }, context, 10,
-      { color: C.muted, align: 'center' });
+      { color: C.text, align: 'center' });
   }
-  if (visual.footnote) addText(slide, visual.footnote,
-    { x: frame.x+0.04, y: frame.y+frame.h-footnoteHeight+0.03, w: frame.w-0.08, h: 0.37 },
-    context, 11, { color: C.muted, align: 'center', valign: 'top' });
 }
 
 function arrowSegment(slide, start, end, context, arrow = true, width = 1.4) {
@@ -304,7 +309,7 @@ async function addVisual(slide, card, frame, context) {
   });
   addText(slide, `${L.placeholder}\n${visual.label && visual.label !== L.placeholder ? visual.label : ''}`,
     { x: frame.x+0.17, y: frame.y+frame.h/2-0.32, w: frame.w-0.34, h: 0.65 },
-    context, 19, { color: context.colors.muted, align: 'center' });
+    context, 19, { color: context.colors.text, align: 'center' });
   context.warnings.push(`Missing visual: ${card.id}`);
   return card.statementType === 'pending' ? L.pending : L.design;
 }
@@ -312,6 +317,10 @@ async function addVisual(slide, card, frame, context) {
 function notesFor(slideSpec, context) {
   const entries = [
     `Topic: ${context.topic}\nSlide title: ${slideSpec.title}`,
+    context.subtitle ? `Presentation subtitle: ${context.subtitle}` : '',
+    slideSpec.subtitle ? `Slide subtitle: ${slideSpec.subtitle}` : '',
+    `Presentation scope: ${context.labels.footer}`,
+    slideSpec.notice ? `Slide notice: ${slideSpec.notice}` : '',
     typeof slideSpec.notes === 'string' ? slideSpec.notes : (slideSpec.notes ?? []).join('\n'),
   ];
   if (slideSpec.mainQuestion) entries.push(`Main scientific question: ${slideSpec.mainQuestion}`);
@@ -320,7 +329,7 @@ function notesFor(slideSpec, context) {
     if (card.evidence) entries.push(`Evidence audit:\n${JSON.stringify(card.evidence, null, 2)}`);
     if (['bar', 'interval'].includes(card.visual?.type)) entries.push(`Native editable data:\n${JSON.stringify(card.visual, null, 2)}`);
     if (card.visual?.type === 'diagram') entries.push(`Native editable proposed design:\n${JSON.stringify(card.visual, null, 2)}`);
-    if (card.visual?.type === 'image') entries.push(`Image: ${card.visual.path}\nRole: ${card.visual.role}\nLicense: ${card.visual.license ?? 'AI design; see asset manifest'}`);
+    if (card.visual?.type === 'image') entries.push(`Image identity and reuse:\n${JSON.stringify(card.visual, null, 2)}`);
     if (card.deliverable) entries.push(`Proposed deliverable: ${card.deliverable}`);
   }
   entries.push('References:\n' + context.references.map((r, i) =>
@@ -330,9 +339,6 @@ function notesFor(slideSpec, context) {
 }
 
 function proposalFooter(slide, slideSpec, context) {
-  addText(slide, slideSpec.notice ?? context.labels.footer,
-    { x: 0.57, y: 7.00, w: 11.63, h: 0.25 }, context, 11,
-    { color: context.colors.muted });
   slide.addNotes(notesFor(slideSpec, context));
 }
 
@@ -342,18 +348,17 @@ async function chainSlide(slide, slideSpec, context) {
   const gap = 0.24, width = (12.13-3*gap)/4;
   for (const [i, card] of slideSpec.cards.entries()) {
     const x = 0.60+i*(width+gap);
-    addText(slide, stages[i], { x, y: 1.31, w: width, h: 0.40 }, context, 22,
+    topicFrame(slide, card.id, { x, y: 1.23, w: width, h: 5.70 }, context);
+    addText(slide, stages[i], { x: x+0.14, y: 1.40, w: width-0.28, h: 0.40 }, context, 22,
       { color: context.colors.green, bold: true, align: 'center' });
     if (card.heading !== stages[i]) addText(slide, card.heading,
-      { x: x+0.04, y: 1.80, w: width-0.08, h: 0.49 }, context, 18,
+      { x: x+0.14, y: 1.92, w: width-0.28, h: 0.49 }, context, 18,
       { bold: true, align: 'center' });
-    const label = await addVisual(slide, card, { x: x+0.03, y: 2.38, w: width-0.06, h: 2.68 }, context);
-    addText(slide, label, { x, y: 5.15, w: width, h: 0.30 }, context, 11,
-      { color: context.colors.muted, align: 'center' });
-    addText(slide, card.caption, { x: x+0.03, y: 5.60, w: width-0.06, h: 1.20 }, context, 18,
+    await addVisual(slide, card, { x: x+0.14, y: 2.53, w: width-0.28, h: 2.65 }, context);
+    addText(slide, card.caption, { x: x+0.14, y: 5.40, w: width-0.28, h: 1.32 }, context, 18,
       { align: 'center', valign: 'top' });
     if (i < 3) arrowSegment(slide,
-      { x: x+width+0.02, y: 1.51 }, { x: x+width+gap-0.02, y: 1.51 }, context);
+      { x: x+width+0.02, y: 1.60 }, { x: x+width+gap-0.02, y: 1.60 }, context);
   }
   proposalFooter(slide, slideSpec, context);
 }
@@ -365,12 +370,11 @@ async function questionSlide(slide, slideSpec, context) {
   const gap = 0.46, width = (12.13-2*gap)/3;
   for (const [i, card] of slideSpec.cards.entries()) {
     const x = 0.60+i*(width+gap);
-    addText(slide, card.heading, { x, y: 2.34, w: width, h: 0.52 }, context, 22,
+    topicFrame(slide, card.id, { x, y: 2.23, w: width, h: 4.70 }, context);
+    addText(slide, card.heading, { x: x+0.16, y: 2.42, w: width-0.32, h: 0.52 }, context, 22,
       { color: context.colors.green, bold: true, align: 'center' });
-    const label = await addVisual(slide, card, { x: x+0.04, y: 2.97, w: width-0.08, h: 2.46 }, context);
-    addText(slide, label, { x, y: 5.48, w: width, h: 0.28 }, context, 11,
-      { color: context.colors.muted, align: 'center' });
-    addText(slide, card.caption, { x: x+0.04, y: 5.94, w: width-0.08, h: 0.80 }, context, 18,
+    await addVisual(slide, card, { x: x+0.16, y: 3.10, w: width-0.32, h: 2.57 }, context);
+    addText(slide, card.caption, { x: x+0.16, y: 5.91, w: width-0.32, h: 0.82 }, context, 18,
       { align: 'center', valign: 'top' });
     if (i < 2) arrowSegment(slide,
       { x: x+width+0.07, y: 4.20 }, { x: x+width+gap-0.07, y: 4.20 }, context);
@@ -378,54 +382,45 @@ async function questionSlide(slide, slideSpec, context) {
   proposalFooter(slide, slideSpec, context);
 }
 
-async function splitPanel(slide, card, frame, context, compact = false) {
+async function splitPanel(slide, card, frame, context, compact = false, framed = true) {
+  if (framed) topicFrame(slide, card.id, frame, context);
   const titleHeight = compact ? 0.39 : 0.66;
   const titleSize = compact ? 20 : 24;
   addText(slide, card.heading,
-    { x: frame.x, y: frame.y, w: frame.w, h: titleHeight }, context, titleSize,
+    { x: frame.x+0.16, y: frame.y+0.17, w: frame.w-0.32, h: titleHeight }, context, titleSize,
     { bold: true, color: context.colors.green, align: 'center' });
-  const visualTop = frame.y+titleHeight+0.14;
-  const captionHeight = compact ? 0.48 : 0.65;
-  const deliverableHeight = card.deliverable ? (compact ? 0.39 : 0.52) : 0;
-  const visualHeight = frame.h-titleHeight-captionHeight-deliverableHeight-(compact ? 0.58 : 0.75);
-  const label = await addVisual(slide, card,
-    { x: frame.x+0.07, y: visualTop, w: frame.w-0.14, h: visualHeight }, context);
-  const labelY = visualTop+visualHeight+0.05;
-  addText(slide, label, { x: frame.x, y: labelY, w: frame.w, h: 0.24 }, context, 11,
-    { color: context.colors.muted, align: 'center' });
-  const captionY = labelY+0.32;
-  addText(slide, card.caption, { x: frame.x+0.09, y: captionY, w: frame.w-0.18, h: captionHeight },
+  const visualTop = frame.y+titleHeight+0.31;
+  const captionHeight = compact ? 0.48 : 1.00;
+  const visualHeight = frame.h-titleHeight-captionHeight-(compact ? 0.64 : 0.62);
+  await addVisual(slide, card,
+    { x: frame.x+0.16, y: visualTop, w: frame.w-0.32, h: visualHeight }, context);
+  const captionY = frame.y+frame.h-captionHeight-0.17;
+  addText(slide, card.caption, { x: frame.x+0.16, y: captionY, w: frame.w-0.32, h: captionHeight },
     context, 18, { align: 'center', valign: 'top' });
-  if (card.deliverable) addText(slide,
-    `${context.language === 'en' ? 'Deliverable: ' : '交付：'}${card.deliverable}`,
-    { x: frame.x+0.09, y: captionY+captionHeight+0.11, w: frame.w-0.18, h: deliverableHeight },
-    context, 18, { color: context.colors.green, align: 'center', valign: 'top' });
 }
 
 async function splitSlide(slide, slideSpec, context) {
   const count = slideSpec.cards.length;
+  if (slideSpec.kind === 'preliminary') topicFrame(slide, slideSpec.id,
+    { x: 0.60, y: 1.26, w: 12.13, h: 5.64 }, context);
   if (count === 1) {
     const card = slideSpec.cards[0];
-    addText(slide, card.heading, { x: 0.65, y: 1.31, w: 12.02, h: 0.59 }, context, 24,
+    if (slideSpec.kind !== 'preliminary') topicFrame(slide, card.id,
+      { x: 0.60, y: 1.26, w: 12.13, h: 5.64 }, context);
+    addText(slide, card.heading, { x: 0.78, y: 1.43, w: 11.77, h: 0.59 }, context, 24,
       { bold: true, color: context.colors.green });
-    const label = await addVisual(slide, card, { x: 0.68, y: 2.08, w: 7.43, h: 4.29 }, context);
-    addText(slide, label, { x: 0.68, y: 6.50, w: 7.43, h: 0.27 }, context, 11,
-      { color: context.colors.muted, align: 'center' });
-    addText(slide, card.caption, { x: 8.63, y: 2.50, w: 3.99, h: 1.44 }, context, 22,
+    await addVisual(slide, card, { x: 0.82, y: 2.23, w: 7.09, h: 4.43 }, context);
+    addText(slide, card.caption, { x: 8.43, y: 2.50, w: 4.09, h: 3.80 }, context, 20,
       { valign: 'top' });
-    if (card.deliverable) addText(slide,
-      `${context.language === 'en' ? 'Deliverable: ' : '交付：'}${card.deliverable}`,
-      { x: 8.63, y: 4.52, w: 3.99, h: 1.09 }, context, 20,
-      { color: context.colors.green, valign: 'top' });
   } else {
     const compact = count > 2;
     const gap = 0.72, width = (12.13-gap)/2;
-    const height = compact ? 2.62 : 5.41;
+    const height = compact ? 2.62 : 5.64;
     for (const [i, card] of slideSpec.cards.entries()) {
       await splitPanel(slide, card, {
-        x: 0.60+(i%2)*(width+gap), y: 1.29+(compact ? Math.floor(i/2)*2.87 : 0),
+        x: 0.60+(i%2)*(width+gap), y: 1.26+(compact ? Math.floor(i/2)*2.87 : 0),
         w: width, h: height,
-      }, context, compact);
+      }, context, compact, slideSpec.kind !== 'preliminary');
     }
   }
   proposalFooter(slide, slideSpec, context);
@@ -434,25 +429,17 @@ async function splitSlide(slide, slideSpec, context) {
 async function roadmapSlide(slide, slideSpec, context) {
   const gap = 0.28, width = (12.13-3*gap)/4;
   for (const [i, card] of slideSpec.cards.entries()) {
-    const x = 0.60+i*(width+gap), center = x+width/2;
-    slide.addShape(context.pptx.ShapeType.ellipse, {
-      x: center-0.28, y: 1.33, w: 0.56, h: 0.56,
-      fill: { color: context.colors.green }, line: { transparency: 100 },
-    });
-    addText(slide, String(i+1), { x: center-0.28, y: 1.36, w: 0.56, h: 0.46 },
-      context, 20, { bold: true, color: context.colors.white, align: 'center' });
+    const x = 0.60+i*(width+gap);
+    topicFrame(slide, card.id, { x, y: 1.23, w: width, h: 5.70 }, context);
+    addText(slide, String(i+1).padStart(2, '0'), { x: x+0.14, y: 1.40, w: width-0.28, h: 0.38 },
+      context, 20, { bold: true, color: context.colors.green, align: 'center' });
     if (i < 3) arrowSegment(slide,
-      { x: center+0.39, y: 1.61 }, { x: center+width+gap-0.39, y: 1.61 }, context);
-    addText(slide, card.heading, { x, y: 2.07, w: width, h: 0.53 }, context, 22,
+      { x: x+width+0.02, y: 1.60 }, { x: x+width+gap-0.02, y: 1.60 }, context);
+    addText(slide, card.heading, { x: x+0.14, y: 1.93, w: width-0.28, h: 0.53 }, context, 22,
       { color: context.colors.green, bold: true, align: 'center' });
-    const label = await addVisual(slide, card, { x: x+0.04, y: 2.78, w: width-0.08, h: 2.58 }, context);
-    addText(slide, label, { x, y: 5.47, w: width, h: 0.25 }, context, 11,
-      { color: context.colors.muted, align: 'center' });
-    addText(slide, card.caption, { x: x+0.04, y: 5.88, w: width-0.08, h: 0.70 }, context, 18,
+    await addVisual(slide, card, { x: x+0.14, y: 2.64, w: width-0.28, h: 2.64 }, context);
+    addText(slide, card.caption, { x: x+0.14, y: 5.50, w: width-0.28, h: 1.24 }, context, 18,
       { align: 'center', valign: 'top' });
-    if (card.deliverable) addText(slide, card.deliverable,
-      { x: x+0.04, y: 6.61, w: width-0.08, h: 0.28 }, context, 18,
-      { color: context.colors.green, align: 'center' });
   }
   proposalFooter(slide, slideSpec, context);
 }
@@ -485,19 +472,11 @@ async function cardsSlide(slide, slideSpec, context) {
       line: { color: C.line, width: 0.7 }, fill: { color: C.white } });
     slide.addShape(context.pptx.ShapeType.rect, { x, y: 2.04, w: S.cardWidth, h: 0.04,
       line: { transparency: 100 }, fill: { color: colors[i] } });
-    const visualLabel = await addVisual(slide, card,
+    await addVisual(slide, card,
       { x: x+0.075, y: 2.16, w: S.cardWidth-0.15, h: 2.98 }, context);
-    addText(slide, visualLabel, { x: x+0.1, y: 5.17, w: S.cardWidth-0.2, h: 0.25 },
-      context, 10, { color: C.muted, align: 'center' });
-    addText(slide, card.caption, { x: x+0.14, y: 5.47, w: S.cardWidth-0.28, h: 0.60 },
-      context, 15, { align: 'center' });
-    addText(slide, context.labels[card.statementType],
-      { x: x+0.13, y: 6.16, w: S.cardWidth-0.26, h: 0.19 },
-      context, 10, { color: C.muted, align: 'center' });
+    addText(slide, card.caption, { x: x+0.14, y: 5.28, w: S.cardWidth-0.28, h: 0.97 },
+      context, 18, { align: 'center', valign: 'top' });
   }
-  const notice = slideSpec.notice ?? context.labels.footer;
-  addText(slide, notice, { x: 0.45, y: 6.70, w: 12.38, h: 0.34 }, context, 13,
-    { color: C.muted, align: 'center' });
   slide.addNotes(notesFor(slideSpec, context));
 }
 
@@ -519,10 +498,6 @@ function referencesSlide(slide, slideSpec, context) {
     addText(slide, ref.url, { x, y: y+Math.min(rowHeight-0.29, 1.19), w, h: 0.20 }, context,
       refs.length > 8 ? 9 : 11, { color: context.colors.teal, hyperlink: { url: ref.url } });
   }
-  addText(slide, slideSpec.notice ?? (context.template === 'proposal'
-    ? context.labels.proposalReferenceFooter : context.labels.referenceFooter),
-    { x: 0.48, y: 6.88, w: 12.15, h: 0.26 }, context, 11,
-    { color: context.colors.muted });
   slide.addNotes(notesFor(slideSpec, context));
 }
 
@@ -544,7 +519,7 @@ export async function renderPresentation(input, { baseDir = process.cwd(), outpu
     pptx, colors, font: spec.theme?.fontFace ?? 'Arial',
     references: spec.references, labels: locale(spec.language),
     baseDir: path.resolve(baseDir), warnings: [], language: spec.language, topic: spec.topic ?? spec.title,
-    template: spec.template,
+    template: spec.template, subtitle: spec.subtitle,
   };
   pptx.theme = { headFontFace: context.font, bodyFontFace: context.font, lang: pptx.lang };
   for (const [index, item] of spec.slides.entries()) {
@@ -560,6 +535,8 @@ export async function renderPresentation(input, { baseDir = process.cwd(), outpu
   await pptx.writeFile({ fileName: destination, compression: true });
   await repairMasterContentTypes(destination);
   await normaliseSingleLevelChartCategories(destination);
+  await applyScriptFonts(destination,{eastAsian:spec.theme?.fonts?.eastAsian||'微软雅黑',
+    latin:spec.theme?.fonts?.latin||'Arial'});
   return { outputPath: destination, slideCount: spec.slides.length, warnings: context.warnings };
 }
 
