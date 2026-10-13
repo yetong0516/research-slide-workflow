@@ -1,6 +1,6 @@
 {
   "name": "research-slide-workflow",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Evidence-aware, editable scientific PowerPoint workflow with optional OpenAI text and image generation.",
   "type": "module",
   "private": false,
@@ -9,8 +9,10 @@
   },
   "scripts": {
     "test": "node --test",
-    "demo": "node cli.mjs demo",
+    "demo": "node cli.mjs demo --template proposal --final",
     "demo:proposal": "node cli.mjs demo --template proposal --final",
+    "demo:compact": "node cli.mjs demo --template compact --dir build/compact",
+    "demo:sepsis": "node cli.mjs demo --template proposal --example sepsis --dir build/sepsis",
     "validate:demo": "node cli.mjs validate examples/demo/spec.json"
   },
   "engines": {

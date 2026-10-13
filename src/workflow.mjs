@@ -132,16 +132,17 @@ function backgroundCards(evidence,{template='compact'}={}) {
   return Array.from({length:4},(_,i)=>{
     const item=template==='proposal'
       ? approved.find(candidate=>candidate.claim.backgroundRole===roles[i]&&!used.has(candidate.claim.id))
-        || approved.find(candidate=>!candidate.claim.backgroundRole&&!used.has(candidate.claim.id))
+        || (i<3?approved.find(candidate=>!candidate.claim.backgroundRole&&!used.has(candidate.claim.id)):undefined)
       : approved[i];
     if (item) used.add(item.claim.id);
     if (!item) return {id:`background-${i+1}`,heading:labels[i],caption:'待核实：需核对真实文献原文与适用范围',statementType:'design',
       visual:{type:'placeholder',label:'文献主张待核实',role:'design'},notes:'No independently reviewed claim was available. This card intentionally makes no factual background claim.'};
     const {source,claim}=item;
     const hasBar=claim.visual?.type==='bar'&&claim.visual.dataChecked===true;
+    const hasInterval=claim.visual?.type==='interval'&&claim.visual.dataChecked===true;
     const hasSourceImage=claim.visual?.type==='image'&&claim.visual.role==='source';
     const sourceIds=claim.sourceIds?.length?claim.sourceIds:[source.id];
-    const visual=hasBar||hasSourceImage
+    const visual=hasBar||hasInterval||hasSourceImage
       ? structuredClone(claim.visual)
       : {type:'placeholder',label:'文献图数据待核实',role:'evidence'};
     return {id:`background-${i+1}`,heading:claim.heading||'已核对文献证据',caption:claim.approvedCaption||claim.text,statementType:'evidence',
@@ -219,9 +220,9 @@ function reviewedCard(card,references) {
   if (!claims.some(claim=>[claim.text,claim.approvedCaption].some(text=>normalText(text)===caption))) return false;
   const factHeading=/\d|提高|增加|减少|降低|优于|显著|改善|导致|证明|improv|increase|decrease|higher|lower|superior|significan/i.test(card.heading||'');
   if (factHeading&&!claims.some(claim=>normalText(claim.heading)===normalText(card.heading))) return false;
-  if (card.visual?.type==='bar') {
+  if (['bar','interval'].includes(card.visual?.type)) {
     const data=visual=>JSON.stringify({categories:visual?.categories,series:visual?.series,unit:visual?.unit,
-      statistic:visual?.statistic,footnote:visual?.footnote});
+      statistic:visual?.statistic,footnote:visual?.footnote,intervalLabel:visual?.intervalLabel});
     if (!claims.some(claim=>(claim.visual?.dataChecked===true||claim.chartData?.dataChecked===true)&&data(claim.visual||claim.chartData)===data(card.visual))) return false;
   }
   return true;
@@ -332,10 +333,14 @@ export async function runProject(projectFilename,options={}) {
   return {...result,warnings:[...(evidence.warnings||[]),...(result.warnings||[])],baseDir,evidencePath,specPath:path.join(baseDir,'spec.images.json')};
 }
 
-export async function demoProject({outputDir,final=false,template='compact'}={}) {
+export async function demoProject({outputDir,final=false,template='proposal',example}={}) {
   if (!['compact','proposal'].includes(template)) throw new WorkflowError('Demo template must be compact or proposal.');
   outputDir||=path.join(REPO_DIR,'build',template==='proposal'?'proposal':'demo');
-  const fixturePath=path.join(REPO_DIR,'examples',template==='proposal'?'proposal':'demo','spec.json');
+  if (example && !['natural-antiviral','sepsis'].includes(example)) throw new WorkflowError('Demo example must be natural-antiviral or sepsis.');
+  const directory=example==='natural-antiviral'?'natural-antiviral'
+    : template==='proposal'&&example!=='sepsis'?'natural-antiviral'
+      : template==='proposal'?'proposal':'demo';
+  const fixturePath=path.join(REPO_DIR,'examples',directory,'spec.json');
   const spec=await readJson(fixturePath),baseDir=path.dirname(fixturePath);
   await fs.mkdir(outputDir,{recursive:true});
   await copySpecAssets(spec,baseDir,outputDir);

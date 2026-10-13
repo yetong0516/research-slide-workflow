@@ -1,0 +1,456 @@
+{
+  "sources": [
+    {
+      "id": "li2019",
+      "title": "Influenza-associated excess respiratory mortality in China, 2010–15: a population-based study",
+      "authors": [
+        "Li Li",
+        "Yunning Liu",
+        "Peng Wu",
+        "Zhibin Peng",
+        "Xiling Wang",
+        "Tao Chen",
+        "Jessica Y T Wong",
+        "Juan Yang",
+        "Helen S Bond",
+        "Lijun Wang",
+        "Yiu Chung Lau",
+        "Jiandong Zheng",
+        "Shuo Feng",
+        "Ying Qin",
+        "Vicky J Fang",
+        "Hui Jiang",
+        "Eric H Y Lau",
+        "Shiwei Liu",
+        "Jinlei Qi",
+        "Juanjuan Zhang",
+        "Jing Yang",
+        "Yangni He",
+        "Maigeng Zhou",
+        "Benjamin J Cowling",
+        "Luzhao Feng",
+        "Hongjie Yu"
+      ],
+      "year": 2019,
+      "journal": "The Lancet Public Health",
+      "volume": "4",
+      "issue": "9",
+      "pages": "e473–e481",
+      "doi": "10.1016/S2468-2667(19)30163-X",
+      "pmid": "31493844",
+      "pmcid": "PMC8736690",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/31493844/",
+      "metadataVerified": true,
+      "verification": {
+        "status": "verified",
+        "scope": "bibliographic-metadata-and-primary-claim-data",
+        "checkedOn": "2026-10-13",
+        "sources": [
+          {
+            "provider": "PubMed live XML and abstract",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/31493844/"
+          },
+          {
+            "provider": "Crossref live metadata",
+            "url": "https://api.crossref.org/works/10.1016%2FS2468-2667%2819%2930163-X"
+          },
+          {
+            "provider": "NCBI BioC primary full text",
+            "url": "https://www.ncbi.nlm.nih.gov/research/bionlp/RESTful/pmcoa.cgi/BioC_json/PMC8736690/unicode"
+          }
+        ],
+        "note": "题名、首作者Li Li、全部作者顺序、2019年、期刊卷期页、DOI与PMID已用当前PubMed和Crossref记录核对。独立重读NCBI提供的作者稿Results及Table1，确认点估计、95%CI、年龄组、单位与季节范围。"
+      },
+      "updates": {
+        "checkedOn": "2026-10-13",
+        "checkedProviders": [
+          "PubMed live CommentsCorrectionsList / PublicationTypeList",
+          "Crossref live update-to / relation",
+          "Europe PMC core record commentCorrectionList"
+        ],
+        "retraction": "No RetractionIn / RetractionOf or retracted-publication type indexed in retrieved PubMed record; no Crossref update-to flag retrieved. This describes checked indexes, not an absolute guarantee.",
+        "correction": "No ErratumIn or correction flag indexed in retrieved PubMed / Europe PMC records; Crossref update-to absent. The only linked CommentIn (PMID31493834) is a commentary, not a correction."
+      },
+      "usage": {
+        "license": "Article: CC BY-NC-ND4.0; numeric facts independently redrawn, no original figure or table image reused",
+        "figureEvidence": "no-original-figure-reused",
+        "downloadAllowed": false,
+        "licenseUrl": "http://creativecommons.org/licenses/by-nc-nd/4.0/"
+      },
+      "claims": [
+        {
+          "id": "li2019-age-respiratory-mortality",
+          "heading": "老年人流感死亡负担",
+          "text": "中国2010–11至2014–15季节的模型估计中，≥60岁人群流感相关超额呼吸死亡率为38.5例/10万人季，<60岁为1.5例/10万人季；95%CI分别为36.8–40.2和1.1–1.9。",
+          "approvedCaption": "≥60岁死亡率较高\n中国2010–15年估计",
+          "backgroundRole": "problem",
+          "type": "numerical",
+          "status": "checked",
+          "reviewed": true,
+          "reviewer": "Codex influenza_evidence: independent primary-source review",
+          "reviewNote": "2026-10-13独立核对原文Table1的All influenza列，并与Results中年龄分层段落和PubMed Findings交叉核对：<60岁点估计1.5、95%CI1.1–1.9；≥60岁点估计38.5、95%CI36.8–40.2。图中values是真实报告的平均每季超额呼吸死亡率模型点估计，不是由上下界推算的midpoint。人口为中国大陆，季节范围为2010–11至2014–15，流感A/B合计；不是A型单独死亡率，也不是当前年度统计。标题和caption仅比较原文的人群超额呼吸死亡率，不把死亡率、人数、全因死亡或天然产物临床疗效混为一谈。原文为观察性人群统计建模研究，非治疗试验。",
+          "locator": "Table1: Average annual influenza-associated excess respiratory mortality rate, All influenza column, <60 y and ≥60 y rows; Results age-specific paragraph (NCBI BioC offset15086); PubMed abstract Findings.",
+          "sourceIds": [
+            "li2019"
+          ],
+          "population": "Mainland China; 2010–11 through2014–15 influenza seasons; age<60 and≥60; influenzaA/B combined; surveillance-linked statistical excess-mortality model.",
+          "endpoint": "Average seasonal influenza-associated excess respiratory mortality rate per100000 person-seasons; model point estimates and95%confidence intervals.",
+          "visual": {
+            "type": "interval",
+            "categories": [
+              "<60岁",
+              "≥60岁"
+            ],
+            "series": [
+              {
+                "name": "超额呼吸死亡率",
+                "values": [
+                  1.5,
+                  38.5
+                ],
+                "lower": [
+                  1.1,
+                  36.8
+                ],
+                "upper": [
+                  1.9,
+                  40.2
+                ]
+              }
+            ],
+            "unit": "例/10万人季",
+            "intervalLabel": "95%CI",
+            "axis": {
+              "min": 0,
+              "max": 45,
+              "majorUnit": 20,
+              "title": "超额呼吸死亡率（例/10万人季）",
+              "format": "0.0"
+            },
+            "dataChecked": true,
+            "sourceIds": [
+              "li2019"
+            ],
+            "locator": "Table1, All influenza column, <60 y and ≥60 y rows",
+            "statistic": "Reported average seasonal model point estimates with95%confidence intervals; not inferred interval midpoints",
+            "footnote": "中国2010–11至2014–15季；季节性A/B合计；点为模型估计，线为95%CI。非当前年度统计。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "hayden2018",
+      "title": "Baloxavir Marboxil for Uncomplicated Influenza in Adults and Adolescents",
+      "authors": [
+        "Hayden FG",
+        "Sugaya N",
+        "Hirotsu N"
+      ],
+      "year": 2018,
+      "journal": "New England Journal of Medicine",
+      "volume": "379",
+      "issue": "10",
+      "pages": "913–923",
+      "doi": "10.1056/NEJMoa1716197",
+      "pmid": "30184455",
+      "url": "https://www.nejm.org/doi/full/10.1056/NEJMoa1716197",
+      "metadataVerified": true,
+      "verification": {
+        "status": "verified",
+        "scope": "bibliographic-metadata-and-claim-data",
+        "checkedOn": "2026-10-13",
+        "sources": [
+          {
+            "provider": "PubMed",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/30184455/"
+          },
+          {
+            "provider": "Crossref",
+            "url": "https://api.crossref.org/works/10.1056%2FNEJMoa1716197"
+          },
+          {
+            "provider": "NEJM indexed primary full text and PDF",
+            "url": "https://www.nejm.org/doi/pdf/10.1056/NEJMoa1716197?articleTools=true"
+          }
+        ],
+        "accessNote": "Direct NEJM open returned403, while search index retrieved article text and Figure2 caption; PubMed XML independently confirms point estimates and95%CI.",
+        "localAuditFiles": [
+          "hayden2018-crossref-live.json",
+          "pubmed-burden-treatment-live.xml"
+        ]
+      },
+      "updates": {
+        "checkedOn": "2026-10-13",
+        "retraction": "No retraction indexed in live PubMed CommentsCorrections/PublicationType and no Crossref update-to flag retrieved.",
+        "correction": "No ErratumIn indexed in live PubMed; CommentIn entries are commentaries, not corrections."
+      },
+      "usage": {
+        "license": "Copyright2018 Massachusetts Medical Society; numeric facts redrawn, no source figure reused",
+        "figureEvidence": "no-original-figure-reused",
+        "downloadAllowed": false
+      },
+      "claims": [
+        {
+          "id": "hayden-symptom-alleviation",
+          "heading": "现药临床获益",
+          "text": "CAPSTONE-1中，巴洛沙韦组症状缓解中位时间53.7小时，安慰剂组80.2小时；该非复杂流感门诊试验不能据此证明重症获益或天然产物疗效。",
+          "type": "numerical",
+          "status": "checked",
+          "reviewed": true,
+          "reviewer": "Codex influenza_evidence: independent primary-source review",
+          "reviewNote": "2026-10-13独立核对PubMed Results及NEJM主论文索引全文Figure 2图注：两组为53.7（95%CI 49.5–58.5）及80.2（72.6–87.1）小时，Figure 2可评价数分别455及230。首作者、题名、2018年卷期页、DOI与PubMed/Crossref匹配。主张、柱数据及caption均限于症状缓解中位时间；未以中位数重建生存曲线，未将一般健康非复杂流感门诊患者外推至重症，亦不视为植物天然产物证据。",
+          "locator": "NEJM Results → Phase 3 Trial → Clinical and Virologic Efficacy; Figure 2 caption; Methods → Outcomes Measured; PubMed abstract Results.",
+          "sourceIds": [
+            "hayden2018"
+          ],
+          "backgroundRole": "status",
+          "approvedCaption": "症状缓解中位时间\n53.7 vs 80.2小时\n非复杂流感门诊试验",
+          "population": "CAPSTONE-1 phase III RCT: otherwise healthy outpatients aged12–64 in US/Japan, 2016–2017 season, acute uncomplicated influenza; ITTI n=1064; flu A/B combined, mainly A(H3N2).",
+          "endpoint": "Time from trial treatment initiation until all seven influenza-related symptoms were absent or mild for at least21.5 hours; median time, hours.",
+          "visual": {
+            "type": "bar",
+            "categories": [
+              "巴洛沙韦",
+              "安慰剂"
+            ],
+            "series": [
+              {
+                "name": "症状缓解中位时间",
+                "values": [
+                  53.7,
+                  80.2
+                ]
+              }
+            ],
+            "unit": "小时",
+            "axis": {
+              "title": "症状缓解中位时间（小时）",
+              "min": 0,
+              "max": 100,
+              "majorUnit": 25,
+              "format": "0.0"
+            },
+            "sourceIds": [
+              "hayden2018"
+            ],
+            "locator": "Figure 2 caption; PubMed abstract Results",
+            "dataChecked": true,
+            "statistic": "median time to symptom alleviation",
+            "footnote": "可评价n=455/230；门诊非复杂流感，不代表重症或天然产物疗效。",
+            "confidenceIntervals": {
+              "level": 95,
+              "lower": [
+                49.5,
+                72.6
+              ],
+              "upper": [
+                58.5,
+                87.1
+              ],
+              "unit": "小时",
+              "notPlotted": true
+            },
+            "nEvaluable": [
+              455,
+              230
+            ],
+            "nITTInfected": [
+              456,
+              231
+            ]
+          },
+          "clinicalLimitation": {
+            "claim": "CAPSTONE-1 observed evidence of decreased drug susceptibility after treatment in a sequencing subset; not global resistance prevalence.",
+            "sourceLocator": "NEJM Results Clinical and Virologic Efficacy, paired sequenced samples paragraph; PubMed abstract Results/Conclusions",
+            "displayOptional": "治疗后出现药物低敏感证据；临床转化仍需关注耐药。",
+            "note": "This optional high-level limitation is not included as a numerical graph and does not provide sequence, experimental or infection parameters."
+          }
+        }
+      ]
+    },
+    {
+      "id": "geng2020",
+      "type": "primary_research",
+      "title": "Baicalin Inhibits Influenza A Virus Infection via Promotion of M1 Macrophage Polarization",
+      "authors": [
+        "Ping Geng",
+        "Haiyan Zhu",
+        "Wei Zhou",
+        "Chang Su",
+        "Mingcang Chen",
+        "Chenggang Huang",
+        "Chengjie Xia",
+        "Hai Huang",
+        "Yiou Cao",
+        "Xunlong Shi"
+      ],
+      "year": 2020,
+      "journal": "Frontiers in Pharmacology",
+      "citation": "Geng P et al., 2020, Front Pharmacol, 11:01298.",
+      "doi": "10.3389/fphar.2020.01298",
+      "pmid": "33117149",
+      "pmcid": "PMC7574031",
+      "url": "https://doi.org/10.3389/fphar.2020.01298",
+      "primary_fulltext_url": "https://www.frontiersin.org/journals/pharmacology/articles/10.3389/fphar.2020.01298/full",
+      "metadata_url": "https://pubmed.ncbi.nlm.nih.gov/33117149/",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "license_basis": "Crossref work record and publisher full text both link CC BY 4.0.",
+      "copyright": "Copyright 2020 Geng, Zhu, Zhou, Su, Chen, Huang, Xia, Huang, Cao and Shi.",
+      "evidence_scope": "小鼠与细胞层面的前临床研究；免疫反应结果不能直接外推为人体治疗获益，也不能移植为 NP 的已证机制。",
+      "status_check": {
+        "checked_on": "2026-10-13",
+        "crossref_update_to": [],
+        "crossref_relation": {},
+        "pubmed_comments_corrections": [],
+        "qualification": "当日 Crossref 与 PubMed 未列撤稿或更正关联；不等同于对全文结果的独立复现。"
+      },
+      "metadataVerified": true,
+      "verification": {
+        "status": "verified",
+        "scope": "bibliographic-metadata-and-primary-source-claim-review",
+        "checkedOn": "2026-10-13",
+        "sources": [
+          {
+            "provider": "PubMed",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/33117149/"
+          },
+          {
+            "provider": "Primary full text",
+            "url": "https://www.frontiersin.org/journals/pharmacology/articles/10.3389/fphar.2020.01298/full"
+          }
+        ]
+      },
+      "claims": [
+        {
+          "id": "geng-host-response-figure",
+          "heading": "植物来源候选依据",
+          "text": "已发表黄芩苷研究包含宿主反应结果，属于植物天然产物的前临床依据。",
+          "approvedCaption": "黄芩苷宿主反应\n原图纵轴从90%起",
+          "type": "figure",
+          "status": "checked",
+          "reviewed": true,
+          "reviewer": "Codex primary-source figure review",
+          "reviewNote": "Independently checked Figure1D, its original legend and the Results. The selected panel shows M1 macrophage proportions, retaining original bars, error bars, significance markers, group labels and the90%axis baseline. It does not alone establish antiviral potency or clinical efficacy. BA denotes baicalin; this external published result is not plantX/NP project data. Original publisher figure panel is reused under CCBY4.0, with attribution; no data are redrawn or estimated from pixels.",
+          "sourceIds": [
+            "geng2020"
+          ],
+          "locator": "Figure 1D and Abstract Results",
+          "backgroundRole": "approach",
+          "visual": {
+            "type": "image",
+            "path": "assets/geng2020-fig1d.png",
+            "role": "source",
+            "alt": "Geng2020 Figure1D: published macrophage phenotype result; original axis begins at90%",
+            "sourceIds": [
+              "geng2020"
+            ],
+            "locator": "Figure 1D",
+            "license": "CC BY 4.0"
+          }
+        }
+      ]
+    },
+    {
+      "id": "hour2013",
+      "type": "primary_research",
+      "title": "Baicalein, Ethyl Acetate, and Chloroform Extracts of Scutellaria baicalensis Inhibit the Neuraminidase Activity of Pandemic 2009 H1N1 and Seasonal Influenza A Viruses",
+      "authors": [
+        "Mann-Jen Hour",
+        "Su-Hua Huang",
+        "Ching-Yao Chang",
+        "Yen-Kuan Lin",
+        "Ching-Ying Wang",
+        "Yuan-Shiun Chang",
+        "Cheng-Wen Lin"
+      ],
+      "year": 2013,
+      "journal": "Evidence-Based Complementary and Alternative Medicine",
+      "citation": "Hour MJ et al., 2013, Evid Based Complement Alternat Med, 2013:750803.",
+      "doi": "10.1155/2013/750803",
+      "pmid": "23864896",
+      "pmcid": "PMC3705751",
+      "url": "https://doi.org/10.1155/2013/750803",
+      "primary_fulltext_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3705751/",
+      "metadata_url": "https://pubmed.ncbi.nlm.nih.gov/23864896/",
+      "license": "CC BY 3.0",
+      "license_url": "https://creativecommons.org/licenses/by/3.0/",
+      "license_basis": "Crossref work license URL is CC BY 3.0; archived primary full text states Creative Commons Attribution License and unrestricted use with proper citation.",
+      "copyright": "Copyright 2013 Mann-Jen Hour et al.",
+      "evidence_scope": "酶学/细胞层面的前临床研究，另含分子对接；不能证明人体抗流感疗效。",
+      "status_check": {
+        "checked_on": "2026-10-13",
+        "crossref_update_to": [],
+        "crossref_relation": {},
+        "pubmed_comments_corrections": [],
+        "qualification": "当日 Crossref 与 PubMed 未列撤稿或更正关联；不等同于对全文结果的独立复现。"
+      },
+      "metadataVerified": true,
+      "verification": {
+        "status": "verified",
+        "scope": "bibliographic-metadata-and-primary-source-claim-review",
+        "checkedOn": "2026-10-13",
+        "sources": [
+          {
+            "provider": "PubMed",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/23864896/"
+          },
+          {
+            "provider": "Primary full text",
+            "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3705751/"
+          }
+        ]
+      },
+      "claims": [
+        {
+          "id": "hour-selectivity",
+          "heading": "效应必须结合毒性解释",
+          "text": "Hour等报告的黄芩素体外选择性比值为2.5和2.3；这属于特定体外读出，不能作临床治疗窗。",
+          "approvedCaption": "黄芩素选择性比值\n2.5与2.3\n文献结果，非NP数据",
+          "type": "numerical",
+          "status": "checked",
+          "reviewed": true,
+          "reviewer": "Codex primary-source review",
+          "reviewNote": "Checked Table4 baicalein row and the authors therapeutic-index definition. The reported dimensionless ratios are2.5 for seasonal2007 H1N1 and2.3 for pandemic2009 H1N1. These are different H1N1 backgrounds, not H1N1-versus-H3N2. No concentrations, operating conditions, growth parameters or per-patient results are reproduced. The ratio is a high-level preclinical selectivity measure, not a clinical therapeutic window and not userNP data.",
+          "sourceIds": [
+            "hour2013"
+          ],
+          "locator": "Table 4, baicalein row, therapeutic index columns",
+          "visual": {
+            "type": "bar",
+            "categories": [
+              "季节性H1N1（2007）",
+              "大流行H1N1（2009）"
+            ],
+            "series": [
+              {
+                "name": "选择性比值",
+                "values": [
+                  2.5,
+                  2.3
+                ]
+              }
+            ],
+            "unit": "无量纲比值",
+            "sourceIds": [
+              "hour2013"
+            ],
+            "locator": "Table 4, baicalein row",
+            "dataChecked": true,
+            "axis": {
+              "min": 0,
+              "max": 3,
+              "majorUnit": 1,
+              "title": "体外选择性比值",
+              "format": "0.0"
+            },
+            "statistic": "Authors reported CC50/IC50 ratios, labelled therapeutic index",
+            "footnote": "研究中两类H1N1的体外选择性比值；不是临床治疗窗。数据据原文重绘。"
+          }
+        }
+      ]
+    }
+  ],
+  "warnings": [],
+  "topic": "植物来源天然产物抗流感课题"
+}

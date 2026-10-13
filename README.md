@@ -10,28 +10,24 @@
 
 ```bash
 npm ci
-node cli.mjs create "常规检验与免疫指标在脓毒症识别及预后评估中的价值"
+node cli.mjs create "植物来源天然产物的抗流感候选价值与活性成分研究"
 ```
 
-这条命令使用 `proposal` 模板，不需要模型密钥。输出目录显示在运行结果中，包含 `project.json`、证据记录、可修改的内容 JSON 和 `research.pptx`。默认生成离线结构草稿：研究问题、左右研究任务和计划有原生可编辑流程图；背景事实保留“待核实”位置。规则规划器按临床研究、公开证据评价或通用问题组织结构，具体专业方案需提供项目条件或接入模型。
+这条命令使用 `proposal` 模板，不需要模型密钥。输出目录显示在运行结果中，包含 `project.json`、证据记录、可修改的内容 JSON 和 `research.pptx`。默认生成离线结构草稿：研究问题、左右研究任务和计划有原生可编辑流程图；背景事实保留“待核实”位置。天然产物课题沿「粗提物候选价值 → 成分关联 → 作用解释与转化」组织，不套用临床预测模型。临床研究、公开证据评价及其他题目使用相应框架，具体方案需提供项目条件或接入模型。
 
 需要检索真实文献时追加 `--query "英文 PubMed 检索式"`；需要按题目具体规划，可追加 `--provider openai` 并配置自己的密钥。两者都保留独立核查环节。重复 `create` 不覆盖已有项目，后续用 `run project.json` 继续；详情见[开题模板说明](docs/proposal.md)。
 
-已有可离线查看的完整示例，包含真实文献数据：
+默认范例为**植物来源天然产物抗流感课题**，包含真实文献数据与授权论文原图：
 
 ```bash
-npm run demo:proposal
+npm run demo
 ```
 
-打开 `build/proposal/research-slides.pptx`。这份七页示例的文字、数据图、流程节点和箭头均为 PowerPoint 原生对象，可逐个修改。背景按“问题—现状—对策依据—目标”组织，前三栏展示可追溯文献数据，目标标为拟议设计。识别与预后证据分别解释，没有宣称本项目已经获得模型增益。
+打开 `build/proposal/research-slides.pptx`。这份八页示例包含背景、科学问题、独立文献依据、三页研究内容、后续计划和参考文献。文字、重绘的数据图、区间端点、流程节点和箭头为 PowerPoint 原生对象；论文原图和设计插图是可独立替换的图片。植物 X、粗提物 X 和 NP 保留原课题标记；黄芩素/黄芩苷只作为外部已发表依据，不冒充项目结果。详见[天然产物示例说明](examples/natural-antiviral/README.md)。
 
-![开题框架背景示例](docs/preview/proposal-background.png)
+![天然产物抗流感背景：真实人群数据、临床研究与前临床原图](docs/preview/natural-background.png)
 
-![开题框架研究内容示例](docs/preview/proposal-research.png)
-
-![背景示例：真实文献数据与拟议问题](docs/preview/background.png)
-
-![研究内容示例：独立科研设计配图与可编辑文字](docs/preview/research.png)
+![天然产物课题科学问题与设计示意](docs/preview/natural-question.png)
 
 ## 先试用：无需密钥
 
@@ -44,7 +40,7 @@ npm ci
 npm run demo
 ```
 
-打开 `build/demo/research-slides.pptx`。标题、说明、出处和原生数据图可以编辑；插图是独立可替换的图片对象。位图内部的线条/细胞不是独立 PowerPoint 形状。
+打开 `build/proposal/research-slides.pptx`。标题、说明、出处和原生数据图可以编辑；插图是独立可替换的图片对象。位图内部的线条/细胞不是独立 PowerPoint 形状。原五页精简示例可用 `npm run demo:compact`，脓毒症开题示例可用 `npm run demo:sepsis`，均为明确选择的补充示例。
 
 ## 从自己的题目开始
 
@@ -52,8 +48,9 @@ npm run demo
 
 ```bash
 node cli.mjs init \
-  --topic "常规检验与免疫指标在脓毒症识别及预后中的价值" \
-  --query "sepsis AND (immune phenotype OR biomarker)" \
+  --topic "植物来源天然产物抗流感候选研究" \
+  --query "influenza AND (natural products OR flavonoids)" \
+  --template proposal \
   --out runs/my-study/project.json
 node cli.mjs run runs/my-study/project.json
 ```

@@ -18,7 +18,7 @@ const HELP=`research-slides — evidence-aware scientific PPTX workflow
   build spec.json [--out research.pptx] [--final]
   run project.json [--evidence reviewed-evidence.json] [--spec edited-spec.json]
       [--provider rules|openai] [--mode native|openai] [--out research.pptx] [--final] [--offline]
-  demo [--dir build/demo] [--template compact|proposal] [--final]
+  demo [--dir build/demo] [--template compact|proposal] [--example natural-antiviral|sepsis] [--final]
   validate spec.json [--final]
 
 Only independently reviewed, traceable claims can be background evidence.
@@ -32,7 +32,7 @@ or --provider openai it creates an offline structural draft with pending evidenc
 function args(values) {
   const positionals=[],flags={};
   const boolean=new Set(['final','help','offline']);
-  const supported=new Set(['topic','query','out','dir','brief','figure-count','config','evidence','spec','provider','project','mode','template','offline','final','help']);
+  const supported=new Set(['topic','query','out','dir','brief','figure-count','config','evidence','spec','provider','project','mode','template','example','offline','final','help']);
   for (let i=0;i<values.length;i++) {
     const token=values[i];
     if (!token.startsWith('--')) {positionals.push(token);continue;}
@@ -115,7 +115,7 @@ async function main() {
   if (command==='run') {
     show(await runProject(required(input,'project.json'),{evidencePath:flags.evidence,specPath:flags.spec,provider:flags.provider,imageMode:flags.mode,outputPath:flags.out?path.resolve(flags.out):undefined,final:flags.final,offline:flags.offline,onProgress:message=>console.error(message)}));return;
   }
-  if (command==='demo') {show(await demoProject({outputDir:flags.dir?path.resolve(flags.dir):undefined,final:flags.final,template:flags.template}));return;}
+  if (command==='demo') {show(await demoProject({outputDir:flags.dir?path.resolve(flags.dir):undefined,final:flags.final,template:flags.template,example:flags.example}));return;}
   if (command==='validate') {
     const result=await validateWorkflowSpec(await readJson(required(input,'spec.json')),{final:flags.final});
     show({valid:true,publishable:result.publishable,warnings:result.warnings});return;

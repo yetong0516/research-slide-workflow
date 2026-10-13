@@ -1,0 +1,35 @@
+{
+  "assets": [
+    {
+      "path": "assets/geng2020-fig1d.png",
+      "role": "source",
+      "sourceId": "geng2020",
+      "locator": "Figure1D",
+      "license": "CC BY4.0",
+      "originalUrl": "https://www.frontiersin.org/files/Articles/554534/xml-images/fphar-11-01298-g001.webp",
+      "attribution": "Geng et al., Front Pharmacol,2020;10.3389/fphar.2020.01298",
+      "modification": "Original result panel crop; original axis and legend retained"
+    },
+    {
+      "path": "assets/concept-0.png",
+      "role": "design",
+      "provenance": "OpenAI ImageGen",
+      "license": "MIT",
+      "notice": "Proposed high-level illustration; not a plant/molecule identification or observed result."
+    },
+    {
+      "path": "assets/concept-1.png",
+      "role": "design",
+      "provenance": "OpenAI ImageGen",
+      "license": "MIT",
+      "notice": "Proposed high-level illustration; not a plant/molecule identification or observed result."
+    },
+    {
+      "path": "assets/concept-2.png",
+      "role": "design",
+      "provenance": "OpenAI ImageGen",
+      "license": "MIT",
+      "notice": "Proposed high-level illustration; not a plant/molecule identification or observed result."
+    }
+  ]
+}

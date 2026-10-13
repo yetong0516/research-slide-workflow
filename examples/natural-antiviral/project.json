@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "topic": "植物来源天然产物的抗流感候选价值与活性成分研究",
+  "language": "zh-CN",
+  "brief": {
+    "plantSource": "植物 X",
+    "extractName": "粗提物 X",
+    "candidateName": "NP",
+    "researchQuestion": "植物 X 粗提物是否具有抗流感候选价值，哪些成分与效应相关，直接作用与宿主反应如何解释效应及其安全性边界？",
+    "population": "植物 X 粗提物与候选天然产物 NP",
+    "comparator": "粗提物、候选成分及对照证据；效应与宿主安全性并行解释",
+    "measurementsAvailable": [
+      "成分资料",
+      "效应证据",
+      "宿主状态"
+    ],
+    "primaryEndpoint": "候选效应、安全性与作用解释",
+    "completedWork": [],
+    "unknowns": [
+      "植物及NP的完整身份",
+      "项目原始数据与样本数",
+      "已完成结果的出处"
+    ],
+    "preliminaryClaimIds": [
+      "hour-selectivity"
+    ]
+  },
+  "outputDir": "output",
+  "literature": {
+    "query": "influenza AND (\"natural products\" OR Scutellaria OR flavonoids)",
+    "limit": 8,
+    "email": null
+  },
+  "design": {
+    "figureCount": 8,
+    "fontFace": "Arial Unicode MS",
+    "imageMode": "native",
+    "template": "proposal"
+  },
+  "provider": {
+    "mode": "responses",
+    "baseUrl": "https://api.openai.com/v1",
+    "apiKeyEnv": "OPENAI_API_KEY",
+    "textModel": "gpt-4.1-mini",
+    "imageModel": "gpt-image-1",
+    "timeoutMs": 120000,
+    "imageSize": "1536x1024",
+    "imageQuality": "medium",
+    "imageBackground": "opaque",
+    "planner": "rules"
+  },
+  "policy": {
+    "allowDraft": true,
+    "requireIndependentClaimReview": true
+  }
+}

@@ -20,9 +20,10 @@ const checkedClaim = x => x && ['checked', 'verified'].includes(x.status)
   && (nonempty(x.reviewNote) || nonempty(x.notes) || list(x.notes).some(nonempty));
 const chartDataSignature = visual => JSON.stringify({
   type: visual?.type, categories: visual?.categories,
-  series: list(visual?.series).map(s => ({ name: s.name, values: s.values })),
+  series: list(visual?.series).map(s => ({ name: s.name, values: s.values, lower: s.lower, upper: s.upper })),
   unit: visual?.unit, sourceIds: visual?.sourceIds, locator: visual?.locator,
   statistic: visual?.statistic, footnote: visual?.footnote,
+  intervalLabel: visual?.intervalLabel,
 });
 const imageSignature = visual => JSON.stringify({
   type: visual?.type, role: visual?.role, path: visual?.path,
@@ -188,9 +189,39 @@ export function validateSpec(input) {
         card._reviewedClaims = claims;
       }
       const visual = card.visual;
-      check(visual && ['placeholder', 'image', 'bar', 'diagram'].includes(visual.type),
-        `${at}.visual.type must be placeholder, image, bar, or diagram`);
+      check(visual && ['placeholder', 'image', 'bar', 'interval', 'diagram'].includes(visual.type),
+        `${at}.visual.type must be placeholder, image, bar, interval, or diagram`);
       if (!visual) return;
+      if (visual.type === 'interval') {
+        check(card.statementType==='evidence' && visual.dataChecked===true,
+          `${at} intervals require independently reviewed numerical evidence`);
+        verifyIds(visual.sourceIds,`${at}.interval`);
+        check(list(card._reviewedClaims).some(claim=>claim.visual?.dataChecked===true
+          && chartDataSignature(claim.visual)===chartDataSignature(visual)),
+        `${at} interval bounds and point estimates must match the reviewed claim`);
+        check(nonempty(visual.unit) && nonempty(visual.locator) && nonempty(visual.intervalLabel),
+          `${at} intervals need a unit, source locator and interval label`);
+        const categories=list(visual.categories),series=list(visual.series);
+        check(Array.isArray(visual.categories) && categories.length>=1 && categories.length<=6
+          && categories.every(nonempty),`${at} interval categories require 1–6 labels`);
+        check(series.length===1,`${at} interval requires one clearly identified series`);
+        for (const item of series) {
+          const lower=list(item.lower),upper=list(item.upper),values=item.values;
+          check(nonempty(item.name) && Array.isArray(item.lower) && Array.isArray(item.upper)
+            && lower.length===categories.length && upper.length===categories.length
+            && lower.every((v,i)=>Number.isFinite(v)&&Number.isFinite(upper[i])&&v<=upper[i]),
+          `${at} interval lower/upper arrays must be finite, ordered and match categories`);
+          if (values!==undefined) check(Array.isArray(values)&&values.length===categories.length
+            && values.every((v,i)=>Number.isFinite(v)&&v>=lower[i]&&v<=upper[i]),
+          `${at} reported point estimates must lie within their reported interval`);
+          if (visual.axis?.min!==undefined) check(Number.isFinite(visual.axis.min)
+            && lower.every(v=>v>=visual.axis.min),`${at} interval axis cannot clip lower bounds`);
+          if (visual.axis?.max!==undefined) check(Number.isFinite(visual.axis.max)
+            && upper.every(v=>v<=visual.axis.max),`${at} interval axis cannot clip upper bounds`);
+        }
+        if (visual.axis?.min!==undefined && visual.axis?.max!==undefined)
+          check(visual.axis.max>visual.axis.min,`${at} interval axis must have positive span`);
+      }
       if (visual.type === 'diagram') {
         check(visual.role === 'design' && ['proposed', 'design'].includes(card.statementType),
           `${at} native diagrams describe proposed concepts, not empirical evidence`);

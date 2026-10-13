@@ -56,9 +56,9 @@ function proposalHeader(slide, slideSpec, context, page) {
     preliminary: '前期基础', plan: '研究计划', references: '参考文献',
   };
   slide.background = { color: context.colors.white };
-  const title=slideSpec.kind==='research'
+  const title=slideSpec.displayTitle|| (slideSpec.kind==='research'
     ? slideSpec.title.replace(/（拟议）|\(proposed\)/gi,'').trim()
-    : sections[slideSpec.kind] ?? slideSpec.title;
+    : sections[slideSpec.kind] ?? slideSpec.title);
   addText(slide, title,
     { x: 0.55, y: 0.30, w: 12.10, h: 0.62 }, context, 32,
     { bold: true, color: context.colors.green });
@@ -114,6 +114,79 @@ function addBar(slide, visual, frame, context) {
   if (visual.footnote) addText(slide, visual.footnote,
     { x: frame.x+0.04, y: frame.y+frame.h-footnoteHeight+0.02, w: frame.w-0.08, h: 0.41 },
     context, 12, { color: C.muted, align: 'center', valign: 'top' });
+}
+
+/** Draw only reported interval endpoints; an optional point must be supplied in values. */
+function addInterval(slide, visual, frame, context) {
+  const { pptx, colors: C } = context;
+  const allLower = visual.series.flatMap(series => series.lower);
+  const allUpper = visual.series.flatMap(series => series.upper);
+  const minimum = visual.axis?.min ?? Math.min(0, ...allLower);
+  const maximum = visual.axis?.max ?? Math.max(minimum+1, Math.max(...allUpper)*1.05);
+  const majorUnit = visual.axis?.majorUnit ?? (maximum-minimum)/2;
+  const footnoteHeight = visual.footnote ? 0.44 : 0;
+  const labelWidth = Math.min(0.84, frame.w*0.29);
+  const plotX = frame.x+labelWidth+0.10;
+  const plotWidth = frame.w-labelWidth-0.22;
+  const plotTop = frame.y+0.65;
+  const axisY = frame.y+frame.h-footnoteHeight-0.34;
+  const rowCount = visual.categories.length*visual.series.length;
+  const rowHeight = (axisY-plotTop)/rowCount;
+  const scale = value => plotX+(value-minimum)/(maximum-minimum)*plotWidth;
+  const seriesColors = [C.green, C.blue, C.teal];
+  addText(slide, visual.axis?.title ?? visual.unit,
+    { x: frame.x+0.04, y: frame.y+0.10, w: frame.w-0.08, h: 0.28 }, context, 13,
+    { color: C.muted, align: 'center' });
+  addText(slide, `${visual.intervalLabel} (${visual.unit})`,
+    { x: frame.x+0.04, y: frame.y+0.41, w: frame.w-0.08, h: 0.19 }, context, 11,
+    { color: C.muted, align: 'center' });
+  for (const [categoryIndex, category] of visual.categories.entries()) {
+    for (const [seriesIndex, series] of visual.series.entries()) {
+      const rowIndex = categoryIndex*visual.series.length+seriesIndex;
+      const lineY = plotTop+rowIndex*rowHeight+0.12;
+      const color = seriesColors[seriesIndex];
+      const name = `interval-series-${seriesIndex}-category-${categoryIndex}`;
+      addText(slide, visual.series.length === 1 ? category : `${category}\n${series.name}`,
+        { x: frame.x+0.04, y: lineY-0.12, w: labelWidth-0.06, h: 0.25 }, context, 12,
+        { color: C.text, objectName: `${name}-category` });
+      slide.addShape(pptx.ShapeType.line, {
+        x: scale(series.lower[categoryIndex]), y: lineY,
+        w: scale(series.upper[categoryIndex])-scale(series.lower[categoryIndex]), h: 0,
+        objectName: `${name}-segment`, line: { color, width: 2.0 },
+      });
+      for (const endpoint of ['lower', 'upper']) slide.addShape(pptx.ShapeType.line, {
+        x: scale(series[endpoint][categoryIndex]), y: lineY-0.065, w: 0, h: 0.13,
+        objectName: `${name}-${endpoint}`, line: { color, width: 1.4 },
+      });
+      if (series.values) slide.addShape(pptx.ShapeType.ellipse, {
+        x: scale(series.values[categoryIndex])-0.035, y: lineY-0.035, w: 0.07, h: 0.07,
+        objectName: `${name}-reported-point`, line: { color, width: 0.5 }, fill: { color },
+      });
+      const intervalText = `${series.lower[categoryIndex]}–${series.upper[categoryIndex]}`;
+      addText(slide, series.values ? `${series.values[categoryIndex]} (${intervalText})` : intervalText,
+        { x: plotX, y: lineY+0.10, w: plotWidth, h: 0.19 }, context, 11,
+        { color, align: 'center', objectName: `${name}-range` });
+    }
+  }
+  slide.addShape(pptx.ShapeType.line, {
+    x: plotX, y: axisY, w: plotWidth, h: 0, objectName: 'interval-axis',
+    line: { color: C.muted, width: 0.7 },
+  });
+  // A non-divisible upper bound stays as an axis extent, avoiding crowded final tick labels.
+  const ticks = Math.floor((maximum-minimum)/majorUnit+1e-9);
+  for (let i = 0; i <= ticks; i++) {
+    const value = Number((minimum+i*majorUnit).toPrecision(12));
+    slide.addShape(pptx.ShapeType.line, {
+      x: scale(value), y: axisY, w: 0, h: 0.055,
+      objectName: `interval-axis-tick-${i}`, line: { color: C.muted, width: 0.7 },
+    });
+    addText(slide, String(value),
+      { x: scale(value)-0.16, y: axisY+0.075, w: 0.32, h: 0.18 }, context, 10,
+      { color: C.muted, align: 'center' });
+  }
+  if (visual.footnote) addText(slide, visual.footnote,
+    { x: frame.x+0.04, y: frame.y+frame.h-footnoteHeight+0.03, w: frame.w-0.08, h: 0.37 },
+    context, 11, { color: C.muted, align: 'center', valign: 'top' });
 }
 
 function arrowSegment(slide, start, end, context, arrow = true, width = 1.4) {
@@ -201,6 +274,10 @@ async function addVisual(slide, card, frame, context) {
     addBar(slide, visual, frame, context);
     return `${L.chart} ${sourceNumbers(visual.sourceIds, context)}`;
   }
+  if (visual.type === 'interval') {
+    addInterval(slide, visual, frame, context);
+    return `${L.chart} ${sourceNumbers(visual.sourceIds, context)}`;
+  }
   if (visual.type === 'image') {
     const asset = await localImage(context.baseDir, visual.path);
     const buffer = await fs.readFile(asset);
@@ -241,7 +318,7 @@ function notesFor(slideSpec, context) {
   for (const card of slideSpec.cards ?? []) {
     entries.push(`${card.heading}: ${card.caption}\nStatement type: ${card.statementType}`);
     if (card.evidence) entries.push(`Evidence audit:\n${JSON.stringify(card.evidence, null, 2)}`);
-    if (card.visual?.type === 'bar') entries.push(`Native editable data:\n${JSON.stringify(card.visual, null, 2)}`);
+    if (['bar', 'interval'].includes(card.visual?.type)) entries.push(`Native editable data:\n${JSON.stringify(card.visual, null, 2)}`);
     if (card.visual?.type === 'diagram') entries.push(`Native editable proposed design:\n${JSON.stringify(card.visual, null, 2)}`);
     if (card.visual?.type === 'image') entries.push(`Image: ${card.visual.path}\nRole: ${card.visual.role}\nLicense: ${card.visual.license ?? 'AI design; see asset manifest'}`);
     if (card.deliverable) entries.push(`Proposed deliverable: ${card.deliverable}`);

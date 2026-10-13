@@ -1,4 +1,5 @@
 /** Proposal structure and native diagrams; no literature or model requests occur here. */
+import {naturalProductProposal} from './natural-product-proposal.mjs';
 const nonempty = value => typeof value === 'string' && value.trim().length > 0;
 const text = value => nonempty(value) ? value.replace(/\s+/g, ' ').trim() : '';
 const items = value => Array.isArray(value) ? value : [];
@@ -63,6 +64,8 @@ export function ruleProposal(project) {
   const brief = briefOf(project), topic = text(project.topic);
   const context = `${topic} ${text(brief.studyType)}`;
   const publicEvidence = /系统综述|荟萃|文献|证据评价|公开证据|公开数据|meta.?analysis|systematic review|evidence review|literature review/i.test(context);
+  const naturalProduct=!publicEvidence&&/天然产物|植物来源|粗提物|natural products?|plant-derived|botanical extract/i.test(context);
+  if (naturalProduct) return naturalProductProposal(project);
   const clinical = !publicEvidence && /临床|患者|人群|诊断|预后|疾病|脓毒症|指标|队列|clinical|patient|cohort|prognos|diagnos|biomarker/i.test(context);
   const mainQuestion = conciseQuestion(topic, brief.researchQuestion, {publicEvidence, clinical});
   const questionCards = [
