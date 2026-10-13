@@ -25,7 +25,7 @@ export function createProject(topic,options={}) {
   if (![7,8].includes(figureCount)) throw new WorkflowError('figureCount must be 7 or 8.');
   return {schemaVersion:1,topic:topic.trim(),language:options.language||'zh-CN',brief:options.brief??null,
     outputDir:options.outputDir||'output',literature:{query:options.query||null,limit:8,email:null},
-    design:{figureCount,fontFace:'Arial',fonts:{eastAsian:'微软雅黑',latin:'Arial'},imageMode:'native',template:options.template||'compact'},
+    design:{figureCount,fontFace:'Arial',fonts:{eastAsian:'微软雅黑',latin:'Arial'},assetLicense:'All rights reserved; separate authorization required',imageMode:'native',template:options.template||'compact'},
     provider:{...DEFAULT_PROVIDER_CONFIG,planner:'rules'},
     policy:{allowDraft:true,requireIndependentClaimReview:true},
   };
@@ -279,7 +279,7 @@ export async function generateImages(spec,project,{baseDir=process.cwd(),mode,fe
     }
     const result=await generateScientificImage(task.prompt,{config:project?.provider||{},fetchImpl,env});
     await fs.writeFile(absolute,result.bytes);
-    card.visual={type:'image',path:relative,alt:card.heading,role:'design',provenance:{kind:'ai-generated',source:`OpenAI ${result.model}; generated from a methods-only prompt`,license:project?.design?.assetLicense||'MIT'}};
+    card.visual={type:'image',path:relative,alt:card.heading,role:'design',provenance:{kind:'ai-generated',source:`OpenAI ${result.model}; generated from a methods-only prompt`,license:project?.design?.assetLicense||'All rights reserved; separate authorization required'}};
     generated.push({cardId:task.cardId,path:relative,model:result.model,usage:result.usage});
     // Preserve successful progress even if a later network request fails.
     await writeJson(path.join(baseDir,'spec.images.progress.json'),copy);

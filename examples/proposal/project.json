@@ -34,7 +34,8 @@
     "fonts": {
       "eastAsian": "微软雅黑",
       "latin": "Arial"
-    }
+    },
+    "assetLicense": "All rights reserved; separate authorization required"
   },
   "provider": {
     "mode": "responses",

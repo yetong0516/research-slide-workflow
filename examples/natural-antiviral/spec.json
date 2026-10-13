@@ -694,7 +694,9 @@
             "provenance": {
               "kind": "ai-generated",
               "source": "OpenAI ImageGen: original high-level proposed-research concept,2026-10-13",
-              "license": "MIT"
+              "license": "All rights reserved; separate authorization required",
+              "priorDistributionLicense": "MIT",
+              "licenseNote": "Current v0.4.1 distribution; prior valid MIT grants are not revoked."
             }
           },
           "notes": "拟议研究结构；需确认项目条件。图中关系与交付物不是已观察结果。"
@@ -712,7 +714,9 @@
             "provenance": {
               "kind": "ai-generated",
               "source": "OpenAI ImageGen: original high-level proposed-research concept,2026-10-13",
-              "license": "MIT"
+              "license": "All rights reserved; separate authorization required",
+              "priorDistributionLicense": "MIT",
+              "licenseNote": "Current v0.4.1 distribution; prior valid MIT grants are not revoked."
             }
           },
           "notes": "拟议研究结构；需确认项目条件。图中关系与交付物不是已观察结果。"
@@ -730,7 +734,9 @@
             "provenance": {
               "kind": "ai-generated",
               "source": "OpenAI ImageGen: original high-level proposed-research concept,2026-10-13",
-              "license": "MIT"
+              "license": "All rights reserved; separate authorization required",
+              "priorDistributionLicense": "MIT",
+              "licenseNote": "Current v0.4.1 distribution; prior valid MIT grants are not revoked."
             }
           },
           "notes": "拟议研究结构；需确认项目条件。图中关系与交付物不是已观察结果。"
@@ -818,7 +824,9 @@
             "provenance": {
               "kind": "ai-generated",
               "source": "OpenAI ImageGen high-level proposed-study concept",
-              "license": "MIT"
+              "license": "All rights reserved; separate authorization required",
+              "priorDistributionLicense": "MIT",
+              "licenseNote": "Current v0.4.1 distribution; prior valid MIT grants are not revoked."
             }
           },
           "notes": "两条平行证据带：上方为粗提物 X 的抗流感效应证据，下方为宿主状态证据；两者共同指向候选价值判断。采用无数值的关系图，避免暗示已有阳性结果。",
@@ -883,7 +891,9 @@
             "provenance": {
               "kind": "ai-generated",
               "source": "OpenAI ImageGen high-level proposed-study concept",
-              "license": "MIT"
+              "license": "All rights reserved; separate authorization required",
+              "priorDistributionLicense": "MIT",
+              "licenseNote": "Current v0.4.1 distribution; prior valid MIT grants are not revoked."
             }
           },
           "notes": "左侧为粗提物 X 的成分资料，中间为候选成分 NP 及其他待确认成分，右侧为效应证据；关联线使用虚线，表示拟检验的关系而非已证因果。",
@@ -948,7 +958,9 @@
             "provenance": {
               "kind": "ai-generated",
               "source": "OpenAI ImageGen high-level proposed-study concept",
-              "license": "MIT"
+              "license": "All rights reserved; separate authorization required",
+              "priorDistributionLicense": "MIT",
+              "licenseNote": "Current v0.4.1 distribution; prior valid MIT grants are not revoked."
             }
           },
           "notes": "NP 居中，上分支连接直接作用假设，下分支连接宿主反应假设；两支各连接可解释现象与尚缺证据，末端汇合至综合机制解释。全部箭头标为待检验关系。",

@@ -1,5 +1,7 @@
 # Research Slide Workflow
 
+**当前为私有维护的科研工具；本次对外只展示设计思路和成品效果。核心实现暂不公开，科研用途限定共享须由作者另行决定并明确授权。** 许可范围见 [LICENSE](LICENSE) 和[展示与共享范围](docs/distribution-policy.md)。以下操作说明仅供作者和明确授权的内部人员使用。
+
 **给出研究题目，生成以科研图为主、文字可编辑的研究背景、研究内容、后续计划与参考文献 PPT。**
 
 面向生物医学科研汇报。把「找文献 → 核对主张和图数据 → 按项目设计科研图 → 制作可编辑 PPT → 渲染复查」整理为可重复运行的命令行流程。现在提供两套模板：`proposal` 开题框架为七页，背景 → 科学问题 → 研究内容三页 → 研究计划 → 参考文献；`compact` 保留原来的五页精简汇报。明确提供且核查过的前期图数据可另加前期基础页。
@@ -19,7 +21,7 @@ node cli.mjs create "植物来源天然产物的抗流感候选价值与活性�
 
 默认范例为**植物来源天然产物抗流感课题**，包含真实文献数据与授权论文原图：
 
-[直接下载已生成的八页可编辑PPT](examples/natural-antiviral/example.pptx)
+[内部保存的八页可编辑PPT](examples/natural-antiviral/example.pptx)
 
 ```bash
 npm run demo
@@ -35,13 +37,11 @@ npm run demo
 
 ![天然产物课题科学问题与设计示意](docs/preview/natural-question.png)
 
-## 先试用：无需密钥
+## 内部运行：无需密钥
 
 需要 Node.js 20+。示例使用已附科研设计 PNG 和公开文献数据，不调用付费 API。
 
 ```bash
-git clone https://github.com/yetong0516/research-slide-workflow.git
-cd research-slide-workflow
 npm ci
 npm run demo
 ```
@@ -145,10 +145,10 @@ python3 scripts/render.py build/proposal/research-slides.pptx --out build/previe
 
 第一版的付费文本/图像接口通过 mock 测试；离线 PPT 构建、结构检查与公开文献 API 已实际运行。生成新研究的完整付费 API 路径仍需读者用自己的账户验证，不能把 mock 通过说成真实模型请求成功。当前检索入口以 PubMed 生物医学文献为主；其他学科可增加检索适配器。
 
-## 贡献与许可
+## 维护与许可
 
-欢迎补充其他学科的文献检索、版式、原生可编辑图型和更多经过核查的公开示例。修改后运行测试与示例；新增证据必须给原始出处及适用范围。
+内部维护可补充文献检索、版式、原生可编辑图型和经过核查的示例。修改后运行测试与示例；新增证据必须给原始出处及适用范围。
 
-代码为 MIT。仓库附带的自有 AI 设计示意图可按仓库许可复用，并保留其「生成示意、非实验结果」身份；第三方文献、图片和数据仍遵守原有权利及引用要求，MIT 不覆盖第三方材料。仓库不包含实际患者资料、原始课题汇报或未公开结果。
+v0.4.1 起当前分发不再默认授予作者自有材料的复用许可。未经另行明确书面授权，不提供将新版本实现商业包装、收费服务、转售或重新发布的许可。后续科研用途共享范围由作者另行决定。已合法获得的旧 MIT 副本权利保留；第三方依赖、文献、图片和数据仍遵守各自原有权利及引用要求。仓库不包含实际患者资料、原始课题汇报或未公开结果。
 
 English: An evidence-aware CLI for editable scientific slides. It separates bibliographic verification, claim review, real chart data, and proposed design imagery. Run `npm run demo` without an API key; optional OpenAI planning and illustration are configurable. Title-only inputs create proposed designs, not performed-study results.

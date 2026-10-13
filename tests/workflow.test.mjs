@@ -126,6 +126,7 @@ test('generated images have design provenance, saved progress and resume without
     const fetchImpl=async()=>{calls++;return mockJson({data:[{b64_json:Buffer.from([137,80,78,71,13,10,26,10,0]).toString('base64')}]});};
     const first=await generateImages(spec,p,{baseDir:dir,mode:'openai',env:apiEnv,fetchImpl});assert.equal(first.generated.length,8);assert.equal(calls,8);
     assert.equal(first.spec.slides[1].cards[0].visual.provenance.kind,'ai-generated');
+    assert.equal(first.spec.slides[1].cards[0].visual.provenance.license,'All rights reserved; separate authorization required');
     const resumed=await generateImages(spec,p,{baseDir:dir,mode:'openai',env:apiEnv,fetchImpl});assert.equal(calls,8);assert.ok(resumed.generated.every(image=>image.reused));
   } finally {await fs.rm(dir,{recursive:true,force:true});}
 });

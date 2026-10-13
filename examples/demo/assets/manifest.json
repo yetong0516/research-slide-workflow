@@ -1,58 +1,74 @@
 {
   "mother-database.png": {
     "kind": "ai-generated-design",
-    "license": "MIT",
-    "source": "AI-generated generic scientific design, redistribution authorized for this repository",
+    "license": "All rights reserved; separate authorization required",
+    "source": "AI-generated generic scientific design, current distribution reserves rights; separate reuse authorization required",
     "scientific_status": "Illustrative proposed design; no real people, private data, numerical results or performance claims",
-    "editable": "Independent PNG can be replaced; internal pixels are not editable text"
+    "editable": "Independent PNG can be replaced; internal pixels are not editable text",
+    "priorDistributionLicense": "MIT",
+    "licenseNote": "Current v0.4.1 distribution; prior valid MIT grants are not revoked."
   },
   "clinical-cohort.png": {
     "kind": "ai-generated-design",
-    "license": "MIT",
-    "source": "AI-generated generic scientific design, redistribution authorized for this repository",
+    "license": "All rights reserved; separate authorization required",
+    "source": "AI-generated generic scientific design, current distribution reserves rights; separate reuse authorization required",
     "scientific_status": "Illustrative proposed design; no real people, private data, numerical results or performance claims",
-    "editable": "Independent PNG can be replaced; internal pixels are not editable text"
+    "editable": "Independent PNG can be replaced; internal pixels are not editable text",
+    "priorDistributionLicense": "MIT",
+    "licenseNote": "Current v0.4.1 distribution; prior valid MIT grants are not revoked."
   },
   "measured-inputs.png": {
     "kind": "ai-generated-design",
-    "license": "MIT",
-    "source": "AI-generated generic scientific design, redistribution authorized for this repository",
+    "license": "All rights reserved; separate authorization required",
+    "source": "AI-generated generic scientific design, current distribution reserves rights; separate reuse authorization required",
     "scientific_status": "Illustrative proposed design; no real people, private data, numerical results or performance claims",
-    "editable": "Independent PNG can be replaced; internal pixels are not editable text"
+    "editable": "Independent PNG can be replaced; internal pixels are not editable text",
+    "priorDistributionLicense": "MIT",
+    "licenseNote": "Current v0.4.1 distribution; prior valid MIT grants are not revoked."
   },
   "patient-validation.png": {
     "kind": "ai-generated-design",
-    "license": "MIT",
-    "source": "AI-generated generic scientific design, redistribution authorized for this repository",
+    "license": "All rights reserved; separate authorization required",
+    "source": "AI-generated generic scientific design, current distribution reserves rights; separate reuse authorization required",
     "scientific_status": "Illustrative proposed design; no real people, private data, numerical results or performance claims",
-    "editable": "Independent PNG can be replaced; internal pixels are not editable text"
+    "editable": "Independent PNG can be replaced; internal pixels are not editable text",
+    "priorDistributionLicense": "MIT",
+    "licenseNote": "Current v0.4.1 distribution; prior valid MIT grants are not revoked."
   },
   "paired-models.png": {
     "kind": "ai-generated-design",
-    "license": "MIT",
-    "source": "AI-generated generic scientific design, redistribution authorized for this repository",
+    "license": "All rights reserved; separate authorization required",
+    "source": "AI-generated generic scientific design, current distribution reserves rights; separate reuse authorization required",
     "scientific_status": "Illustrative proposed design; no real people, private data, numerical results or performance claims",
-    "editable": "Independent PNG can be replaced; internal pixels are not editable text"
+    "editable": "Independent PNG can be replaced; internal pixels are not editable text",
+    "priorDistributionLicense": "MIT",
+    "licenseNote": "Current v0.4.1 distribution; prior valid MIT grants are not revoked."
   },
   "external-validation.png": {
     "kind": "ai-generated-design",
-    "license": "MIT",
-    "source": "AI-generated generic scientific design, redistribution authorized for this repository",
+    "license": "All rights reserved; separate authorization required",
+    "source": "AI-generated generic scientific design, current distribution reserves rights; separate reuse authorization required",
     "scientific_status": "Illustrative proposed design; no real people, private data, numerical results or performance claims",
-    "editable": "Independent PNG can be replaced; internal pixels are not editable text"
+    "editable": "Independent PNG can be replaced; internal pixels are not editable text",
+    "priorDistributionLicense": "MIT",
+    "licenseNote": "Current v0.4.1 distribution; prior valid MIT grants are not revoked."
   },
   "sampling-window.png": {
     "kind": "ai-generated-design",
-    "license": "MIT",
-    "source": "AI-generated generic scientific design, redistribution authorized for this repository",
+    "license": "All rights reserved; separate authorization required",
+    "source": "AI-generated generic scientific design, current distribution reserves rights; separate reuse authorization required",
     "scientific_status": "Illustrative proposed design; no real people, private data, numerical results or performance claims",
-    "editable": "Independent PNG can be replaced; internal pixels are not editable text"
+    "editable": "Independent PNG can be replaced; internal pixels are not editable text",
+    "priorDistributionLicense": "MIT",
+    "licenseNote": "Current v0.4.1 distribution; prior valid MIT grants are not revoked."
   },
   "nested-subsets.png": {
     "kind": "ai-generated-design",
-    "license": "MIT",
-    "source": "AI-generated generic scientific design, redistribution authorized for this repository",
+    "license": "All rights reserved; separate authorization required",
+    "source": "AI-generated generic scientific design, current distribution reserves rights; separate reuse authorization required",
     "scientific_status": "Illustrative proposed design; no real people, private data, numerical results or performance claims",
-    "editable": "Independent PNG can be replaced; internal pixels are not editable text"
+    "editable": "Independent PNG can be replaced; internal pixels are not editable text",
+    "priorDistributionLicense": "MIT",
+    "licenseNote": "Current v0.4.1 distribution; prior valid MIT grants are not revoked."
   }
 }

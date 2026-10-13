@@ -1,9 +1,9 @@
 {
   "name": "research-slide-workflow",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "Evidence-aware, editable scientific PowerPoint workflow with optional OpenAI text and image generation.",
   "type": "module",
-  "private": false,
+  "private": true,
   "bin": {
     "research-slides": "./cli.mjs"
   },
@@ -22,7 +22,7 @@
     "jszip": "3.10.2",
     "pptxgenjs": "4.0.0"
   },
-  "license": "MIT",
+  "license": "UNLICENSED",
   "overrides": {
     "image-size": "2.0.4"
   }

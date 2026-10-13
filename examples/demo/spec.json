@@ -394,7 +394,9 @@
             "provenance": {
               "kind": "ai-generated",
               "source": "AI-generated generic scientific design; repository-authorized redistribution",
-              "license": "MIT"
+              "license": "All rights reserved; separate authorization required",
+              "priorDistributionLicense": "MIT",
+              "licenseNote": "Current v0.4.1 distribution; prior valid MIT grants are not revoked."
             }
           }
         }
@@ -405,7 +407,7 @@
       "id": "research-one",
       "kind": "research",
       "title": "研究内容一：拟议人群与测量框架",
-      "notice": "本示例为公开通用的拟议研究设计，不包含项目样本量、未公开结果或已完成验证。",
+      "notice": "本示例为内部维护的通用拟议研究设计，不包含项目样本量、未公开结果或已完成验证。",
       "cards": [
         {
           "id": "r1-database",
@@ -420,7 +422,9 @@
             "provenance": {
               "kind": "ai-generated",
               "source": "AI-generated generic scientific design; repository-authorized redistribution",
-              "license": "MIT"
+              "license": "All rights reserved; separate authorization required",
+              "priorDistributionLicense": "MIT",
+              "licenseNote": "Current v0.4.1 distribution; prior valid MIT grants are not revoked."
             }
           }
         },
@@ -437,7 +441,9 @@
             "provenance": {
               "kind": "ai-generated",
               "source": "AI-generated generic scientific design; repository-authorized redistribution",
-              "license": "MIT"
+              "license": "All rights reserved; separate authorization required",
+              "priorDistributionLicense": "MIT",
+              "licenseNote": "Current v0.4.1 distribution; prior valid MIT grants are not revoked."
             }
           }
         },
@@ -454,7 +460,9 @@
             "provenance": {
               "kind": "ai-generated",
               "source": "AI-generated generic scientific design; repository-authorized redistribution",
-              "license": "MIT"
+              "license": "All rights reserved; separate authorization required",
+              "priorDistributionLicense": "MIT",
+              "licenseNote": "Current v0.4.1 distribution; prior valid MIT grants are not revoked."
             }
           }
         },
@@ -471,7 +479,9 @@
             "provenance": {
               "kind": "ai-generated",
               "source": "AI-generated generic scientific design; repository-authorized redistribution",
-              "license": "MIT"
+              "license": "All rights reserved; separate authorization required",
+              "priorDistributionLicense": "MIT",
+              "licenseNote": "Current v0.4.1 distribution; prior valid MIT grants are not revoked."
             }
           }
         }
@@ -482,7 +492,7 @@
       "id": "research-two",
       "kind": "research",
       "title": "研究内容二：拟议增量评价与验证",
-      "notice": "本示例为公开通用的拟议研究设计，不包含项目样本量、未公开结果或已完成验证。",
+      "notice": "本示例为内部维护的通用拟议研究设计，不包含项目样本量、未公开结果或已完成验证。",
       "cards": [
         {
           "id": "r2-baseline",
@@ -497,7 +507,9 @@
             "provenance": {
               "kind": "ai-generated",
               "source": "AI-generated generic scientific design; repository-authorized redistribution",
-              "license": "MIT"
+              "license": "All rights reserved; separate authorization required",
+              "priorDistributionLicense": "MIT",
+              "licenseNote": "Current v0.4.1 distribution; prior valid MIT grants are not revoked."
             }
           }
         },
@@ -514,7 +526,9 @@
             "provenance": {
               "kind": "ai-generated",
               "source": "AI-generated generic scientific design; repository-authorized redistribution",
-              "license": "MIT"
+              "license": "All rights reserved; separate authorization required",
+              "priorDistributionLicense": "MIT",
+              "licenseNote": "Current v0.4.1 distribution; prior valid MIT grants are not revoked."
             }
           }
         },
@@ -531,7 +545,9 @@
             "provenance": {
               "kind": "ai-generated",
               "source": "AI-generated generic scientific design; repository-authorized redistribution",
-              "license": "MIT"
+              "license": "All rights reserved; separate authorization required",
+              "priorDistributionLicense": "MIT",
+              "licenseNote": "Current v0.4.1 distribution; prior valid MIT grants are not revoked."
             }
           }
         },
@@ -548,18 +564,20 @@
             "provenance": {
               "kind": "ai-generated",
               "source": "AI-generated generic scientific design; repository-authorized redistribution",
-              "license": "MIT"
+              "license": "All rights reserved; separate authorization required",
+              "priorDistributionLicense": "MIT",
+              "licenseNote": "Current v0.4.1 distribution; prior valid MIT grants are not revoked."
             }
           }
         }
       ],
-      "notes": "拟议比较必须在同一面板、同患者、同预测时点及同划分中进行，预处理与变量选择置于训练流程内。算法和参数预算由有效数据决定。图示没有ROC、AUC结果或固定训练比例。外院资料、共通检测面板和真实结局是否可得须独立落实。本公开示例没有已完成模型或外院验证。"
+      "notes": "拟议比较必须在同一面板、同患者、同预测时点及同划分中进行，预处理与变量选择置于训练流程内。算法和参数预算由有效数据决定。图示没有ROC、AUC结果或固定训练比例。外院资料、共通检测面板和真实结局是否可得须独立落实。本示例没有已完成模型或外院验证。"
     },
     {
       "id": "plan",
       "kind": "plan",
       "title": "后续计划：拟议四阶段推进",
-      "notice": "本示例为公开通用的拟议研究设计，不包含项目样本量、未公开结果或已完成验证。",
+      "notice": "本示例为内部维护的通用拟议研究设计，不包含项目样本量、未公开结果或已完成验证。",
       "cards": [
         {
           "id": "p-rules",
@@ -574,7 +592,9 @@
             "provenance": {
               "kind": "ai-generated",
               "source": "AI-generated generic scientific design; repository-authorized redistribution",
-              "license": "MIT"
+              "license": "All rights reserved; separate authorization required",
+              "priorDistributionLicense": "MIT",
+              "licenseNote": "Current v0.4.1 distribution; prior valid MIT grants are not revoked."
             }
           }
         },
@@ -591,7 +611,9 @@
             "provenance": {
               "kind": "ai-generated",
               "source": "AI-generated generic scientific design; repository-authorized redistribution",
-              "license": "MIT"
+              "license": "All rights reserved; separate authorization required",
+              "priorDistributionLicense": "MIT",
+              "licenseNote": "Current v0.4.1 distribution; prior valid MIT grants are not revoked."
             }
           }
         },
@@ -608,7 +630,9 @@
             "provenance": {
               "kind": "ai-generated",
               "source": "AI-generated generic scientific design; repository-authorized redistribution",
-              "license": "MIT"
+              "license": "All rights reserved; separate authorization required",
+              "priorDistributionLicense": "MIT",
+              "licenseNote": "Current v0.4.1 distribution; prior valid MIT grants are not revoked."
             }
           }
         },
@@ -625,7 +649,9 @@
             "provenance": {
               "kind": "ai-generated",
               "source": "AI-generated generic scientific design; repository-authorized redistribution",
-              "license": "MIT"
+              "license": "All rights reserved; separate authorization required",
+              "priorDistributionLicense": "MIT",
+              "licenseNote": "Current v0.4.1 distribution; prior valid MIT grants are not revoked."
             }
           }
         }
@@ -637,8 +663,8 @@
       "kind": "references",
       "title": "真实参考文献与图示来源",
       "subtitle": "公开数字可追溯；设计图不代表观察结果",
-      "notice": "图示为已授权公开的AI通用设计；原文图未转载。数值图由公开文献事实重绘。",
-      "notes": "参考文献题名/年份/DOI/PMID的元数据核查与数字/图证据独立核查分开。示例claims保留Codex source review记录，未伪称真人审核，也不将自动excerpt匹配等同证据已核查。六幅PNG无个人信息或未公开数据，按本仓库MIT许可提供为可替换AI设计资产。"
+      "notice": "图示为用于成品展示的AI通用设计；原文图未转载。数值图由公开文献事实重绘。",
+      "notes": "参考文献题名/年份/DOI/PMID的元数据核查与数字/图证据独立核查分开。示例claims保留Codex source review记录，未伪称真人审核，也不将自动excerpt匹配等同证据已核查。六幅PNG无个人信息或未公开数据，本次仅用于作者内部维护和成品展示；复用需另行授权，已合法授予的旧MIT权利保留。"
     }
   ]
 }
