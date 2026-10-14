@@ -1,6 +1,8 @@
 # Research Slide Workflow
 
-**当前为私有维护的科研工具；本次对外只展示设计思路和成品效果。核心实现暂不公开，科研用途限定共享须由作者另行决定并明确授权。** 许可范围见 [LICENSE](LICENSE) 和[展示与共享范围](docs/distribution-policy.md)。以下操作说明仅供作者和明确授权的内部人员使用。
+**公开源码 · 仅限非商业科研、教学和个人学习 · 商用需另行书面授权。** v0.4.2 起采用自定义[非商业科研许可证](LICENSE)，允许按条件使用、修改及同条件再分发；收费制作服务、模板转售、付费 API/SaaS、商业产品集成及商业研发须事先取得书面授权。完整范围见[使用与共享说明](docs/distribution-policy.md)。这是一项源码可见、限制用途的许可，不是 OSI 意义的通用开源许可。
+
+**历史许可边界：v0.4.0 及更早的 MIT 版本仍在公开 Git 历史中。新协议不追溯取消旧版的合法授权，不能据此声称所有历史代码都禁止商用。** 原文本与说明保留在 [licenses/](licenses/README.md)。
 
 **给出研究题目，生成以科研图为主、文字可编辑的研究背景、研究内容、后续计划与参考文献 PPT。**
 
@@ -21,7 +23,7 @@ node cli.mjs create "植物来源天然产物的抗流感候选价值与活性�
 
 默认范例为**植物来源天然产物抗流感课题**，包含真实文献数据与授权论文原图：
 
-[内部保存的八页可编辑PPT](examples/natural-antiviral/example.pptx)
+[非商业科研用的八页可编辑PPT](examples/natural-antiviral/example.pptx)
 
 ```bash
 npm run demo
@@ -37,7 +39,7 @@ npm run demo
 
 ![天然产物课题科学问题与设计示意](docs/preview/natural-question.png)
 
-## 内部运行：无需密钥
+## 非商业科研运行：无需密钥
 
 需要 Node.js 20+。示例使用已附科研设计 PNG 和公开文献数据，不调用付费 API。
 
@@ -147,8 +149,10 @@ python3 scripts/render.py build/proposal/research-slides.pptx --out build/previe
 
 ## 维护与许可
 
-内部维护可补充文献检索、版式、原生可编辑图型和经过核查的示例。修改后运行测试与示例；新增证据必须给原始出处及适用范围。
+可补充文献检索、版式、原生可编辑图型和经过核查的示例。贡献时明确材料来源及你是否有权按本许可提供；贡献不是版权转让。修改后运行测试与示例；新增证据必须给原始出处及适用范围。
 
-v0.4.1 起当前分发不再默认授予作者自有材料的复用许可。未经另行明确书面授权，不提供将新版本实现商业包装、收费服务、转售或重新发布的许可。后续科研用途共享范围由作者另行决定。已合法获得的旧 MIT 副本权利保留；第三方依赖、文献、图片和数据仍遵守各自原有权利及引用要求。仓库不包含实际患者资料、原始课题汇报或未公开结果。
+当前自有代码、文档、模板及已提供例图按根目录 LICENSE 所列的非商业科研条件提供。第三方依赖、文献、图片和数据仍按各自原条款使用，已合法获得的旧 MIT 副本权利保留。用户自有输入与独立原创输出不因使用工具归项目作者所有，也不自动套用本许可；输出含本项目受保护素材时，仅相关部分遵守其许可。新生成图像的 `assetLicense` 由有权的输出权利人决定，默认保留其权利。仓库不包含实际患者资料、原始课题汇报或未公开结果。
 
-English: An evidence-aware CLI for editable scientific slides. It separates bibliographic verification, claim review, real chart data, and proposed design imagery. Run `npm run demo` without an API key; optional OpenAI planning and illustration are configurable. Title-only inputs create proposed designs, not performed-study results.
+`package.json` 的 `private: true` 仅防止意外发布到 npm，不代表 GitHub 仓库是私有。
+
+English: Source-available under the custom noncommercial research LICENSE; commercial use requires separate written authorization. Prior valid licenses and third-party rights remain intact. An evidence-aware CLI for editable scientific slides. It separates bibliographic verification, claim review, real chart data, and proposed design imagery. Run `npm run demo` without an API key; optional OpenAI planning and illustration are configurable. Title-only inputs create proposed designs, not performed-study results.

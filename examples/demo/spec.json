@@ -394,9 +394,9 @@
             "provenance": {
               "kind": "ai-generated",
               "source": "AI-generated generic scientific design; repository-authorized redistribution",
-              "license": "All rights reserved; separate authorization required",
+              "license": "LicenseRef-RSW-Noncommercial-Research-1.0",
               "priorDistributionLicense": "MIT",
-              "licenseNote": "Current v0.4.1 distribution; prior valid MIT grants are not revoked."
+              "licenseNote": "Provided author-owned material under the repository LICENSE for noncommercial research, teaching, and personal study. Prior valid licenses and third-party rights remain unaffected."
             }
           }
         }
@@ -407,7 +407,7 @@
       "id": "research-one",
       "kind": "research",
       "title": "研究内容一：拟议人群与测量框架",
-      "notice": "本示例为内部维护的通用拟议研究设计，不包含项目样本量、未公开结果或已完成验证。",
+      "notice": "本示例为非商业科研共享的通用拟议研究设计，不包含项目样本量、未公开结果或已完成验证。",
       "cards": [
         {
           "id": "r1-database",
@@ -422,9 +422,9 @@
             "provenance": {
               "kind": "ai-generated",
               "source": "AI-generated generic scientific design; repository-authorized redistribution",
-              "license": "All rights reserved; separate authorization required",
+              "license": "LicenseRef-RSW-Noncommercial-Research-1.0",
               "priorDistributionLicense": "MIT",
-              "licenseNote": "Current v0.4.1 distribution; prior valid MIT grants are not revoked."
+              "licenseNote": "Provided author-owned material under the repository LICENSE for noncommercial research, teaching, and personal study. Prior valid licenses and third-party rights remain unaffected."
             }
           }
         },
@@ -441,9 +441,9 @@
             "provenance": {
               "kind": "ai-generated",
               "source": "AI-generated generic scientific design; repository-authorized redistribution",
-              "license": "All rights reserved; separate authorization required",
+              "license": "LicenseRef-RSW-Noncommercial-Research-1.0",
               "priorDistributionLicense": "MIT",
-              "licenseNote": "Current v0.4.1 distribution; prior valid MIT grants are not revoked."
+              "licenseNote": "Provided author-owned material under the repository LICENSE for noncommercial research, teaching, and personal study. Prior valid licenses and third-party rights remain unaffected."
             }
           }
         },
@@ -460,9 +460,9 @@
             "provenance": {
               "kind": "ai-generated",
               "source": "AI-generated generic scientific design; repository-authorized redistribution",
-              "license": "All rights reserved; separate authorization required",
+              "license": "LicenseRef-RSW-Noncommercial-Research-1.0",
               "priorDistributionLicense": "MIT",
-              "licenseNote": "Current v0.4.1 distribution; prior valid MIT grants are not revoked."
+              "licenseNote": "Provided author-owned material under the repository LICENSE for noncommercial research, teaching, and personal study. Prior valid licenses and third-party rights remain unaffected."
             }
           }
         },
@@ -479,9 +479,9 @@
             "provenance": {
               "kind": "ai-generated",
               "source": "AI-generated generic scientific design; repository-authorized redistribution",
-              "license": "All rights reserved; separate authorization required",
+              "license": "LicenseRef-RSW-Noncommercial-Research-1.0",
               "priorDistributionLicense": "MIT",
-              "licenseNote": "Current v0.4.1 distribution; prior valid MIT grants are not revoked."
+              "licenseNote": "Provided author-owned material under the repository LICENSE for noncommercial research, teaching, and personal study. Prior valid licenses and third-party rights remain unaffected."
             }
           }
         }
@@ -492,7 +492,7 @@
       "id": "research-two",
       "kind": "research",
       "title": "研究内容二：拟议增量评价与验证",
-      "notice": "本示例为内部维护的通用拟议研究设计，不包含项目样本量、未公开结果或已完成验证。",
+      "notice": "本示例为非商业科研共享的通用拟议研究设计，不包含项目样本量、未公开结果或已完成验证。",
       "cards": [
         {
           "id": "r2-baseline",
@@ -507,9 +507,9 @@
             "provenance": {
               "kind": "ai-generated",
               "source": "AI-generated generic scientific design; repository-authorized redistribution",
-              "license": "All rights reserved; separate authorization required",
+              "license": "LicenseRef-RSW-Noncommercial-Research-1.0",
               "priorDistributionLicense": "MIT",
-              "licenseNote": "Current v0.4.1 distribution; prior valid MIT grants are not revoked."
+              "licenseNote": "Provided author-owned material under the repository LICENSE for noncommercial research, teaching, and personal study. Prior valid licenses and third-party rights remain unaffected."
             }
           }
         },
@@ -526,9 +526,9 @@
             "provenance": {
               "kind": "ai-generated",
               "source": "AI-generated generic scientific design; repository-authorized redistribution",
-              "license": "All rights reserved; separate authorization required",
+              "license": "LicenseRef-RSW-Noncommercial-Research-1.0",
               "priorDistributionLicense": "MIT",
-              "licenseNote": "Current v0.4.1 distribution; prior valid MIT grants are not revoked."
+              "licenseNote": "Provided author-owned material under the repository LICENSE for noncommercial research, teaching, and personal study. Prior valid licenses and third-party rights remain unaffected."
             }
           }
         },
@@ -545,9 +545,9 @@
             "provenance": {
               "kind": "ai-generated",
               "source": "AI-generated generic scientific design; repository-authorized redistribution",
-              "license": "All rights reserved; separate authorization required",
+              "license": "LicenseRef-RSW-Noncommercial-Research-1.0",
               "priorDistributionLicense": "MIT",
-              "licenseNote": "Current v0.4.1 distribution; prior valid MIT grants are not revoked."
+              "licenseNote": "Provided author-owned material under the repository LICENSE for noncommercial research, teaching, and personal study. Prior valid licenses and third-party rights remain unaffected."
             }
           }
         },
@@ -564,9 +564,9 @@
             "provenance": {
               "kind": "ai-generated",
               "source": "AI-generated generic scientific design; repository-authorized redistribution",
-              "license": "All rights reserved; separate authorization required",
+              "license": "LicenseRef-RSW-Noncommercial-Research-1.0",
               "priorDistributionLicense": "MIT",
-              "licenseNote": "Current v0.4.1 distribution; prior valid MIT grants are not revoked."
+              "licenseNote": "Provided author-owned material under the repository LICENSE for noncommercial research, teaching, and personal study. Prior valid licenses and third-party rights remain unaffected."
             }
           }
         }
@@ -577,7 +577,7 @@
       "id": "plan",
       "kind": "plan",
       "title": "后续计划：拟议四阶段推进",
-      "notice": "本示例为内部维护的通用拟议研究设计，不包含项目样本量、未公开结果或已完成验证。",
+      "notice": "本示例为非商业科研共享的通用拟议研究设计，不包含项目样本量、未公开结果或已完成验证。",
       "cards": [
         {
           "id": "p-rules",
@@ -592,9 +592,9 @@
             "provenance": {
               "kind": "ai-generated",
               "source": "AI-generated generic scientific design; repository-authorized redistribution",
-              "license": "All rights reserved; separate authorization required",
+              "license": "LicenseRef-RSW-Noncommercial-Research-1.0",
               "priorDistributionLicense": "MIT",
-              "licenseNote": "Current v0.4.1 distribution; prior valid MIT grants are not revoked."
+              "licenseNote": "Provided author-owned material under the repository LICENSE for noncommercial research, teaching, and personal study. Prior valid licenses and third-party rights remain unaffected."
             }
           }
         },
@@ -611,9 +611,9 @@
             "provenance": {
               "kind": "ai-generated",
               "source": "AI-generated generic scientific design; repository-authorized redistribution",
-              "license": "All rights reserved; separate authorization required",
+              "license": "LicenseRef-RSW-Noncommercial-Research-1.0",
               "priorDistributionLicense": "MIT",
-              "licenseNote": "Current v0.4.1 distribution; prior valid MIT grants are not revoked."
+              "licenseNote": "Provided author-owned material under the repository LICENSE for noncommercial research, teaching, and personal study. Prior valid licenses and third-party rights remain unaffected."
             }
           }
         },
@@ -630,9 +630,9 @@
             "provenance": {
               "kind": "ai-generated",
               "source": "AI-generated generic scientific design; repository-authorized redistribution",
-              "license": "All rights reserved; separate authorization required",
+              "license": "LicenseRef-RSW-Noncommercial-Research-1.0",
               "priorDistributionLicense": "MIT",
-              "licenseNote": "Current v0.4.1 distribution; prior valid MIT grants are not revoked."
+              "licenseNote": "Provided author-owned material under the repository LICENSE for noncommercial research, teaching, and personal study. Prior valid licenses and third-party rights remain unaffected."
             }
           }
         },
@@ -649,9 +649,9 @@
             "provenance": {
               "kind": "ai-generated",
               "source": "AI-generated generic scientific design; repository-authorized redistribution",
-              "license": "All rights reserved; separate authorization required",
+              "license": "LicenseRef-RSW-Noncommercial-Research-1.0",
               "priorDistributionLicense": "MIT",
-              "licenseNote": "Current v0.4.1 distribution; prior valid MIT grants are not revoked."
+              "licenseNote": "Provided author-owned material under the repository LICENSE for noncommercial research, teaching, and personal study. Prior valid licenses and third-party rights remain unaffected."
             }
           }
         }
@@ -664,7 +664,7 @@
       "title": "真实参考文献与图示来源",
       "subtitle": "公开数字可追溯；设计图不代表观察结果",
       "notice": "图示为用于成品展示的AI通用设计；原文图未转载。数值图由公开文献事实重绘。",
-      "notes": "参考文献题名/年份/DOI/PMID的元数据核查与数字/图证据独立核查分开。示例claims保留Codex source review记录，未伪称真人审核，也不将自动excerpt匹配等同证据已核查。六幅PNG无个人信息或未公开数据，本次仅用于作者内部维护和成品展示；复用需另行授权，已合法授予的旧MIT权利保留。"
+      "notes": "参考文献题名/年份/DOI/PMID的元数据核查与数字/图证据独立核查分开。示例claims保留Codex source review记录，未伪称真人审核，也不将自动excerpt匹配等同证据已核查。六幅PNG无个人信息或未公开数据，作者提供的模板与例图可按本仓库非商业科研许可使用；商用需另行书面授权，已合法授予的旧MIT权利保留。"
     }
   ]
 }
