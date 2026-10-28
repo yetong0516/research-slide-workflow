@@ -10,6 +10,27 @@
 
 题目足以生成**拟议研究设计草稿**；实际队列、已完成实验、发表成果和真实结果需要额外项目说明。背景结论只有在记录具体原文核查后才进入正式版。工具不会把生成图冒充论文图，也不会把检索到的 DOI 当作结论核实。
 
+## 可安装的科研 PPT Skill
+
+[`skills/research-slide-workflow/SKILL.md`](skills/research-slide-workflow/SKILL.md) 把图文修改经验整理为可复用的代理技能，适合科研组会、方法原理、技术路线和科研 Agent 工作流，也支持根据用户参考图修改已有 PPT。
+
+技能强调“**文字说明 + 能解释信息变换的机制小图 + 语义配色 + 有来源的真实工具 logo**”：展示字段怎样进入结构表、证据怎样对应初稿与引用、审核异常怎样返回修改。标题旁的小图标只作索引，不能代替主机制图。三个匿名图示模式见[机制图参考](skills/research-slide-workflow/references/mechanism-patterns.md)。
+
+将 `skills/research-slide-workflow` 目录安装到支持该格式的代理 skills 目录后，可用 `$research-slide-workflow` 调用。目录自带参考、安装元数据、许可证和只依赖 Python 标准库的图片检查器；不需要复制完整仓库才能阅读技能或执行图片检查。使用本仓库 CLI 则仍需仓库副本、Node.js 和 npm 依赖。
+
+技能保留用户指定的模板与页数，不会让现有固定模板 CLI 自动支持任意两页布局。新建模板仍用下文的 `proposal` / `compact`；既有 PPT 或自定义布局使用实际可用的 PPT 编辑工具。它不附带真实客户材料、项目本子、机构标志或未经授权的截图。
+
+检查 SVG 图片是否有可用的备用位图，避免部分演示软件中 logo 消失：
+
+```bash
+# 完整仓库入口；默认只报告，启用下列选项才因图片错误退出
+python3 scripts/inspect-pptx.py final.pptx --check-image-fallbacks
+# 独立安装的 skill 也可运行
+python3 skills/research-slide-workflow/scripts/inspect_pptx_images.py final.pptx --fail-on-error
+```
+
+检查按同一图片对象配对 SVG 与 fallback，可报告缺失、一像素、全透明或损坏的 PNG；无法解码的格式标为未验证。它不修改文件，也不代替[逐页渲染和目视检查](skills/research-slide-workflow/references/quality-checks.md)。
+
 ## 开题框架：输入题目即可生成可编辑结构
 
 ```bash

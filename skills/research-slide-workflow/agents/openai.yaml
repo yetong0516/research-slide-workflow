@@ -1,0 +1,4 @@
+interface:
+  display_name: "科研流程与机制图 PPT"
+  short_description: "用机制小图、真实工具标志和可编辑结构组织科研汇报，并检查图像兼容性"
+  default_prompt: "使用 $research-slide-workflow 整理或修改科研 PPT，保留证据边界，用具体机制小图解释步骤，并交付可编辑且经过渲染检查的版本。"
