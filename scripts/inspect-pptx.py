@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Inspect saved PPTX structure with Python stdlib, without editing the file."""
 import argparse
+import importlib.util
 import json
 import re
 import zipfile
@@ -33,10 +34,16 @@ def inspect_pptx(filename):
                            'images': len(root.findall('.//p:pic', NS)),
                            'graphicFrames': len(root.findall('.//p:graphicFrame', NS))})
         dims = ET.fromstring(z.read('ppt/presentation.xml')).find('p:sldSz', NS)
-        return {'path': str(Path(filename).resolve()), 'slideCount': len(pages),
+        result = {'path': str(Path(filename).resolve()), 'slideCount': len(pages),
                 'slideSizeEmu': dims.attrib if dims is not None else None,
                 'nativeChartCount': sum(bool(re.fullmatch(r'ppt/charts/chart\d+\.xml', n)) for n in names),
                 'slides': result}
+    helper_path = Path(__file__).resolve().parents[1] / 'skills/research-slide-workflow/scripts/inspect_pptx_images.py'
+    spec = importlib.util.spec_from_file_location('inspect_pptx_images', helper_path)
+    helper = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(helper)
+    result['imageFallbacks'] = helper.inspect_pptx_images(filename)
+    return result
 
 
 if __name__ == '__main__':
@@ -44,6 +51,8 @@ if __name__ == '__main__':
     ap.add_argument('pptx')
     ap.add_argument('--expected-slides', type=int)
     ap.add_argument('--out')
+    ap.add_argument('--check-image-fallbacks', action='store_true',
+                    help='Exit 1 for confirmed SVG raster fallback errors; the default only reports them')
     args = ap.parse_args()
     result = inspect_pptx(args.pptx)
     if args.expected_slides is not None and result['slideCount'] != args.expected_slides:
@@ -53,3 +62,5 @@ if __name__ == '__main__':
         Path(args.out).write_text(output, encoding='utf-8')
     else:
         print(output)
+    if args.check_image_fallbacks and result['imageFallbacks']['errorCount']:
+        raise SystemExit(1)

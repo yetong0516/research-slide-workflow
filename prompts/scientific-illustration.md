@@ -1,5 +1,7 @@
 # 科研设计图提示词骨架
 
+此提示词用于确实需要位图插图的形态、对象或场景。若主要信息是字段对应、矩阵结构、处理步骤或审核回路，优先使用可编辑的原生图形、表格与连线，参照 [机制图模式](../skills/research-slide-workflow/references/mechanism-patterns.md)。小图标和 logo 不代替主机制图；真实工具标志使用有来源的原始素材，不用图像模型仿造。
+
 Create a flat 2D scientific research-design schematic for a Chinese research presentation. White background. Forest green, teal, blue and sage. Square composition, readable in a narrow column. Draw only the following supplied study design; do not add measurements, patient groups or findings.
 
 - Subject: {the actual question}

@@ -17,8 +17,8 @@ jobs:
       - run: npm test
       - run: npm run demo
       - run: npm run demo:compact
-      - run: python3 scripts/inspect-pptx.py build/compact/research-slides.pptx --expected-slides 5 --out build/compact/inspection.json
-      - run: python3 scripts/inspect-pptx.py build/proposal/research-slides.pptx --expected-slides 8 --out build/proposal/inspection.json
+      - run: python3 scripts/inspect-pptx.py build/compact/research-slides.pptx --expected-slides 5 --check-image-fallbacks --out build/compact/inspection.json
+      - run: python3 scripts/inspect-pptx.py build/proposal/research-slides.pptx --expected-slides 8 --check-image-fallbacks --out build/proposal/inspection.json
       - uses: actions/upload-artifact@v4
         with:
           name: research-slide-demo
