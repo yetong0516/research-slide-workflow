@@ -192,6 +192,14 @@ export function validateSpec(input) {
       check(visual && ['placeholder', 'image', 'bar', 'interval', 'diagram'].includes(visual.type),
         `${at}.visual.type must be placeholder, image, bar, interval, or diagram`);
       if (!visual) return;
+      if (card.steps !== undefined) {
+        check(proposal && slide.kind === 'plan' && (slide.layout ?? 'roadmap') === 'roadmap'
+          && visual.type === 'image' && visual.role === 'design',
+          `${at}.steps are supported on illustrated proposal roadmap cards`);
+        check(Array.isArray(card.steps) && card.steps.length >= 2 && card.steps.length <= 3
+          && card.steps.every(step => nonempty(step) && [...step].length <= 20),
+          `${at}.steps needs 2–3 short labels (≤20 characters each)`);
+      }
       if (visual.type === 'interval') {
         check(card.statementType==='evidence' && visual.dataChecked===true,
           `${at} intervals require independently reviewed numerical evidence`);

@@ -12,11 +12,9 @@
 
 植物来源天然产物抗流感开题范例，共八页。 [下载可编辑 PPT](examples/natural-antiviral/example.pptx)
 
-**第 7 页 · 研究计划（拟开展）**
+### 研究计划
 
-四张小图依次展示效应与安全性比较、成分证据表、两条作用假设，以及证据复核与转化边界。
-
-![第 7 页研究计划：四阶段科学示意](docs/preview/natural-antiviral-plan.png)
+![第 7 页研究计划：四阶段示意图与可编辑流程节点](docs/preview/natural-antiviral-illustrated-roadmap.png)
 
 <details>
 <summary>查看第 1 页研究背景和第 2 页科学问题</summary>
@@ -27,11 +25,15 @@
 
 </details>
 
+### 流程图例
+
+![文献筛选与人工复核：文献记录、判定表、筛选去向与复核回路](docs/preview/literature-screening-flow.png)
+
 ## 可安装的科研 PPT Skill
 
 [`skills/research-slide-workflow/SKILL.md`](skills/research-slide-workflow/SKILL.md) 把图文修改经验整理为可复用的代理技能，适合科研组会、方法原理、技术路线和科研 Agent 工作流，也支持根据用户参考图修改已有 PPT。
 
-技能强调“**文字说明 + 能解释信息变换的机制小图 + 语义配色 + 有来源的真实工具 logo**”：展示字段怎样进入结构表、证据怎样对应初稿与引用、审核异常怎样返回修改。标题旁的小图标只作索引，不能代替主机制图。三个匿名图示模式见[机制图参考](skills/research-slide-workflow/references/mechanism-patterns.md)。
+流程页用短标签和箭头连接步骤，在关键节点内画文档、判定表或实际产物。 [机制图参考](skills/research-slide-workflow/references/mechanism-patterns.md)
 
 在 Codex 里，可以请它从 [GitHub 技能目录](https://github.com/yetong0516/research-slide-workflow/tree/main/skills/research-slide-workflow)安装，再用 `$research-slide-workflow` 调用。技能可以独立安装，包含机制图参考和只依赖 Python 标准库的图片检查器。运行下文的 CLI 模板需要完整仓库、Node.js 和 npm 依赖。
 
