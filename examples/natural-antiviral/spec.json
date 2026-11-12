@@ -809,12 +809,11 @@
       "kind": "research",
       "layout": "split",
       "title": "研究内容一｜粗提物候选价值",
-      "notice": "拟议研究内容｜需项目方确认",
       "cards": [
         {
           "id": "research-1",
           "heading": "粗提物抗流感候选价值",
-          "caption": "评价粗提物 X 的效应与可复核性",
+          "caption": "",
           "statementType": "proposed",
           "visual": {
             "type": "image",
@@ -835,7 +834,7 @@
         {
           "id": "research-2",
           "heading": "效应与宿主安全性",
-          "caption": "同时关注选择性，区分效应与宿主损伤",
+          "caption": "",
           "statementType": "proposed",
           "visual": {
             "type": "diagram",
@@ -844,15 +843,15 @@
             "nodes": [
               {
                 "id": "research-2-node-1",
-                "label": "并列呈现效应与安全性"
+                "label": "并列比较效应与安全性"
               },
               {
                 "id": "research-2-node-2",
-                "label": "辨别有益信号与损伤信号"
+                "label": "区分效应与宿主损伤"
               },
               {
                 "id": "research-2-node-3",
-                "label": "标明候选价值的适用范围"
+                "label": "界定适用范围"
               }
             ],
             "edges": [
@@ -876,12 +875,11 @@
       "kind": "research",
       "layout": "split",
       "title": "研究内容二｜活性成分与候选评价",
-      "notice": "拟议研究内容｜需项目方确认",
       "cards": [
         {
           "id": "research-3",
           "heading": "活性成分与NP",
-          "caption": "对应成分身份与效应，区分关联和因果",
+          "caption": "区分成分关联与因果",
           "statementType": "proposed",
           "visual": {
             "type": "image",
@@ -902,7 +900,7 @@
         {
           "id": "research-4",
           "heading": "候选评价与优先级",
-          "caption": "综合成分明确性、效应与安全性资料",
+          "caption": "",
           "statementType": "proposed",
           "visual": {
             "type": "diagram",
@@ -911,15 +909,15 @@
             "nodes": [
               {
                 "id": "research-4-node-1",
-                "label": "比较成分身份的可信度"
+                "label": "核对成分身份"
               },
               {
                 "id": "research-4-node-2",
-                "label": "并列效应与安全性支持"
+                "label": "比较效应与安全性"
               },
               {
                 "id": "research-4-node-3",
-                "label": "形成优先级及保留理由"
+                "label": "排序并记录理由"
               }
             ],
             "edges": [
@@ -943,12 +941,11 @@
       "kind": "research",
       "layout": "split",
       "title": "研究内容三｜作用解释与转化",
-      "notice": "拟议研究内容｜需项目方确认",
       "cards": [
         {
           "id": "research-5",
           "heading": "直接作用与宿主反应",
-          "caption": "比较两类假设，识别关键分歧与证据",
+          "caption": "",
           "statementType": "proposed",
           "visual": {
             "type": "image",
@@ -969,7 +966,7 @@
         {
           "id": "research-6",
           "heading": "开发与转化边界",
-          "caption": "核对效应与机制一致性，明确待补证据",
+          "caption": "",
           "statementType": "proposed",
           "visual": {
             "type": "diagram",
@@ -978,15 +975,15 @@
             "nodes": [
               {
                 "id": "research-6-node-1",
-                "label": "核对机制解释与效应一致性"
+                "label": "核对效应与机制"
               },
               {
                 "id": "research-6-node-2",
-                "label": "识别选择性与成分稳定性疑问"
+                "label": "核查选择性与稳定性"
               },
               {
                 "id": "research-6-node-3",
-                "label": "界定后续开发与转化边界"
+                "label": "界定开发边界"
               }
             ],
             "edges": [
@@ -1009,13 +1006,12 @@
       "id": "plan",
       "kind": "plan",
       "layout": "roadmap",
-      "title": "后续计划｜效应、成分、机制与转化",
-      "notice": "拟议计划｜阶段与交付物待项目确认",
+      "title": "研究计划",
       "cards": [
         {
           "id": "plan-1",
           "heading": "效应与边界",
-          "caption": "并列比较效应与安全性\n形成结果解释规则",
+          "caption": "",
           "statementType": "proposed",
           "visual": {
             "type": "image",
@@ -1028,13 +1024,16 @@
               "license": "LicenseRef-RSW-Noncommercial-Research-1.0"
             }
           },
-          "notes": "计划步骤：明确研究对象、确定核心比较、形成解释规则。拟议研究结构；需确认项目条件。图中关系与交付物不是已观察结果。",
-          "deliverable": "效应—安全性框架"
+          "deliverable": "效应—安全性框架",
+          "steps": [
+            "比较效应与安全性",
+            "确定结果判读规则"
+          ]
         },
         {
           "id": "plan-2",
           "heading": "成分与候选",
-          "caption": "对应成分与效应线索\n形成候选清单",
+          "caption": "",
           "statementType": "proposed",
           "visual": {
             "type": "image",
@@ -1047,13 +1046,16 @@
               "license": "LicenseRef-RSW-Noncommercial-Research-1.0"
             }
           },
-          "notes": "计划步骤：核对植物与成分资料、对应成分与效应线索、形成候选清单。拟议研究结构；需确认项目条件。图中关系与交付物不是已观察结果。",
-          "deliverable": "成分证据与候选清单"
+          "deliverable": "成分证据与候选清单",
+          "steps": [
+            "对应成分与效应线索",
+            "形成候选清单"
+          ]
         },
         {
           "id": "plan-3",
           "heading": "机制与分歧",
-          "caption": "直接作用与宿主反应\n整理支持与反驳证据",
+          "caption": "",
           "statementType": "proposed",
           "visual": {
             "type": "image",
@@ -1066,13 +1068,16 @@
               "license": "LicenseRef-RSW-Noncommercial-Research-1.0"
             }
           },
-          "notes": "计划步骤：列出作用解释、识别关键分歧、整理支持与反驳证据。拟议研究结构；需确认项目条件。图中关系与交付物不是已观察结果。",
-          "deliverable": "作用假设与分歧图"
+          "deliverable": "作用假设与分歧图",
+          "steps": [
+            "比较两条作用假设",
+            "列出支持与反驳证据"
+          ]
         },
         {
           "id": "plan-4",
           "heading": "复核与转化",
-          "caption": "复核证据与结论范围\n明确后续开发边界",
+          "caption": "",
           "statementType": "proposed",
           "visual": {
             "type": "image",
@@ -1085,8 +1090,11 @@
               "license": "LicenseRef-RSW-Noncommercial-Research-1.0"
             }
           },
-          "notes": "计划步骤：复核关键证据、界定可支持结论、形成后续研究依据。拟议研究结构；需确认项目条件。图中关系与交付物不是已观察结果。",
-          "deliverable": "后续研究依据"
+          "deliverable": "后续研究依据",
+          "steps": [
+            "复核关键证据",
+            "界定后续开发范围"
+          ]
         }
       ]
     },

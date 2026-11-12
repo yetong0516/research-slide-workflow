@@ -45,6 +45,7 @@ test('default demo is the natural-product example with real sources and independ
     await fs.access(path.join(dir,spec.slides[0].cards[2].visual.path));
     const plan = spec.slides.find(slide=>slide.kind==='plan');
     assert.equal(plan.cards.length,4);
+    assert.ok(plan.cards.every(card=>card.steps.length === 2 && card.caption === ''));
     const illustrations = plan.cards.map(card=>card.visual);
     assert.equal(new Set(illustrations.map(visual=>visual.path)).size,4);
     for (const visual of illustrations) {

@@ -325,7 +325,8 @@ function notesFor(slideSpec, context) {
   ];
   if (slideSpec.mainQuestion) entries.push(`Main scientific question: ${slideSpec.mainQuestion}`);
   for (const card of slideSpec.cards ?? []) {
-    entries.push(`${card.heading}: ${card.caption}\nStatement type: ${card.statementType}`);
+    entries.push(`${card.heading}${card.caption ? `: ${card.caption}` : ''}\nStatement type: ${card.statementType}`);
+    if (card.steps) entries.push(`Proposed steps: ${card.steps.join(' → ')}`);
     if (card.evidence) entries.push(`Evidence audit:\n${JSON.stringify(card.evidence, null, 2)}`);
     if (['bar', 'interval'].includes(card.visual?.type)) entries.push(`Native editable data:\n${JSON.stringify(card.visual, null, 2)}`);
     if (card.visual?.type === 'diagram') entries.push(`Native editable proposed design:\n${JSON.stringify(card.visual, null, 2)}`);
@@ -390,13 +391,15 @@ async function splitPanel(slide, card, frame, context, compact = false, framed =
     { x: frame.x+0.16, y: frame.y+0.17, w: frame.w-0.32, h: titleHeight }, context, titleSize,
     { bold: true, color: context.colors.green, align: 'center' });
   const visualTop = frame.y+titleHeight+0.31;
-  const captionHeight = compact ? 0.48 : 1.00;
+  const captionHeight = card.caption ? (compact ? 0.48 : 1.00) : 0;
   const visualHeight = frame.h-titleHeight-captionHeight-(compact ? 0.64 : 0.62);
   await addVisual(slide, card,
     { x: frame.x+0.16, y: visualTop, w: frame.w-0.32, h: visualHeight }, context);
-  const captionY = frame.y+frame.h-captionHeight-0.17;
-  addText(slide, card.caption, { x: frame.x+0.16, y: captionY, w: frame.w-0.32, h: captionHeight },
-    context, 18, { align: 'center', valign: 'top' });
+  if (captionHeight) {
+    const captionY = frame.y+frame.h-captionHeight-0.17;
+    addText(slide, card.caption, { x: frame.x+0.16, y: captionY, w: frame.w-0.32, h: captionHeight },
+      context, 18, { align: 'center', valign: 'top' });
+  }
 }
 
 async function splitSlide(slide, slideSpec, context) {
@@ -428,18 +431,29 @@ async function splitSlide(slide, slideSpec, context) {
 
 async function roadmapSlide(slide, slideSpec, context) {
   const gap = 0.28, width = (12.13-3*gap)/4;
+  const hasIllustratedSteps = slideSpec.cards.some(card => card.steps);
   for (const [i, card] of slideSpec.cards.entries()) {
     const x = 0.60+i*(width+gap);
     topicFrame(slide, card.id, { x, y: 1.23, w: width, h: 5.70 }, context);
-    addText(slide, String(i+1).padStart(2, '0'), { x: x+0.14, y: 1.40, w: width-0.28, h: 0.38 },
-      context, 20, { bold: true, color: context.colors.green, align: 'center' });
+    const steps = card.steps;
+    if (!hasIllustratedSteps) {
+      addText(slide, String(i+1).padStart(2, '0'), { x: x+0.14, y: 1.40, w: width-0.28, h: 0.38 },
+        context, 20, { bold: true, color: context.colors.green, align: 'center' });
+    }
     if (i < 3) arrowSegment(slide,
       { x: x+width+0.04, y: 1.60 }, { x: x+width+gap-0.04, y: 1.60 }, context);
-    addText(slide, card.heading, { x: x+0.14, y: 1.93, w: width-0.28, h: 0.53 }, context, 22,
+    addText(slide, card.heading, { x: x+0.14, y: hasIllustratedSteps ? 1.34 : 1.93, w: width-0.28, h: 0.53 }, context, 22,
       { color: context.colors.green, bold: true, align: 'center' });
-    await addVisual(slide, card, { x: x+0.14, y: 2.64, w: width-0.28, h: 2.64 }, context);
-    addText(slide, card.caption, { x: x+0.14, y: 5.50, w: width-0.28, h: 1.24 }, context, 18,
-      { align: 'center', valign: 'top' });
+    await addVisual(slide, card, { x: x+0.14, y: hasIllustratedSteps ? 2.06 : 2.64, w: width-0.28, h: 2.64 }, context);
+    if (steps) {
+      const nodes = steps.map((label, index) => ({ id: `${index}`, label }));
+      const edges = nodes.slice(1).map((node, index) => ({ from: nodes[index].id, to: node.id }));
+      addDiagram(slide, { direction: 'vertical', nodes, edges },
+        { x: x+0.14, y: 4.77, w: width-0.28, h: 1.86 }, context);
+    } else if (card.caption) {
+      addText(slide, card.caption, { x: x+0.14, y: hasIllustratedSteps ? 4.92 : 5.50, w: width-0.28, h: 1.24 },
+        context, 18, { align: 'center', valign: 'top' });
+    }
   }
   proposalFooter(slide, slideSpec, context);
 }

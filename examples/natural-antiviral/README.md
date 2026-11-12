@@ -11,7 +11,7 @@ npm run demo
 
 输出 `build/proposal/research-slides.pptx`，共八页。正文、重绘数据、区间端点与流程可编辑；真实论文原图和设计插图可独立移动、增删或替换。
 
-第 7 页用四张独立插图呈现效应与安全性、成分证据、作用假设和复核。阶段名称与说明可直接编辑，详细步骤见该页备注。 [预览研究计划](../../docs/preview/natural-antiviral-plan.png)
+第 7 页把阶段示意图与可编辑的流程节点放在一起。 [预览研究计划](../../docs/preview/natural-antiviral-illustrated-roadmap.png)
 
 ## 真正用到的来源
 
