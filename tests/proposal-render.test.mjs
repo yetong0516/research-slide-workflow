@@ -87,10 +87,8 @@ test('proposal deck saves separate native topic frames, readable diagrams and de
       const frames = topicFrames(xml);
       assert.equal(frames.length, [4, 3, 2, 2, 2, 4][i-1], `slide ${i} has one frame per topic`);
       for (const frame of frames) {
-        assert.match(frame, /<a:custGeom>/);
-        assert.equal([...frame.matchAll(/<a:moveTo>/g)].length, 4, 'four separate corners');
-        assert.equal([...frame.matchAll(/<a:lnTo>/g)].length, 8, 'two strokes per corner');
-        assert.doesNotMatch(frame, /<a:close\b/, 'the gaps stay open');
+        assert.match(frame, /<a:prstGeom prst="rect">/, 'frame is an editable rectangle');
+        assert.match(frame, /<a:prstDash val="dash"\/>/, 'the outline uses native dashes');
         assert.match(frame, /<a:ln w="40640"/, 'frame has a 3.2 pt stroke');
       }
       assertCleanVisibleText(xml);

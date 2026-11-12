@@ -43,27 +43,10 @@ function futureTitle(value, kind, context) {
 }
 
 function topicFrame(slide, id, frame, context) {
-  const { w, h } = frame;
-  const cornerWidth = w*0.39;
-  const cornerHeight = h*0.35;
-  // Four open corners form one editable PowerPoint shape.
-  slide.addShape(context.pptx.ShapeType.custGeom, {
+  slide.addShape(context.pptx.ShapeType.rect, {
     ...frame, objectName: `topic-frame-${id}`,
-    line: { color: context.colors.green, width: 3.2, transparency: 38 },
-    points: [
-      { x: 0, y: cornerHeight, moveTo: true },
-      { x: 0, y: 0 },
-      { x: cornerWidth, y: 0 },
-      { x: w-cornerWidth, y: 0, moveTo: true },
-      { x: w, y: 0 },
-      { x: w, y: cornerHeight },
-      { x: w, y: h-cornerHeight, moveTo: true },
-      { x: w, y: h },
-      { x: w-cornerWidth, y: h },
-      { x: cornerWidth, y: h, moveTo: true },
-      { x: 0, y: h },
-      { x: 0, y: h-cornerHeight },
-    ],
+    line: { color: context.colors.green, width: 3.2, transparency: 38, dashType: 'dash' },
+    fill: { color: context.colors.white },
   });
 }
 
