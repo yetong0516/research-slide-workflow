@@ -27,7 +27,7 @@
 
 ### 流程图例
 
-![文献筛选与人工复核：文献记录、判定表、筛选去向与复核回路](docs/preview/literature-screening-flow.png)
+![匿名记录 R-01：摘要摘录对应判定表，缺项触发全文复核并回写原记录](docs/preview/literature-record-workflow.png)
 
 ## 可安装的科研 PPT Skill
 
