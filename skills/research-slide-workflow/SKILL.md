@@ -1,12 +1,14 @@
 ---
 name: research-slide-workflow
 description: Create or revise research presentations, scientific workflows and technical-route slides using concrete mechanism diagrams, traceable evidence and editable objects. Use for scientific group meetings, methods, study designs and research-agent workflows, including improvements from reference slides.
-license: See LICENSE for noncommercial research terms.
+license: LicenseRef-RSW-Noncommercial-Research-1.0
 ---
 
 # Research Slide Workflow
 
 把科研问题与工作步骤画清楚，再配简短文字。优先让图解释“信息怎样变化、步骤怎样衔接、结果怎样核验”，保留来源与证据边界。
+
+本技能适用项目根目录的[非商业科研许可证](https://github.com/yetong0516/research-slide-workflow/blob/main/LICENSE)。
 
 ## 先确定任务与参考的作用
 
