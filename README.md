@@ -1,8 +1,6 @@
 # Research Slide Workflow
 
-**公开源码 · 仅限非商业科研、教学和个人学习 · 商用需另行书面授权。** v0.4.2 起采用自定义[非商业科研许可证](LICENSE)，允许按条件使用、修改及同条件再分发；收费制作服务、模板转售、付费 API/SaaS、商业产品集成及商业研发须事先取得书面授权。完整范围见[使用与共享说明](docs/distribution-policy.md)。这是一项源码可见、限制用途的许可，不是 OSI 意义的通用开源许可。
-
-**历史许可边界：v0.4.0 及更早的 MIT 版本仍在公开 Git 历史中。新协议不追溯取消旧版的合法授权，不能据此声称所有历史代码都禁止商用。** 原文本与说明保留在 [licenses/](licenses/README.md)。
+**源码公开，按[非商业科研许可证](LICENSE)提供。** 许可范围包括非商业科研、教学和个人学习。商用须事先取得书面授权。
 
 **给出研究题目，生成以科研图为主、文字可编辑的研究背景、研究内容、后续计划与参考文献 PPT。**
 
@@ -16,7 +14,7 @@
 
 技能强调“**文字说明 + 能解释信息变换的机制小图 + 语义配色 + 有来源的真实工具 logo**”：展示字段怎样进入结构表、证据怎样对应初稿与引用、审核异常怎样返回修改。标题旁的小图标只作索引，不能代替主机制图。三个匿名图示模式见[机制图参考](skills/research-slide-workflow/references/mechanism-patterns.md)。
 
-将 `skills/research-slide-workflow` 目录安装到支持该格式的代理 skills 目录后，可用 `$research-slide-workflow` 调用。目录自带参考、安装元数据、许可证和只依赖 Python 标准库的图片检查器；不需要复制完整仓库才能阅读技能或执行图片检查。使用本仓库 CLI 则仍需仓库副本、Node.js 和 npm 依赖。
+在 Codex 里，可以请它从 [GitHub 技能目录](https://github.com/yetong0516/research-slide-workflow/tree/main/skills/research-slide-workflow)安装，再用 `$research-slide-workflow` 调用。技能可以独立安装，包含机制图参考和只依赖 Python 标准库的图片检查器。运行下文的 CLI 模板需要完整仓库、Node.js 和 npm 依赖。
 
 技能保留用户指定的模板与页数，不会让现有固定模板 CLI 自动支持任意两页布局。新建模板仍用下文的 `proposal` / `compact`；既有 PPT 或自定义布局使用实际可用的 PPT 编辑工具。它不附带真实客户材料、项目本子、机构标志或未经授权的截图。
 
@@ -25,8 +23,8 @@
 ```bash
 # 完整仓库入口；默认只报告，启用下列选项才因图片错误退出
 python3 scripts/inspect-pptx.py final.pptx --check-image-fallbacks
-# 独立安装的 skill 也可运行
-python3 skills/research-slide-workflow/scripts/inspect_pptx_images.py final.pptx --fail-on-error
+# Codex 默认安装位置
+python3 ~/.codex/skills/research-slide-workflow/scripts/inspect_pptx_images.py final.pptx --fail-on-error
 ```
 
 检查按同一图片对象配对 SVG 与 fallback，可报告缺失、一像素、全透明或损坏的 PNG；无法解码的格式标为未验证。它不修改文件，也不代替[逐页渲染和目视检查](skills/research-slide-workflow/references/quality-checks.md)。
@@ -111,7 +109,7 @@ node cli.mjs validate runs/my-study/output/spec.images.json --final
 node cli.mjs build runs/my-study/output/spec.images.json --final
 ```
 
-具体字段见 [文献核查](docs/evidence.md) 与 [完整工作流](docs/workflow.md)。关键 distinction：
+具体字段见 [文献核查](docs/evidence.md) 与 [完整工作流](docs/workflow.md)。各类内容的来源与展示要求如下。
 
 | 内容 | 来源 | 展示要求 |
 | --- | --- | --- |
@@ -172,8 +170,8 @@ python3 scripts/render.py build/proposal/research-slides.pptx --out build/previe
 
 可补充文献检索、版式、原生可编辑图型和经过核查的示例。贡献时明确材料来源及你是否有权按本许可提供；贡献不是版权转让。修改后运行测试与示例；新增证据必须给原始出处及适用范围。
 
-当前自有代码、文档、模板及已提供例图按根目录 LICENSE 所列的非商业科研条件提供。第三方依赖、文献、图片和数据仍按各自原条款使用，已合法获得的旧 MIT 副本权利保留。用户自有输入与独立原创输出不因使用工具归项目作者所有，也不自动套用本许可；输出含本项目受保护素材时，仅相关部分遵守其许可。新生成图像的 `assetLicense` 由有权的输出权利人决定，默认保留其权利。仓库不包含实际患者资料、原始课题汇报或未公开结果。
+项目自有材料的适用范围、再分发和输入输出权利以根目录 [LICENSE](LICENSE) 为准。第三方材料适用各自的许可与署名要求，旧版已依法授予的权利按原条款保留。维护约定见 [AGENTS.md](AGENTS.md)。
 
 `package.json` 的 `private: true` 仅防止意外发布到 npm，不代表 GitHub 仓库是私有。
 
-English: Source-available under the custom noncommercial research LICENSE; commercial use requires separate written authorization. Prior valid licenses and third-party rights remain intact. An evidence-aware CLI for editable scientific slides. It separates bibliographic verification, claim review, real chart data, and proposed design imagery. Run `npm run demo` without an API key; optional OpenAI planning and illustration are configurable. Title-only inputs create proposed designs, not performed-study results.
+English: This project uses the [Noncommercial Research License](LICENSE). Commercial use requires separate written authorization. An evidence-aware CLI for editable scientific slides. It separates bibliographic verification, claim review, real chart data, and proposed design imagery. Run `npm run demo` without an API key; optional OpenAI planning and illustration are configurable. Title-only inputs create proposed designs, not performed-study results.
