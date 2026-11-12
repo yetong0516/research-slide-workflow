@@ -11,6 +11,8 @@ npm run demo
 
 输出 `build/proposal/research-slides.pptx`，共八页。正文、重绘数据、区间端点与流程可编辑；真实论文原图和设计插图可独立移动、增删或替换。
 
+第 7 页用四张独立插图呈现效应与安全性、成分证据、作用假设和复核。阶段名称与说明可直接编辑，详细步骤见该页备注。 [预览研究计划](../../docs/preview/natural-antiviral-plan.png)
+
 ## 真正用到的来源
 
 | 位置 | 来源 | 图与结论的范围 |
@@ -27,6 +29,6 @@ npm run demo
 - `project.json`：题目及项目身份约束。
 - `evidence.json`：主张、数字、来源位置、适用范围与核查记录。
 - `spec.json`：与题目对应的八页内容及版式。
-- `assets/manifest.json`：原图出处、许可和三幅原创设计图的身份。
+- `assets/manifest.json`：原图出处与许可，以及科学问题、研究内容和研究计划配图的来源。
 
 范例使用可核查的公开来源。设计图用于解释拟开展的研究思路。项目自有材料适用根目录的[非商业科研许可证](../../LICENSE)。第三方图像按[素材清单](assets/manifest.json)所列来源和许可使用。
