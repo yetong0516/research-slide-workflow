@@ -8,6 +8,25 @@
 
 题目足以生成**拟议研究设计草稿**；实际队列、已完成实验、发表成果和真实结果需要额外项目说明。背景结论只有在记录具体原文核查后才进入正式版。工具不会把生成图冒充论文图，也不会把检索到的 DOI 当作结论核实。
 
+## 示例预览
+
+植物来源天然产物抗流感开题范例，共八页。 [下载可编辑 PPT](examples/natural-antiviral/example.pptx)
+
+**第 7 页 · 研究计划（拟开展）**
+
+四张小图依次展示效应与安全性比较、成分证据表、两条作用假设，以及证据复核与转化边界。
+
+![第 7 页研究计划：四阶段科学示意](docs/preview/natural-antiviral-plan.png)
+
+<details>
+<summary>查看第 1 页研究背景和第 2 页科学问题</summary>
+
+![研究背景：人群数据、临床研究和前临床原图](docs/preview/natural-antiviral-background.png)
+
+![科学问题：研究对象、核心比较与解释目标](docs/preview/natural-antiviral-question.png)
+
+</details>
+
 ## 可安装的科研 PPT Skill
 
 [`skills/research-slide-workflow/SKILL.md`](skills/research-slide-workflow/SKILL.md) 把图文修改经验整理为可复用的代理技能，适合科研组会、方法原理、技术路线和科研 Agent 工作流，也支持根据用户参考图修改已有 PPT。
@@ -40,9 +59,7 @@ node cli.mjs create "植物来源天然产物的抗流感候选价值与活性�
 
 需要检索真实文献时追加 `--query "英文 PubMed 检索式"`；需要按题目具体规划，可追加 `--provider openai` 并配置自己的密钥。两者都保留独立核查环节。重复 `create` 不覆盖已有项目，后续用 `run project.json` 继续；详情见[开题模板说明](docs/proposal.md)。
 
-默认范例为**植物来源天然产物抗流感课题**，包含真实文献数据与授权论文原图：
-
-[非商业科研用的八页可编辑PPT](examples/natural-antiviral/example.pptx)
+从仓库重新生成上面的八页示例：
 
 ```bash
 npm run demo
@@ -53,10 +70,6 @@ npm run demo
 每个主题使用可编辑的粗虚线矩形框。重复的图像身份标签、交付提示和通用页脚移入备注；文献身份、原图许可与数据解释仍保留在备注及参考文献中。研究内容和计划的标题保留“拟开展”。
 
 原生文字、图表、备注及主题默认使用中文 **微软雅黑**、英文 **Arial**。论文原图和设计位图保持原貌。可在 `project.design.fonts` 或 `spec.theme.fonts` 设置 `{ "eastAsian": "微软雅黑", "latin": "Arial" }`。目标电脑需要安装相应字体；缺失时会被本机字体替代，应重新检查换行与字形。
-
-![天然产物抗流感背景：真实人群数据、临床研究与前临床原图](docs/preview/natural-background.png)
-
-![天然产物课题科学问题与设计示意](docs/preview/natural-question.png)
 
 ## 非商业科研运行：无需密钥
 

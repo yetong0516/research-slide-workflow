@@ -1015,149 +1015,77 @@
         {
           "id": "plan-1",
           "heading": "效应与边界",
-          "caption": "形成核心问题、比较关系与结果解释规则。",
+          "caption": "并列比较效应与安全性\n形成结果解释规则",
           "statementType": "proposed",
           "visual": {
-            "type": "diagram",
+            "type": "image",
             "role": "design",
-            "direction": "vertical",
-            "nodes": [
-              {
-                "id": "plan-1-node-1",
-                "label": "明确研究对象"
-              },
-              {
-                "id": "plan-1-node-2",
-                "label": "确定核心比较"
-              },
-              {
-                "id": "plan-1-node-3",
-                "label": "形成解释规则"
-              }
-            ],
-            "edges": [
-              {
-                "from": "plan-1-node-1",
-                "to": "plan-1-node-2"
-              },
-              {
-                "from": "plan-1-node-2",
-                "to": "plan-1-node-3"
-              }
-            ]
+            "path": "assets/plan-effect-safety.png",
+            "alt": "同一粗提物分别进入效应与宿主安全性比较",
+            "provenance": {
+              "kind": "original-design",
+              "source": "Original schematic drawn for the natural-antiviral example research plan.",
+              "license": "LicenseRef-RSW-Noncommercial-Research-1.0"
+            }
           },
-          "notes": "拟议研究结构；需确认项目条件。图中关系与交付物不是已观察结果。",
+          "notes": "计划步骤：明确研究对象、确定核心比较、形成解释规则。拟议研究结构；需确认项目条件。图中关系与交付物不是已观察结果。",
           "deliverable": "效应—安全性框架"
         },
         {
           "id": "plan-2",
           "heading": "成分与候选",
-          "caption": "区分成分确认、关联线索与待核查信息。",
+          "caption": "对应成分与效应线索\n形成候选清单",
           "statementType": "proposed",
           "visual": {
-            "type": "diagram",
+            "type": "image",
             "role": "design",
-            "direction": "vertical",
-            "nodes": [
-              {
-                "id": "plan-2-node-1",
-                "label": "核对植物与成分资料"
-              },
-              {
-                "id": "plan-2-node-2",
-                "label": "对应成分与效应线索"
-              },
-              {
-                "id": "plan-2-node-3",
-                "label": "形成候选清单"
-              }
-            ],
-            "edges": [
-              {
-                "from": "plan-2-node-1",
-                "to": "plan-2-node-2"
-              },
-              {
-                "from": "plan-2-node-2",
-                "to": "plan-2-node-3"
-              }
-            ]
+            "path": "assets/plan-candidate-evidence.png",
+            "alt": "植物来源与成分身份汇入候选证据表",
+            "provenance": {
+              "kind": "original-design",
+              "source": "Original schematic drawn for the natural-antiviral example research plan.",
+              "license": "LicenseRef-RSW-Noncommercial-Research-1.0"
+            }
           },
-          "notes": "拟议研究结构；需确认项目条件。图中关系与交付物不是已观察结果。",
+          "notes": "计划步骤：核对植物与成分资料、对应成分与效应线索、形成候选清单。拟议研究结构；需确认项目条件。图中关系与交付物不是已观察结果。",
           "deliverable": "成分证据与候选清单"
         },
         {
           "id": "plan-3",
           "heading": "机制与分歧",
-          "caption": "形成可检验假设及不同结果的解释路径。",
+          "caption": "直接作用与宿主反应\n整理支持与反驳证据",
           "statementType": "proposed",
           "visual": {
-            "type": "diagram",
+            "type": "image",
             "role": "design",
-            "direction": "vertical",
-            "nodes": [
-              {
-                "id": "plan-3-node-1",
-                "label": "列出作用解释"
-              },
-              {
-                "id": "plan-3-node-2",
-                "label": "识别关键分歧"
-              },
-              {
-                "id": "plan-3-node-3",
-                "label": "整理支持与反驳证据"
-              }
-            ],
-            "edges": [
-              {
-                "from": "plan-3-node-1",
-                "to": "plan-3-node-2"
-              },
-              {
-                "from": "plan-3-node-2",
-                "to": "plan-3-node-3"
-              }
-            ]
+            "path": "assets/plan-mechanism-paths.png",
+            "alt": "候选成分分别指向直接作用与宿主反应假设",
+            "provenance": {
+              "kind": "original-design",
+              "source": "Original schematic drawn for the natural-antiviral example research plan.",
+              "license": "LicenseRef-RSW-Noncommercial-Research-1.0"
+            }
           },
-          "notes": "拟议研究结构；需确认项目条件。图中关系与交付物不是已观察结果。",
+          "notes": "计划步骤：列出作用解释、识别关键分歧、整理支持与反驳证据。拟议研究结构；需确认项目条件。图中关系与交付物不是已观察结果。",
           "deliverable": "作用假设与分歧图"
         },
         {
           "id": "plan-4",
           "heading": "复核与转化",
-          "caption": "明确可支持结论、剩余疑问与后续开发边界。",
+          "caption": "复核证据与结论范围\n明确后续开发边界",
           "statementType": "proposed",
           "visual": {
-            "type": "diagram",
+            "type": "image",
             "role": "design",
-            "direction": "vertical",
-            "nodes": [
-              {
-                "id": "plan-4-node-1",
-                "label": "复核关键证据"
-              },
-              {
-                "id": "plan-4-node-2",
-                "label": "界定可支持结论"
-              },
-              {
-                "id": "plan-4-node-3",
-                "label": "形成后续研究依据"
-              }
-            ],
-            "edges": [
-              {
-                "from": "plan-4-node-1",
-                "to": "plan-4-node-2"
-              },
-              {
-                "from": "plan-4-node-2",
-                "to": "plan-4-node-3"
-              }
-            ]
+            "path": "assets/plan-review-boundary.png",
+            "alt": "复核原始资料，记录可支持结论与待核查问题",
+            "provenance": {
+              "kind": "original-design",
+              "source": "Original schematic drawn for the natural-antiviral example research plan.",
+              "license": "LicenseRef-RSW-Noncommercial-Research-1.0"
+            }
           },
-          "notes": "拟议研究结构；需确认项目条件。图中关系与交付物不是已观察结果。",
+          "notes": "计划步骤：复核关键证据、界定可支持结论、形成后续研究依据。拟议研究结构；需确认项目条件。图中关系与交付物不是已观察结果。",
           "deliverable": "后续研究依据"
         }
       ]
@@ -1172,7 +1100,7 @@
   "workflow": {
     "status": "publishable",
     "topic": "植物来源天然产物的抗流感候选价值与活性成分研究",
-    "figureCount": 3,
+    "figureCount": 7,
     "unresolvedClaims": [],
     "provider": "rules",
     "imageTasks": [],

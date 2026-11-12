@@ -36,6 +36,34 @@
       "notice": "Proposed high-level illustration; not a plant/molecule identification or observed result.",
       "priorDistributionLicense": "MIT",
       "licenseNote": "Provided author-owned material under the repository LICENSE for noncommercial research, teaching, and personal study. Prior valid licenses and third-party rights remain unaffected."
+    },
+    {
+      "path": "assets/plan-effect-safety.png",
+      "role": "design",
+      "provenance": "Original schematic drawn for the natural-antiviral example research plan.",
+      "license": "LicenseRef-RSW-Noncommercial-Research-1.0",
+      "notice": "Proposed research plan schematic. No measured or predicted data."
+    },
+    {
+      "path": "assets/plan-candidate-evidence.png",
+      "role": "design",
+      "provenance": "Original schematic drawn for the natural-antiviral example research plan.",
+      "license": "LicenseRef-RSW-Noncommercial-Research-1.0",
+      "notice": "Proposed research plan schematic. No measured or predicted data."
+    },
+    {
+      "path": "assets/plan-mechanism-paths.png",
+      "role": "design",
+      "provenance": "Original schematic drawn for the natural-antiviral example research plan.",
+      "license": "LicenseRef-RSW-Noncommercial-Research-1.0",
+      "notice": "Proposed research plan schematic. No measured or predicted data."
+    },
+    {
+      "path": "assets/plan-review-boundary.png",
+      "role": "design",
+      "provenance": "Original schematic drawn for the natural-antiviral example research plan.",
+      "license": "LicenseRef-RSW-Noncommercial-Research-1.0",
+      "notice": "Proposed research plan schematic. No measured or predicted data."
     }
   ]
 }

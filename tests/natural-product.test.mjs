@@ -43,6 +43,15 @@ test('default demo is the natural-product example with real sources and independ
     assert.deepEqual(spec.slides.find(slide=>slide.kind==='preliminary').cards[0].visual.categories,
       ['季节性H1N1（2007）','大流行H1N1（2009）']);
     await fs.access(path.join(dir,spec.slides[0].cards[2].visual.path));
+    const plan = spec.slides.find(slide=>slide.kind==='plan');
+    assert.equal(plan.cards.length,4);
+    const illustrations = plan.cards.map(card=>card.visual);
+    assert.equal(new Set(illustrations.map(visual=>visual.path)).size,4);
+    for (const visual of illustrations) {
+      assert.equal(visual.type,'image');
+      assert.equal(visual.role,'design');
+      await fs.access(path.join(dir,visual.path));
+    }
   } finally {await fs.rm(dir,{recursive:true,force:true});}
 });
 
