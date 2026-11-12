@@ -43,10 +43,27 @@ function futureTitle(value, kind, context) {
 }
 
 function topicFrame(slide, id, frame, context) {
-  slide.addShape(context.pptx.ShapeType.rect, {
+  const { w, h } = frame;
+  const cornerWidth = w*0.39;
+  const cornerHeight = h*0.35;
+  // Four open corners form one editable PowerPoint shape.
+  slide.addShape(context.pptx.ShapeType.custGeom, {
     ...frame, objectName: `topic-frame-${id}`,
-    line: { color: context.colors.line, width: 1.1 },
-    fill: { color: context.colors.white },
+    line: { color: context.colors.green, width: 3.2, transparency: 38 },
+    points: [
+      { x: 0, y: cornerHeight, moveTo: true },
+      { x: 0, y: 0 },
+      { x: cornerWidth, y: 0 },
+      { x: w-cornerWidth, y: 0, moveTo: true },
+      { x: w, y: 0 },
+      { x: w, y: cornerHeight },
+      { x: w, y: h-cornerHeight, moveTo: true },
+      { x: w, y: h },
+      { x: w-cornerWidth, y: h },
+      { x: cornerWidth, y: h, moveTo: true },
+      { x: 0, y: h },
+      { x: 0, y: h-cornerHeight },
+    ],
   });
 }
 
@@ -358,7 +375,7 @@ async function chainSlide(slide, slideSpec, context) {
     addText(slide, card.caption, { x: x+0.14, y: 5.40, w: width-0.28, h: 1.32 }, context, 18,
       { align: 'center', valign: 'top' });
     if (i < 3) arrowSegment(slide,
-      { x: x+width+0.02, y: 1.60 }, { x: x+width+gap-0.02, y: 1.60 }, context);
+      { x: x+width+0.04, y: 1.60 }, { x: x+width+gap-0.04, y: 1.60 }, context);
   }
   proposalFooter(slide, slideSpec, context);
 }
@@ -434,7 +451,7 @@ async function roadmapSlide(slide, slideSpec, context) {
     addText(slide, String(i+1).padStart(2, '0'), { x: x+0.14, y: 1.40, w: width-0.28, h: 0.38 },
       context, 20, { bold: true, color: context.colors.green, align: 'center' });
     if (i < 3) arrowSegment(slide,
-      { x: x+width+0.02, y: 1.60 }, { x: x+width+gap-0.02, y: 1.60 }, context);
+      { x: x+width+0.04, y: 1.60 }, { x: x+width+gap-0.04, y: 1.60 }, context);
     addText(slide, card.heading, { x: x+0.14, y: 1.93, w: width-0.28, h: 0.53 }, context, 22,
       { color: context.colors.green, bold: true, align: 'center' });
     await addVisual(slide, card, { x: x+0.14, y: 2.64, w: width-0.28, h: 2.64 }, context);
